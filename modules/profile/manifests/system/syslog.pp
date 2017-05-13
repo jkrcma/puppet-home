@@ -1,4 +1,4 @@
-class profile::syslog {
+class profile::system::syslog {
     # make sure that rsyslog is completely removed
     package { 'rsyslog':
         ensure => purged,

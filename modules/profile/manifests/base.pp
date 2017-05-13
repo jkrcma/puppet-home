@@ -1,5 +1,5 @@
 class profile::base {
-    include profile::syslog
+    include profile::system::syslog
     include profile::account::taiku
 
     # puppet everything-is-wrong-case binaries
