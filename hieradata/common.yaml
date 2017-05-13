@@ -1,0 +1,3 @@
+---
+account::taiku::sshkey_type: 'ssh-ed25519'
+account::taiku::sshkey: 'AAAAC3NzaC1lZDI1NTE5AAAAIGeX/9uo92CUV0spOD/lhwHUIJ40kxq4BY/NjqdVVhxb'

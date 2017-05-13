@@ -1,0 +1,10 @@
+---
+:backends:
+  - yaml
+:yaml:
+  :datadir: /etc/puppet/hieradata
+:hierarchy:
+  - "%{::clientcert}"
+  - "%{::lsbdistcodename}"
+  - common
+:logger: puppet
