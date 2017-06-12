@@ -1,0 +1,43 @@
+;
+; .den local TLD
+;
+$TTL	300
+@	IN	SOA	ns.den. admin.den. (
+			      1		; Serial
+			 604800		; Refresh
+			  86400		; Retry
+			2419200		; Expire
+			 604800 )	; Negative Cache TTL
+; nameserver NS
+@	IN	NS	ns.den.
+
+$ORIGIN den.
+; handy shortcuts A
+ns	IN	A	192.168.1.10
+router	IN	A	192.168.1.1
+
+; 192.168.1.0/26
+; physical A
+network-trusted	IN	A	192.168.1.0
+gateway-trusted	IN	A	192.168.1.1
+neltharion	IN	A	192.168.1.2
+drolf		IN	A	192.168.1.3
+iphone		IN	A	192.168.1.4
+macbook		IN	A	192.168.1.5
+drolf-rpi	IN	A	192.168.1.6
+broadcast-trusted	IN	A	192.168.1.63
+
+; virtual A
+dns		IN	A	192.168.1.10
+puppet		IN	A	192.168.1.11
+ubuntu		IN	A	192.168.1.62
+
+; 192.168.1.64/26
+network-vpn	IN	A	192.168.1.64
+gateway-vpn	IN	A	192.168.1.65
+broadcast-vpn	IN	A	192.168.1.127
+
+; 192.168.1.128/25
+network-public	IN	A	192.168.1.128
+gateway-public	IN	A	192.168.1.129
+broadcast-public	IN	A	192.168.1.254

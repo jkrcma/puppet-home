@@ -1,0 +1,38 @@
+;
+; .den local TLD reverse zone
+;
+$TTL	300
+@	IN	SOA	ns.den. admin.den. (
+			      1		; Serial
+			 604800		; Refresh
+			  86400		; Retry
+			2419200		; Expire
+			 604800 )	; Negative Cache TTL
+; nameserver NS
+@	IN	NS	ns.den.
+
+; 192.168.1.0/26
+; physical PTR
+0	IN	PTR	network-trusted.den.
+1	IN	PTR	gateway-trusted.den.
+2	IN	PTR	neltharion.den.
+3	IN	PTR	drolf.den.
+4	IN	PTR	iphone.den.
+5	IN	PTR	macbook.den.
+6	IN	PTR	drolf-rpi.den.
+63	IN	PTR	broadcast-trusted.den.
+
+; virtual PTR
+10	IN	PTR	dns.den.
+11	IN	PTR	puppet.den.
+62	IN	PTR	ubuntu.den.
+
+; 192.168.1.64/26
+64	IN	PTR	network-vpn.den.
+65	IN	PTR	gateway-vpn.den.
+127	IN	PTR	broadcast-vpn.den.
+
+; 192.168.1.128/25
+128	IN	PTR	network-public.den.
+129	IN	PTR	gateway-public.den.
+254	IN	PTR	broadcast-public.den.

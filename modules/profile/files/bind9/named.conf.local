@@ -1,0 +1,34 @@
+//
+// Do any local configuration here
+//
+
+// Consider adding the 1918 zones here, if they are not used in your
+// organization
+//include "/etc/bind/zones.rfc1918";
+
+acl "ns-numinex" {
+	10.0.7.5;
+	10.0.20.5;
+};
+
+zone "den" {
+	type master;
+	allow-transfer { "ns-numinex"; };
+	file "/etc/bind/zones/db.den";
+};
+
+zone "1.168.192.in-addr.arpa" {
+	type master;
+	allow-transfer { "ns-numinex"; };
+	file "/etc/bind/zones/db.1.168.192";
+};
+
+// numinex
+
+zone "ngw"			{ type forward; forward only; forwarders { 10.0.7.5; 10.0.20.5; }; };
+zone "1.0.10.in-addr.arpa"	{ type forward; forward only; forwarders { 10.0.7.5; 10.0.20.5; }; };
+zone "6.0.10.in-addr.arpa"	{ type forward; forward only; forwarders { 10.0.7.5; 10.0.20.5; }; };
+zone "7.0.10.in-addr.arpa"	{ type forward; forward only; forwarders { 10.0.7.5; 10.0.20.5; }; };
+zone "20.0.10.in-addr.arpa"	{ type forward; forward only; forwarders { 10.0.7.5; 10.0.20.5; }; };
+zone "80.0.10.in-addr.arpa"	{ type forward; forward only; forwarders { 10.0.7.5; 10.0.20.5; }; };
+zone "90.0.10.in-addr.arpa"	{ type forward; forward only; forwarders { 10.0.7.5; 10.0.20.5; }; };
