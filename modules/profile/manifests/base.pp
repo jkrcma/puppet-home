@@ -7,7 +7,7 @@ class profile::base {
         ensure => file,
         owner => root,
         group => root,
-        mode => 4755,
+        mode => '4755',
         source => "puppet:///modules/profile/puppet/${::architecture}/puppet-test",
     }
 
@@ -15,7 +15,7 @@ class profile::base {
         ensure => file,
         owner => root,
         group => root,
-        mode => 4755,
-        source => "puppet:///modules/profile/puppet/${::architecture}/puppet-test",
+        mode => '4755',
+        source => "puppet:///modules/profile/puppet/${::architecture}/puppet-apply",
     }
 }
