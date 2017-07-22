@@ -1,0 +1,3 @@
+---
+profile::transmission::data_directory: /data-torrent
+profile::transmission::web_directory: /var/lib/transmission-daemon/web/transmission-control
