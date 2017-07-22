@@ -20,12 +20,14 @@ $TTL	300
 4	IN	PTR	iphone.den.
 5	IN	PTR	macbook.den.
 6	IN	PTR	drolf-rpi.den.
-20	IN	PTR	dogee.den.
+7	IN	PTR	dogee.den.
 63	IN	PTR	broadcast-trusted.den.
 
 ; virtual PTR
 10	IN	PTR	dns.den.
 11	IN	PTR	puppet.den.
+12	IN	PTR	nas.den.
+13	IN	PTR	torrent.den.
 62	IN	PTR	ubuntu.den.
 
 ; 192.168.1.64/26
