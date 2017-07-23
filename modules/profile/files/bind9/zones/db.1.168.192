@@ -29,6 +29,7 @@ $TTL	300
 12	IN	PTR	nas.den.
 13	IN	PTR	torrent.den.
 14	IN	PTR	monitor.den.
+15	IN	PTR	mediabox.den.
 62	IN	PTR	ubuntu.den.
 
 ; 192.168.1.64/26
