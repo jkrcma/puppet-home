@@ -33,6 +33,7 @@ dns		IN	A	192.168.1.10
 puppet		IN	A	192.168.1.11
 nas		IN	A	192.168.1.12
 torrent		IN	A	192.168.1.13
+monitor		IN	A	192.168.1.14
 ubuntu		IN	A	192.168.1.62
 
 ; 192.168.1.64/26
