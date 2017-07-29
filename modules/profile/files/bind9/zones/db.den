@@ -20,12 +20,11 @@ router	IN	A	192.168.1.1
 ; physical A
 network-trusted	IN	A	192.168.1.0
 gateway-trusted	IN	A	192.168.1.1
-neltharion	IN	A	192.168.1.2
+dogee		IN	A	192.168.1.2
 drolf		IN	A	192.168.1.3
 iphone		IN	A	192.168.1.4
 macbook		IN	A	192.168.1.5
 drolf-rpi	IN	A	192.168.1.6
-dogee		IN	A	192.168.1.7 ; temporary
 broadcast-trusted	IN	A	192.168.1.63
 
 ; virtual A

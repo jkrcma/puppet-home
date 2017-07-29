@@ -15,12 +15,11 @@ $TTL	300
 ; physical PTR
 0	IN	PTR	network-trusted.den.
 1	IN	PTR	gateway-trusted.den.
-2	IN	PTR	neltharion.den.
+2	IN	PTR	dogee.den.
 3	IN	PTR	drolf.den.
 4	IN	PTR	iphone.den.
 5	IN	PTR	macbook.den.
 6	IN	PTR	drolf-rpi.den.
-7	IN	PTR	dogee.den.
 63	IN	PTR	broadcast-trusted.den.
 
 ; virtual PTR
