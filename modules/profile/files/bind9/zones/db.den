@@ -34,6 +34,7 @@ nas		IN	A	192.168.1.12
 torrent		IN	A	192.168.1.13
 monitor		IN	A	192.168.1.14
 mediabox	IN	A	192.168.1.15
+build		IN	A	192.168.1.16
 ubuntu		IN	A	192.168.1.62
 
 ; 192.168.1.64/26
