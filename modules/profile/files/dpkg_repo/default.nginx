@@ -1,0 +1,12 @@
+server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+
+    root /srv/packages;
+
+    server_name _;
+
+    location ~ release-meta$ {
+        return 403;
+    }
+}

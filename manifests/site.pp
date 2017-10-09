@@ -13,3 +13,7 @@ node nas {
 node torrent {
     include role::torrent_box
 }
+
+node build {
+    include role::build
+}

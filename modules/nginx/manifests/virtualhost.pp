@@ -10,6 +10,7 @@ define nginx::virtualhost($source = undef, $content = undef) {
     exec { 'enable-nginx-site':
         command => "/bin/ln -s $vh_filename /etc/nginx/sites-enabled/$name || /bin/true",
         refreshonly => true,
+        require => Package['nginx-light'],
         notify => Service['nginx'],
     }
 }

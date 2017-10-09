@@ -1,0 +1,7 @@
+Origin: build.den
+Label: Local
+Codename: xenial
+Suite: stable
+Architectures: amd64 armhf source
+Components: main
+Description: Drolf's Den Ubuntu repository
