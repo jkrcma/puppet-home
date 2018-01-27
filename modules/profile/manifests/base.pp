@@ -18,4 +18,9 @@ class profile::base {
         mode => '4755',
         source => "puppet:///modules/profile/puppet/${::architecture}/puppet-apply",
     }
+
+    file {'/etc/puppet/puppet.conf':
+        ensure => file,
+        source => 'puppet:///modules/profile/puppet/puppet.conf',
+    }
 }
