@@ -9,10 +9,10 @@ class profile::system::packages ($gpg_key) {
         path => '/etc/apt/sources.list.d/den.list',
         ensure => file,
         content => "deb http://build.den xenial/\n",
-        notify => Exec['apt-key add'],
+        notify => Exec['apt-key add den.list'],
     }
 
-    exec { 'apt-key add':
+    exec { 'apt-key add den.list':
         command => "/bin/echo \"$gpg_key\" | /usr/bin/apt-key add -",
         refreshonly => true,
     }

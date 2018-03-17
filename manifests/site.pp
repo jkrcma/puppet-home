@@ -17,3 +17,7 @@ node torrent {
 node build {
     include role::build
 }
+
+node monitor {
+    include role::monitor
+}
