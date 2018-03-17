@@ -21,3 +21,7 @@ node build {
 node monitor {
     include role::monitor
 }
+
+node mediabox {
+    include role::media_box
+}
