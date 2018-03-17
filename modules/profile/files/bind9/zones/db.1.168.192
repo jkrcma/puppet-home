@@ -30,6 +30,7 @@ $TTL	300
 14	IN	PTR	monitor.den.
 15	IN	PTR	mediabox.den.
 16	IN	PTR	build.den.
+21	IN	PTR	prolink-overlay.den.
 62	IN	PTR	ubuntu.den.
 
 ; 192.168.1.64/26
