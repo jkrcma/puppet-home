@@ -2,14 +2,13 @@ class profile::system::logcheck {
     include profile::system::logcheck::conf
 
     package { 'syslog-summary':
-        ensure => latest,
+        ensure => purged,
     }
 
     package { 'logcheck':
         ensure => latest,
         require => Package['exim4'],
     } ->
-    User <| title == 'logcheck' |> { groups +> 'systemd-journal' } ->
     Class['profile::system::logcheck::conf']
 }
 
@@ -36,5 +35,9 @@ class profile::system::logcheck::conf {
         group => logcheck,
         recurse => true,
         source => 'puppet:///modules/profile/logcheck/ignore.d.server',
+    }
+
+    file { '/etc/logcheck/header.txt':
+        ensure => absent,
     }
 }
