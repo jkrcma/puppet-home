@@ -1,0 +1,15 @@
+groups:
+  - name: system-telegraf
+    rules:
+      - record: instance:system_uptime
+        expr: system_uptime
+      - record: instance:rootfs_free_percent
+        expr: 1 - disk_used_percent{path="/"} / 100
+        labels:
+          path:
+          mode:
+          mountpoint: /
+      - record: instance:load5_to_cpu_ratio
+        expr: system_load5 / system_n_cpus
+      - record: instance:cpu_usage_percent5m
+        expr: 100 - avg by (instance) (avg_over_time(cpu_usage_idle[5m]))

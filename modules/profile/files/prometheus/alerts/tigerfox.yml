@@ -1,0 +1,24 @@
+groups:
+  - name: tigerfox
+    rules:
+      - alert: TmpFSGettingFull
+        expr: 100 - disk_used_percent{path="/tmp"} < 20
+        annotations:
+          summary: |
+            /tmp filesystem on node {{ $labels.instance }} is getting full ({{ with printf "100 - disk_used_percent{path='/tmp',instance='%[1]s'}" .Labels.instance | query }}{{ . | first | value | humanize }}{{ end }} % free)
+      - alert: ApacheDownTigerfox
+        expr: count(apache_Uptime{instance="tigerfox.isgeek.info"}) < 2
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Apache instance down on node tigerfox.isgeek.info"
+      - alert: MySQLAutoIncrementUse
+        expr: mysql_info_schema_auto_increment_column / mysql_info_schema_auto_increment_column_max >= 0.8
+        annotations:
+          summary: "MySQL auto_increment value in database '{{ $labels.schema }}', table '{{ $labels.table }}', column '{{ $labels.column }}' on node {{ $labels.instance }} is at {{ $value }} % of use"
+      - alert: HTTPCheckFailure
+        expr: rate(http_response_response_time{result_type="success"}[30s]) == 0
+        for: 1m
+        annotations:
+          summary: "HTTP check failed for server {{ $labels.server }} on node {{ $labels.instance }}"

@@ -1,0 +1,27 @@
+groups:
+  - name: system
+    rules:
+      - alert: LowUptime
+        expr: time() - instance:system_uptime < 3600
+        for: 35m
+        annotations:
+          summary: "Node {{ $labels.instance }} encountered a reboot in past 1 hour"
+      - alert: NodeDown
+        expr: up{job="node"} == 0
+        for: 5m
+        annotations:
+          summary: "Node {{ $labels.instance }} down for more than 5 minutes"
+      - alert: LoadHigh
+        expr: instance:load5_to_cpu_ratio > 1.2
+        for: 1m
+        annotations:
+          summary: "Load of node {{ $labels.instance }} is high"
+      - alert: RootFSGettingFull
+        expr: instance:rootfs_free_percent < 0.20
+        annotations:
+          summary: "Root filesystem on node {{ $labels.instance }} is getting full ({{ $value }} % free)"
+      - alert: CPUUsageHigh
+        expr: instance:cpu_usage_percent5m > 75
+        for: 2m
+        annotations:
+          summary: "CPU usage on node {{ $labels.instance }} is high ({{ $value }} %)"

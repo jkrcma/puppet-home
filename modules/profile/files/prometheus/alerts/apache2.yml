@@ -1,0 +1,17 @@
+groups:
+  - name: apache2
+    rules:
+      - alert: ApacheFreeWorkers
+        expr: apache_IdleWorkers - apache_BusyWorkers <= 1
+        annotations:
+          summary: "Apache workers on node {{ $labels.instance }} are too busy"
+      - alert: ApacheFreeSlots
+        expr: apache_scboard_open < 20
+        for: 1m
+        annotations:
+          summary: "Apache free slots on node {{ $labels.instance }} are low (current value: {{ $value }})"
+      - alert: ApacheRequestsPerSecondAnomaly
+        expr: apache_ReqPerSec > (avg_over_time(apache_ReqPerSec[10m]) + 2 * stddev_over_time(apache_ReqPerSec[1h]))
+        for: 5m
+        annotations:
+          summary: "Apache requests per second on node {{ $labels.instance }} are way different from average"
