@@ -1,3 +1,35 @@
 ---
 account::taiku::sshkey_type: 'ssh-ed25519'
 account::taiku::sshkey: 'AAAAC3NzaC1lZDI1NTE5AAAAIGeX/9uo92CUV0spOD/lhwHUIJ40kxq4BY/NjqdVVhxb'
+
+profile::system::packages::gpg_key: |
+  -----BEGIN PGP PUBLIC KEY BLOCK-----
+  Version: GnuPG v1
+
+  mQENBFqsfRwBCADiXE0PPqqNAZXK9lBVv+j9S+Sq9A52kxZVJzyudTXXIEfbEQDD
+  2wnLvfJcuWR9gtoaLaQeHp27n1dUZZGaZnZaPa+mhMzdCzq7T8uVajZxsp8Ujuuc
+  0XPWVK4+so3Hi0SQaXgevg7Wc3/nOAc6ROGJeHHiwPOCh7K56RKUjAVQIhbDT7IZ
+  w/wUP7peTuwKssoGHNHlj3hV4bkEs7N2UWM8pounUh8tWPRG4FfD6/YfLlNr5fv0
+  +eCagN6XHLzUYknfFhY6Fvz8JYDNS8oV0pxezUcdT5X6gD2mcWbjGOlbc8/GCfs7
+  KuMLzckCc5MyPd4FipHUOHwDPWwD1J3z584FABEBAAG0GXJlcG9zaXRvcnkgPG1l
+  QHRhaWt1LmRlbj6JATgEEwECACIFAlqsfRwCGwMGCwkIBwMCBhUIAgkKCwQWAgMB
+  Ah4BAheAAAoJEI2GJ7i1IsbQyAMH/1V+C6Tw37leAFae74OKrGXfLw/599BNYkpH
+  B64S2HdZBfratrHSSEIuqWpAKASA3HeniFmJw9QY0ncgJh4Rt5bf6wvdMI+Cltug
+  EIVJSnyZPlwv3IRg938cQvgqMs+1So6tG/GU6pZZTj+k+OsBLcnZdA6ftF4r3WUp
+  SB1W7ZhR4ysx0DWvyAy8Wh4CzfwgxCueScuHEl8IZXeW50R5+rERoyLs2skM1a4t
+  IwA35hDDS0PDZiwadXVE6/QKJ2Fd/x+Gnjg0yyDDJAFDqBgsf0SGdrAGaKzPzX/2
+  8lpBPhum4YIEng5dedgjroNhcYgZdAY2btt7aNuR2sjCXYcp+rO5AQ0EWqx9HAEI
+  APLlXAH+rARwZtHvqHejzNyqUByzf1FhUbbeL6qsa+Fex7nQcHGPRqVcNQswa5qD
+  svbM3tqPYPyxp+S0JIxf3jDp0lX7v/hxRJ4ZuDdSw7eBDF5aZgAD3cs1YSXCm5ey
+  CrZBRdUVjNilOdup3vkIWxvV8ii3CSANLmWNaVDlQRtBJTB4jzzALzDer+M0ObOq
+  zE7mua9H9WiHs40G9t4flBhsqrHVrIT7W5fuM3CMytqGq61As/9qVs3RjuDc3nS2
+  K5Mtv8DW37rv05B/zdxJTpLJtPlX9uTZySI01tRLFl4nfpK5AXunO0GVbnlfLjE+
+  kxDXYPlHxtFHt+L9E5yRwL0AEQEAAYkBHwQYAQIACQUCWqx9HAIbDAAKCRCNhie4
+  tSLG0KwWB/0f0ugI04YHpzpuwRL1ti6O7EoeXvlImcWEYgAcBSkzokPxehD9h4Hz
+  wT2+HhMsVVxxG6n2eb1HRcOTQdrUsHWFPeChg0ubpa+2c8j+pLfdNPzJqfUx5ySK
+  fToGuOY3kD3XBrmeUNgrHHlwnvB5wgv/uiPr3MmlJe1Svf6mPTUKfzfOHCRtmXYl
+  HRj7vR8+BQXl1uE2rm1uz+jMO+SRkLCrtajGyyRcExxpgujlvb+cceGKazQoHdlc
+  Gm3Ybz/vS9y+27/Hrrd+Hqouf9GCElW5w+OQeNhxd+5Cq9NQrxVxazR5ftadUDz7
+  5w+r3ZjJ8OYWnA81tn0bMzdtzGW7UUJx
+  =iyd9
+  -----END PGP PUBLIC KEY BLOCK-----

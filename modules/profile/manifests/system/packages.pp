@@ -1,6 +1,18 @@
-class profile::system::packages {
+class profile::system::packages ($gpg_key) {
     stage { 'apt':
         before => Stage['main']
+    }
+
+    file { 'den.list':
+        path => '/etc/apt/sources.list.d/den.list',
+        ensure => file,
+        content => "deb http://build.den xenial/\n",
+        notify => Exec['apt-key add'],
+    }
+
+    exec { 'apt-key add':
+        command => "/bin/echo \"$gpg_key\" | /usr/bin/apt-key add -",
+        refreshonly => true,
     }
 
     class { profile::system::packages::apt: stage => 'apt' }

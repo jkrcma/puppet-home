@@ -6,11 +6,13 @@ where DISTRO is the Ubuntu version codename (e.g. 14.04 is trusty)\n
 The way to use this script is to do the changes to the repo first, i.e. delete or copy in the .deb file to /srv/packages/local-DISTRO, and then run this script\n
 This script can be run as an unprivileged user - root is not needed so long as your user can write to the local repository directory"
 else
-    cd /srv/packages/"$1"
+    cd /srv/packages
 
     # Generate the Packages file
-    dpkg-scanpackages . /dev/null > Packages
-    gzip --keep --force -9 Packages
+    dpkg-scanpackages "$1" /dev/null > "$1"/Packages
+    gzip --keep --force -9 "$1"/Packages
+
+    cd /srv/packages/"$1"
 
     # Generate the Release file
     cat release-meta > Release
@@ -27,6 +29,7 @@ else
     printf '\n '$(sha256sum Packages | cut --delimiter=' ' --fields=1)' %16d Packages' $(wc --bytes Packages | cut --delimiter=' ' --fields=1) >> Release
 
     # Clearsign the Release file (that is, sign it without encrypting it)
+    rm InRelease
     gpg --clearsign --digest-algo SHA512 --local-user $USER -o InRelease Release
     # Release.gpg only need for older apt versions
     # gpg -abs --digest-algo SHA512 --local-user $USER -o Release.gpg Release
