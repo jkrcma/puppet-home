@@ -1,10 +1,6 @@
 class profile::system::logcheck {
     include profile::system::logcheck::conf
 
-    package { 'syslog-summary':
-        ensure => purged,
-    }
-
     package { 'logcheck':
         ensure => latest,
         require => Package['exim4-daemon-light'],
