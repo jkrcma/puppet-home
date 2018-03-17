@@ -12,6 +12,9 @@ class profile::transmission($data_directory = undef, $web_directory = undef) {
     } ->
     package { 'transmission':
         ensure => latest,
+    } ->
+    package { 'transmission-web-transmission-control':
+        ensure => latest,
     }
 
     service { 'transmission-daemon':
@@ -33,6 +36,7 @@ class profile::transmission($data_directory = undef, $web_directory = undef) {
         mode => '0600',
         content => template('profile/transmission/settings.json.erb'),
         require => Package['transmission-daemon'],
+        notify => Service['transmission-daemon'],
     }
 
     file { '/var/lib/transmission-daemon':
