@@ -1,4 +1,5 @@
 class profile::base {
+    include profile::system::logcheck
     include profile::system::packages
     include profile::system::syslog
     include profile::account::taiku
