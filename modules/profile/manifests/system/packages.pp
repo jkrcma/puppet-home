@@ -42,11 +42,6 @@ class profile::system::packages::exim4 {
         ensure => latest,
     }
 
-    # tmp
-    package { 'exim4':
-        ensure => purged,
-    }
-
     service { 'exim4':
         enable => true,
         ensure => running,
