@@ -22,4 +22,9 @@ class profile::samba {
         source => 'puppet:///modules/profile/samba/smb.conf',
         notify => Service[['smbd', 'nmbd']],
     }
+
+    # causes useless reloads at every DHCP re-lease
+    file { '/etc/dhcp/dhclient-enter-hooks.d/samba':
+        ensure => absent,
+    }
 }
