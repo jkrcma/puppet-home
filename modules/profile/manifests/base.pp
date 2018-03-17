@@ -23,6 +23,7 @@ class profile::base {
 
     file {'/etc/puppet/puppet.conf':
         ensure => file,
+        links => follow,
         source => 'puppet:///modules/profile/puppet/puppet.conf',
     }
 }
