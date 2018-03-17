@@ -1,0 +1,6 @@
+^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ named\[[0-9]+\]: clients-per-query (in|de)creased to [0-9]+$
+^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ systemd\[[0-9]+\]: Failed to reset devices\.list on /system\.slice/[-._[:alnum:]]+: Operation not permitted$
+
+^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ sshd\[[[:digit:]]+\]: Accepted publickey for [^[:space:]]+ from [^[:space:]]+ port [[:digit:]]+ ssh2: (ECDSA|RSA|ED25519) (SHA256:)?[/+:[:alnum:]]+$
+^\w{3} [ :0-9]{11} [._[:alnum:]-]+ sshd\[[0-9]+\]: Received disconnect from [[:alnum:].:]+ port [0-9]+:11:\s+(disconnected by user|ok)?( \[preauth\])?$
+^\w{3} [ :0-9]{11} [._[:alnum:]-]+ sshd\[[0-9]+\]: (Connection reset by|Disconnected from) [[:alnum:].:]+ port [0-9]+(\s+\[preauth\])?$
