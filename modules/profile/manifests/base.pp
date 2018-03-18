@@ -2,6 +2,8 @@ class profile::base {
     include profile::system::logcheck
     include profile::system::packages
     include profile::system::syslog
+    include profile::prometheus::node_exporter
+
     include profile::account::taiku
 
     # puppet everything-is-wrong-case binaries

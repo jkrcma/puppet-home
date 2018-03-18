@@ -104,3 +104,21 @@ class profile::prometheus::snmp_exporter {
         notify => Service['snmp-exporter'],
     }
 }
+
+class profile::prometheus::node_exporter {
+    package { 'node-exporter':
+        ensure => latest,
+    }
+
+    service { 'node-exporter':
+        enable => true,
+        ensure => running,
+        require => Package['node-exporter'],
+    }
+
+    file { '/etc/default/node-exporter':
+        ensure => file,
+        content => 'OPTIONS="-log.level warn -collectors.enabled filesystem,loadavg,meminfo,netdev,textfile,uname"',
+        notify => Service['node-exporter'],
+    }
+}
