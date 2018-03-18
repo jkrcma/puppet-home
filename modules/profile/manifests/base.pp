@@ -28,4 +28,9 @@ class profile::base {
         links => follow,
         source => 'puppet:///modules/profile/puppet/puppet.conf',
     }
+
+    file {'/etc/localtime':
+        ensure => link,
+        target => '/usr/share/zoneinfo/Europe/Prague',
+    }
 }
