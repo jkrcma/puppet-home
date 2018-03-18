@@ -9,7 +9,7 @@ else
     cd /srv/packages
 
     # Generate the Packages file
-    dpkg-scanpackages "$1" /dev/null > "$1"/Packages
+    dpkg-scanpackages -m "$1" > "$1"/Packages
     gzip --keep --force -9 "$1"/Packages
 
     cd /srv/packages/"$1"
