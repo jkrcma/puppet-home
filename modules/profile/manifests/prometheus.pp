@@ -105,7 +105,7 @@ class profile::prometheus::snmp_exporter {
     }
 }
 
-class profile::prometheus::node_exporter {
+class profile::prometheus::node_exporter ($collectors = 'filesystem,loadavg,meminfo,netdev,textfile,uname') {
     package { 'node-exporter':
         ensure => latest,
     }
@@ -118,7 +118,22 @@ class profile::prometheus::node_exporter {
 
     file { '/etc/default/node-exporter':
         ensure => file,
-        content => 'OPTIONS="-log.level warn -collectors.enabled filesystem,loadavg,meminfo,netdev,textfile,uname"',
+        content => "OPTIONS=\"-log.level warn -collectors.enabled $collectors -collector.textfile.directory /etc/node-exporter\"\n",
         notify => Service['node-exporter'],
+    }
+
+    file { '/etc/node-exporter':
+        ensure => directory,
+    }
+
+    file { '/etc/node-exporter/puppet.prom':
+        ensure => file,
+        group => puppet,
+        mode => '644',
+    }
+
+    exec { 'puppet run metric':
+        command => '/usr/bin/printf "# TYPE puppet_last_run gauge\npuppet_last_run %.9e\n" $( date +%s ) > /etc/node-exporter/puppet.prom',
+        loglevel => debug,
     }
 }
