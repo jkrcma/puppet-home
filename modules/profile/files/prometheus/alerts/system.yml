@@ -25,3 +25,7 @@ groups:
         for: 2m
         annotations:
           summary: "CPU usage on node {{ $labels.instance }} is high ({{ $value }} %)"
+      - alert: PuppetNotUpdated
+        expr: puppet_last_run - time() > 3600
+        annotations:
+          summary: "Puppet agent on node {{ $labels.instance }} hasn't applied the catalog for over 1 hour"
