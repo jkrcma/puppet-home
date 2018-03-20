@@ -41,6 +41,35 @@ scrape_configs:
         labels:
           group: 'virtual'
           instance: 'tigerfox.isgeek.info'
+    # LXC containers
+      - targets: ['dns.den:9100']
+        labels:
+          group: 'virtual'
+          instance: 'dns.den'
+      - targets: ['puppet.den:9100']
+        labels:
+          group: 'virtual'
+          instance: 'puppet.den'
+      - targets: ['nas.den:9100']
+        labels:
+          group: 'virtual'
+          instance: 'nas.den'
+      - targets: ['torrent.den:9100']
+        labels:
+          group: 'virtual'
+          instance: 'torrent.den'
+      - targets: ['monitor.den:9100']
+        labels:
+          group: 'virtual'
+          instance: 'monitor.den'
+      - targets: ['mediabox.den:9100']
+        labels:
+          group: 'virtual'
+          instance: 'mediabox.den'
+      - targets: ['build.den:9100']
+        labels:
+          group: 'virtual'
+          instance: 'build.den'
 
 
   # Blackbox monitoring
