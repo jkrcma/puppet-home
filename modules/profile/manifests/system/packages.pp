@@ -60,4 +60,22 @@ class profile::system::packages::exim4 {
         refreshonly => true,
         notify => Service['exim4'],
     }
+
+    $textfile_ensure = $::node_exporter_textfile_dir ? {
+        '1' => present,
+        default => absent,
+    }
+
+    file { '/etc/node-exporter/exim4.prom':
+        ensure => $textfile_ensure,
+        owner => 'Debian-exim',
+    }
+
+    cron { 'local maildir size':
+        ensure => $textfile_ensure,
+        environment => 'SHELL=/bin/sh',
+        command => '/usr/bin/printf "# TYPE exim4_local_maildir_size gauge\nexim4_local_maildir_size \%d\n" $( /usr/bin/stat --printf="\%s" /var/mail/mail ) > /etc/node-exporter/exim4.prom',
+        user => 'Debian-exim',
+        minute => '*/5',
+    }
 }
