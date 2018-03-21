@@ -29,3 +29,7 @@ groups:
         expr: puppet_last_run - time() > 3600
         annotations:
           summary: "Puppet agent on node {{ $labels.instance }} hasn't applied the catalog for over 1 hour"
+      - alert: EximLocalMaildirNotEmpty
+        expr: exim4_local_maildir_size > 0
+        annotations:
+          summary: "Local Exim4 maildir on node {{ $labels.instance }} is not empty"
