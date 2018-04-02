@@ -2,6 +2,10 @@ node default {
     include role::noop
 }
 
+node puppet {
+    include role::puppetmaster
+}
+
 node dns {
     include role::dns_server
 }
