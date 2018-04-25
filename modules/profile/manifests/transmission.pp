@@ -52,6 +52,22 @@ class profile::transmission($data_directory = undef, $web_directory = undef) {
         }
     }
 
+    # file cache warmer cron
+    if $data_directory {
+        file { '/usr/local/bin/transmission-cache-warmer.sh':
+          ensure => file,
+          mode  => '0755',
+          source => 'puppet:///modules/profile/transmission/transmission-cache-warmer.sh',
+        }
+
+        cron { 'file cache warmer':
+          environment => 'SHELL=/bin/sh',
+          command => "/usr/local/bin/transmission-cache-warmer.sh ${data_directory}",
+          user => debian-transmission,
+          minute => '*/5',
+        }
+    }
+
     include nginx
     nginx::virtualhost { 'default':
         source => 'puppet:///modules/profile/transmission/default.nginx',
