@@ -106,3 +106,14 @@ scrape_configs:
         target_label: instance
       - target_label: __address__
         replacement: 127.0.0.1:9116
+
+  - job_name: 'apcupsd'
+    static_configs:
+      - targets: ['drolf-rpi.den:9162']
+        labels:
+          group: 'hardware'
+          instance: 'drolf-rpi.den'
+    metric_relabel_configs:
+      - regex: '(hostname|model)'
+        action: labeldrop
+
