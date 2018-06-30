@@ -18,7 +18,7 @@ $TTL	300
 2	IN	PTR	dogee.den.
 3	IN	PTR	drolf.den.
 4	IN	PTR	iphone.den.
-5	IN	PTR	macbook.den.
+5	IN	PTR	shibe.den.
 6	IN	PTR	drolf-rpi.den.
 63	IN	PTR	broadcast-trusted.den.
 
