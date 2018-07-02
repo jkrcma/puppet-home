@@ -20,6 +20,7 @@ $TTL	300
 4	IN	PTR	iphone.den.
 5	IN	PTR	shibe.den.
 6	IN	PTR	drolf-rpi.den.
+$GENERATE 7-9 $	IN	PTR	$.1.168.192-trusted.den.
 63	IN	PTR	broadcast-trusted.den.
 
 ; virtual PTR
@@ -30,15 +31,19 @@ $TTL	300
 14	IN	PTR	monitor.den.
 15	IN	PTR	mediabox.den.
 16	IN	PTR	build.den.
+$GENERATE 17-20 $	IN	PTR	$.1.168.192-trusted.den.
 21	IN	PTR	prolink-overlay.den.
+$GENERATE 22-63 $	IN	PTR	$.1.168.192-trusted.den.
 62	IN	PTR	ubuntu.den.
 
 ; 192.168.1.64/26
 64	IN	PTR	network-vpn.den.
 65	IN	PTR	gateway-vpn.den.
+$GENERATE 66-126 $	IN	PTR	$.1.168.192-vpn.den.
 127	IN	PTR	broadcast-vpn.den.
 
 ; 192.168.1.128/25
 128	IN	PTR	network-public.den.
 129	IN	PTR	gateway-public.den.
+$GENERATE 130-253 $	IN	PTR	$.1.168.192-public.den.
 254	IN	PTR	broadcast-public.den.
