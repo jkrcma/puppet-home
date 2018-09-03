@@ -33,7 +33,8 @@ $GENERATE 7-9 $	IN	PTR	$.1.168.192-trusted.den.
 16	IN	PTR	build.den.
 $GENERATE 17-20 $	IN	PTR	$.1.168.192-trusted.den.
 21	IN	PTR	prolink-overlay.den.
-$GENERATE 22-63 $	IN	PTR	$.1.168.192-trusted.den.
+22	IN	PTR	docker.den.
+$GENERATE 23-63 $	IN	PTR	$.1.168.192-trusted.den.
 62	IN	PTR	ubuntu.den.
 
 ; 192.168.1.64/26

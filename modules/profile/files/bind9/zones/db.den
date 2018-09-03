@@ -36,6 +36,7 @@ monitor		IN	A	192.168.1.14
 mediabox	IN	A	192.168.1.15
 build		IN	A	192.168.1.16
 prolink-overlay	IN	A	192.168.1.21
+docker		IN	A	192.168.1.22
 ubuntu		IN	A	192.168.1.62
 
 ; 192.168.1.64/26
