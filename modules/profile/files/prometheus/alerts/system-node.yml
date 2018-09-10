@@ -5,6 +5,8 @@ groups:
         expr: node_boot_time
       - record: instance:rootfs_free_percent
         expr: node_filesystem_avail{mountpoint="/"} / node_filesystem_size{mountpoint="/"}
+      - record: instance:rootfs_free_bytes
+        expr: node_filesystem_avail{mountpoint="/"}
       - record: instance:load5_to_cpu_ratio
         expr: max(node_load5) by (group,instance,job) / count(node_cpu{mode="idle"}) without (cpu,mode)
       - record: instance:cpu_usage_percent5m

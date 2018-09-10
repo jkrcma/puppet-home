@@ -16,10 +16,14 @@ groups:
         for: 1m
         annotations:
           summary: "Load of node {{ $labels.instance }} is high"
+#      - alert: RootFSGettingFull
+#        expr: instance:rootfs_free_percent < 0.20
+#        annotations:
+#          summary: "Root filesystem on node {{ $labels.instance }} is getting full ({{ $value }} % free)"
       - alert: RootFSGettingFull
-        expr: instance:rootfs_free_percent < 0.20
+        expr: instance:rootfs_free_bytes < 1024*1024*1024
         annotations:
-          summary: "Root filesystem on node {{ $labels.instance }} is getting full ({{ $value }} % free)"
+          summary: "Root filesystem on node {{ $labels.instance }} is getting full ({{ $value }} bytes free)"
       - alert: CPUUsageHigh
         expr: instance:cpu_usage_percent5m > 75
         for: 2m
