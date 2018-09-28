@@ -1,6 +1,8 @@
 groups:
   - name: apache2
     rules:
+      - record: instance:apache_requests:avg5m
+        expr: avg_over_time(apache_ReqPerSec[5m])
       - alert: ApacheFreeWorkers
         expr: apache_IdleWorkers - apache_BusyWorkers <= 1
         annotations:
@@ -11,7 +13,7 @@ groups:
         annotations:
           summary: "Apache free slots on node {{ $labels.instance }} are low (current value: {{ $value }})"
       - alert: ApacheRequestsPerSecondAnomaly
-        expr: apache_ReqPerSec > (avg_over_time(apache_ReqPerSec[10m]) + 2 * stddev_over_time(apache_ReqPerSec[1h]))
+        expr: (instance:apache_requests:avg5m > on (instance) group_left() (avg by (instance)(instance:apache_requests:avg5m) + 2 * stddev by (instance)(instance:apache_requests:avg5m))) > on (instance) group_left() 1.2 * avg by (instance)(instance:apache_requests:avg5m)
         for: 5m
         annotations:
           summary: "Apache requests per second on node {{ $labels.instance }} are way different from average"
