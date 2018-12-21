@@ -56,6 +56,13 @@ class profile::system::packages::exim4 {
         notify => Exec['exim4 config update'],
     }
 
+    file { '/etc/exim4/exim4.conf.localmacros':
+        ensure => file,
+        source => 'puppet:///modules/profile/packages/exim4.conf.localmacros',
+        require => Package['exim4-daemon-light'],
+        notify => Exec['exim4 config update'],
+    }
+
     exec { 'exim4 config update':
         command => '/usr/sbin/update-exim4.conf',
         refreshonly => true,

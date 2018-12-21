@@ -1,0 +1,2 @@
+MAIN_FORCE_SENDER=false
+REMOTE_SMTP_RETURN_PATH=no-reply@home.taiku.cz
