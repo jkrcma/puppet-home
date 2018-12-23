@@ -3,7 +3,6 @@ class profile::system::logcheck {
 
     package { 'logcheck':
         ensure => latest,
-        require => Package['exim4-daemon-light'],
     } ->
     Class['profile::system::logcheck::conf']
 }

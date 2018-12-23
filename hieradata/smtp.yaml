@@ -1,0 +1,18 @@
+---
+profile::system::packages::enable_exim4: false
+profile::postfix::dkim_domain_key: |
+  -----BEGIN RSA PRIVATE KEY-----
+  MIICXgIBAAKBgQCrh6yzEwgQFo9UPmIcICzj27pSVmP2yXftsZaJYOLL1LNM4R7G
+  T+4+362NB3Sn07VMlXufHjm3FTTRjyYhfdF2q96KsMBsK+uvdoBfvVuiyNRW2/c3
+  L/O28U/Rs+pbfQpsuzryh+UG0oiitRbLFCXLCSpRomXSmA5FxL5au5HA6wIDAQAB
+  AoGAcNRFCGIbaqG8VBjY5lFP1e5CCEklZj8t8R9guysM5DEcZBSs7pvDRn5RpbPi
+  y0ZaOm8VqxvxsPl1DeeQmHUvo0D+iUbNIbyYc7AgPfHip9kSES0iuHk8SiTpnvDK
+  8it1FyrmWgWsT14T9wGzC9DETApwqb/WdGycSyLgwFc0sMkCQQDbeRmybKsZPPos
+  Y4HvsuROFoEeAxGUuaaT0fEfd3r9Tn2ICFA/dvj6Xdj2iUWWwZcfyk42Q9i3tfTe
+  SuN7IF2dAkEAyBPnseEXeQ9ZPADiU+NShrnOpPWdsxhEGwe3FGMWPUmUhSgwTOrZ
+  nRJhbom8UIafgv4EJNcxGnjZKBVSkHgWJwJBALqhhlqV0gGKOutYSvw8UaydsnqE
+  /YRNQvvcwYCSp8GT52ewOh1d3Gd7Oq6bGNQUF6Du9gdrNnUyg+IsKLlhUnkCQQCP
+  Ft0/M/HrnHR/G0rCH/Nncv88roQoD5S1mCDxLaQ8FKFpUcKpX9ReJ0UTHuJU3NK7
+  hhtElboCaqczqXww4hFFAkEAs3lZs+9DvI+oLZdKtBVOZ/PvZ7f3pjLvnl5pi/9R
+  lR3/FexTD91ojOu6i7Kv+OmBQNrApQbWGXqk/+dPgrxmXg==
+  -----END RSA PRIVATE KEY-----

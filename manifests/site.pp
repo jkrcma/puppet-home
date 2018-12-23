@@ -29,3 +29,12 @@ node monitor {
 node mediabox {
     include role::media_box
 }
+
+node kodi {
+    # FIXME?
+    include role::noop
+}
+
+node smtp {
+    include role::smtp_relay
+}

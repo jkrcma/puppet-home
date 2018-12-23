@@ -1,5 +1,7 @@
-class profile::system::packages ($gpg_key) {
-    include profile::system::packages::exim4
+class profile::system::packages ($gpg_key, $enable_exim4 = true) {
+    if ($enable_exim4) {
+        include profile::system::packages::exim4
+    }
 
     stage { 'apt':
         before => Stage['main']
