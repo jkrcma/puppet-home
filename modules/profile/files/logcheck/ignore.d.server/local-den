@@ -5,3 +5,4 @@
 ^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ sshd\[[0-9]+\]: Received disconnect from [[:alnum:].:]+ port [0-9]+:11:\s+(disconnected by user|ok)?( \[preauth\])?$
 ^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ sshd\[[0-9]+\]: (Connection reset by|Disconnected from) [[:alnum:].:]+ port [0-9]+(\s+\[preauth\])?$
 ^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ CouchPotato.py\[[0-9]+\]: [ :0-9-]{14} INFO .*$
+^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ postfix/[[:alnum:]]+\[[0-9]+\]: .*$
