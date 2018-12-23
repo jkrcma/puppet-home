@@ -35,6 +35,8 @@ torrent		IN	A	192.168.1.13
 monitor		IN	A	192.168.1.14
 mediabox	IN	A	192.168.1.15
 build		IN	A	192.168.1.16
+kodi            IN      A       192.168.1.19
+smtp            IN      A       192.168.1.20
 prolink-overlay	IN	A	192.168.1.21
 docker		IN	A	192.168.1.22
 ubuntu		IN	A	192.168.1.62

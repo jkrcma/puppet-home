@@ -31,7 +31,9 @@ $GENERATE 7-9 $	IN	PTR	$.1.168.192-trusted.den.
 14	IN	PTR	monitor.den.
 15	IN	PTR	mediabox.den.
 16	IN	PTR	build.den.
-$GENERATE 17-20 $	IN	PTR	$.1.168.192-trusted.den.
+$GENERATE 17-18 $	IN	PTR	$.1.168.192-trusted.den.
+19      IN      PTR     kodi.den.
+20      IN      PTR     smtp.den.
 21	IN	PTR	prolink-overlay.den.
 22	IN	PTR	docker.den.
 $GENERATE 23-63 $	IN	PTR	$.1.168.192-trusted.den.
