@@ -62,7 +62,7 @@ class profile::transmission($data_directory = undef, $web_directory = undef) {
 
         cron { 'file cache warmer':
           environment => 'SHELL=/bin/sh',
-          command => "/usr/local/bin/transmission-cache-warmer.sh ${data_directory}",
+          command => "#/usr/local/bin/transmission-cache-warmer.sh ${data_directory}",
           user => debian-transmission,
           minute => '*/5',
         }
