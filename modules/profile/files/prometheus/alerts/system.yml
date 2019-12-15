@@ -12,7 +12,7 @@ groups:
         annotations:
           summary: "Node {{ $labels.instance }} down for more than 5 minutes"
       - alert: LoadHigh
-        expr: instance:load5_to_cpu_ratio > 1.2
+        expr: instance:load5_to_cpu_ratio > 1.5
         for: 1m
         annotations:
           summary: "Load of node {{ $labels.instance }} is high"
@@ -25,12 +25,12 @@ groups:
         annotations:
           summary: "Root filesystem on node {{ $labels.instance }} is getting full ({{ $value }} bytes free)"
       - alert: CPUUsageHigh
-        expr: instance:cpu_usage_percent5m > 75
+        expr: instance:cpu_usage_percent5m > 90
         for: 2m
         annotations:
           summary: "CPU usage on node {{ $labels.instance }} is high ({{ $value }} %)"
       - alert: PuppetNotUpdated
-        expr: puppet_last_run - time() > 3600
+        expr: time() - puppet_last_run > 3600
         annotations:
           summary: "Puppet agent on node {{ $labels.instance }} hasn't applied the catalog for over 1 hour"
       - alert: EximLocalMaildirNotEmpty
