@@ -35,8 +35,8 @@ torrent		IN	A	192.168.1.13
 monitor		IN	A	192.168.1.14
 mediabox	IN	A	192.168.1.15
 build		IN	A	192.168.1.16
-kodi            IN      A       192.168.1.19
-smtp            IN      A       192.168.1.20
+kodi		IN	A	192.168.1.19
+smtp		IN	A	192.168.1.20
 prolink-overlay	IN	A	192.168.1.21
 docker		IN	A	192.168.1.22
 ubuntu		IN	A	192.168.1.62
@@ -49,4 +49,5 @@ broadcast-vpn	IN	A	192.168.1.127
 ; 192.168.1.128/25
 network-public	IN	A	192.168.1.128
 gateway-public	IN	A	192.168.1.129
+drolf-rpi4	IN	A	192.168.1.130
 broadcast-public	IN	A	192.168.1.254

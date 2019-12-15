@@ -48,5 +48,6 @@ $GENERATE 66-126 $	IN	PTR	$.1.168.192-vpn.den.
 ; 192.168.1.128/25
 128	IN	PTR	network-public.den.
 129	IN	PTR	gateway-public.den.
-$GENERATE 130-253 $	IN	PTR	$.1.168.192-public.den.
+130	IN	PTR	drolf-rpi4.den.
+$GENERATE 131-253 $	IN	PTR	$.1.168.192-public.den.
 254	IN	PTR	broadcast-public.den.
