@@ -23,6 +23,12 @@ class profile::samba {
         notify => Service[['smbd', 'nmbd']],
     }
 
+    # fixes log changing during gzipping bug
+    file { '/etc/logrotate.d/samba':
+        ensure => file,
+        source => 'puppet:///modules/profile/samba/samba.logrotate',
+    }
+
     # causes useless reloads at every DHCP re-lease
     file { '/etc/dhcp/dhclient-enter-hooks.d/samba':
         ensure => absent,
