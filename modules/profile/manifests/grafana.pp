@@ -2,12 +2,12 @@ class profile::grafana::apt {
     file { 'grafana.list':
         path => '/etc/apt/sources.list.d/grafana.list',
         ensure => file,
-        content => "deb https://packagecloud.io/grafana/stable/debian/ jessie main\n",
+        content => "deb https://packages.grafana.com/oss/deb stable main\n",
         notify => Exec['apt-key add grafana.list'],
     }
 
     exec { 'apt-key add grafana.list':
-        command => "/usr/bin/wget https://packagecloud.io/gpg.key -O - | /usr/bin/apt-key add -",
+        command => "/usr/bin/wget https://packages.grafana.com/gpg.key -O - | /usr/bin/apt-key add -",
         refreshonly => true,
     }
 }
