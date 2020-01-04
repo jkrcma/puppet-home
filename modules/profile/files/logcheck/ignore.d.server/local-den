@@ -5,7 +5,7 @@
 ^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ sshd\[[[:digit:]]+\]: Accepted publickey for [^[:space:]]+ from [^[:space:]]+ port [[:digit:]]+ ssh2: (ECDSA|RSA|ED25519) (SHA256:)?[/+:[:alnum:]]+$
 ^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ sshd\[[0-9]+\]: Received disconnect from [[:alnum:].:]+ port [0-9]+:11:\s+(disconnected by user|ok)?( \[preauth\])?$
 ^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ sshd\[[0-9]+\]: (Connection reset by|Disconnected from) [[:alnum:].:]+ port [0-9]+(\s+\[preauth\])?$
-^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ CouchPotato.py\[[0-9]+\]: .*$
+^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ CouchPotato.py\[[0-9]+\]: ?.*$
 ^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ postfix/[[:alnum:]]+\[[0-9]+\]: .*$
 ^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ rc.local\[[0-9]+\]: libva info: .*$
 ^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ rc.local\[[0-9]+\]: extern "Python": function Cryptography_rand_bytes\(\) called, but @ffi.def_extern\(\) was not called in the current subinterpreter.  Returning 0.$
