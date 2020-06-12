@@ -36,7 +36,8 @@ $GENERATE 17-18 $	IN	PTR	$.1.168.192-trusted.den.
 20      IN      PTR     smtp.den.
 21	IN	PTR	prolink-overlay.den.
 22	IN	PTR	docker.den.
-$GENERATE 23-63 $	IN	PTR	$.1.168.192-trusted.den.
+23	IN	PTR	pihole.den.
+$GENERATE 24-63 $	IN	PTR	$.1.168.192-trusted.den.
 62	IN	PTR	ubuntu.den.
 
 ; 192.168.1.64/26
