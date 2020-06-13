@@ -89,6 +89,15 @@ scrape_configs:
           group: 'hardware'
           instance: 'drolf-rpi4.den'
 
+  - job_name: 'pihole'
+    static_configs:
+      - targets: ['pihole.den:9617']
+        labels:
+          group: 'virtual'
+          instance: 'pihole.den'
+    metric_relabel_configs:
+      - regex: 'hostname'
+        action: labeldrop
 
   # Blackbox monitoring
 
