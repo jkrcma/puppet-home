@@ -25,7 +25,7 @@ define user::user($id = undef, $sudo = false, $sshkey_type = undef, $sshkey = un
         require => User[$name],
     } ~>
     # copy skeleton if .bashrc is missing (tricky ;)
-    exec { "copy-etc-skel":
+    exec { "$name-copy-etc-skel":
         path => ['/bin'],
         command => "cp /etc/skel/* $homedir_path && chown $name:$name $homedir_path/*",
         creates => "$homedir_path/.bashrc",

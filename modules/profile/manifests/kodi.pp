@@ -9,7 +9,8 @@ class profile::kodi {
 
     user::user { 'kodi':
         id => 55555,
-    } ->
+    }
+
     User<| title == 'kodi' |> {
         groups => ['audio', 'video', 'input'],
     }
