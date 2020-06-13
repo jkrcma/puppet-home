@@ -65,6 +65,18 @@ scrape_configs:
         labels:
           group: 'virtual'
           instance: 'mediabox.den'
+      - targets: ['kodi.den:9100']
+        labels:
+          group: 'virtual'
+          instance: 'kodi.den'
+      - targets: ['smtp.den:9100']
+        labels:
+          group: 'virtual'
+          instance: 'smtp.den'
+      - targets: ['pihole.den:9100']
+        labels:
+          group: 'virtual'
+          instance: 'pihole.den'
       - targets: ['build.den:9100']
         labels:
           group: 'virtual'
