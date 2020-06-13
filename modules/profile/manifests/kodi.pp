@@ -1,6 +1,6 @@
 class profile::kodi {
     apt::ppa { 'team-xbmc':
-        source => 'puppet:///modules/profile/kodi/sources.list'
+        source => 'puppet:///modules/profile/kodi/sources.list',
         fingerprint => '91E7EE5E',
     } ->
     package { 'kodi':
