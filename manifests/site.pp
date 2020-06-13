@@ -37,3 +37,7 @@ node kodi {
 node smtp {
     include role::smtp_relay
 }
+
+node pihole {
+    include role::noop
+}
