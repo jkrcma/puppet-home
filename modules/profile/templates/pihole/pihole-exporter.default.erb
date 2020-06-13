@@ -1,0 +1,5 @@
+#
+# Default exec options for pihole-exporter.
+# This file is used by systemd unit.
+#
+OPTIONS="-pihole_hostname <%= @ipaddress_eth0 %> -pihole_api_token <%= @webpassword %>"

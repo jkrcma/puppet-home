@@ -39,5 +39,5 @@ node smtp {
 }
 
 node pihole {
-    include role::noop
+    include role::pihole
 }
