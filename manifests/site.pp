@@ -31,8 +31,7 @@ node mediabox {
 }
 
 node kodi {
-    # FIXME?
-    include role::noop
+    include role::kodi
 }
 
 node smtp {
