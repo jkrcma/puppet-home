@@ -10,3 +10,4 @@
 ^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ rc.local\[[0-9]+\]: libva info: .*$
 ^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ rc.local\[[0-9]+\]: extern "Python": function Cryptography_rand_bytes\(\) called, but @ffi.def_extern\(\) was not called in the current subinterpreter.  Returning 0.$
 ^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ dhclient\[[0-9]+\]: Discarding packet with bogus hlen.$
+^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ pihole_exporter\[[0-9]+\]: .* New tick of statistics: .*$
