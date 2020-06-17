@@ -30,6 +30,11 @@ class profile::system::packages ($gpg_key, $enable_exim4 = true) {
         ensure => running,
         require => Package['openssh-server'],
     }
+
+    exec { 'disable motd-news timer':
+        command => "/bin/systemctl disable motd-news.service motd-news.timer",
+        onlyif => "/bin/systemctl cat motd-news.timer >/dev/null && /bin/systemctl is-enabled motd-news.timer >/dev/null",
+    }
 }
 
 class profile::system::packages::apt {
