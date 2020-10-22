@@ -52,3 +52,10 @@ network-public	IN	A	192.168.1.128
 gateway-public	IN	A	192.168.1.129
 drolf-rpi4	IN	A	192.168.1.130
 broadcast-public	IN	A	192.168.1.254
+
+; 192.168.2.1/24 (DMZ)
+network-dmz	IN	A	192.168.2.0
+gateway-dmz	IN	A	192.168.2.1
+tv		IN	A	192.168.2.2
+printer		IN	A	192.168.2.3
+broadcast-dmz	IN	A	192.168.2.254
