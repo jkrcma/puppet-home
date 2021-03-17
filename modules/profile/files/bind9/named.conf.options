@@ -19,6 +19,7 @@ options {
 	// the all-0's placeholder.
 
 	forwarders {
+		1.1.1.1;
 		8.8.8.8;
 		8.8.4.4;
 	};
