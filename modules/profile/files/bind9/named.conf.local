@@ -23,6 +23,7 @@ acl "ns-numinex" {
 
 view "vlan21-view" {
 	match-clients { vlan21; };
+	zone "rpz" { type master; file "/etc/bind/zones/db.rpz"; };
 	zone "den" { type master; file "/etc/bind/zones/db.den@vlan21"; };
 	zone "mgmt.den" { type master; allow-transfer { "ns-numinex"; }; file "/etc/bind/zones/db.mgmt.den"; };
 	zone "data.den" { type master; file "/etc/bind/zones/db.data.den"; };
@@ -42,6 +43,7 @@ view "vlan21-view" {
 
 view "default" {
 	match-clients { any; };
+	zone "rpz" { type master; file "/etc/bind/zones/db.rpz"; };
 	zone "den" { type master; allow-transfer { "ns-numinex"; }; file "/etc/bind/zones/db.den"; };
 	zone "mgmt.den" { type master; allow-transfer { "ns-numinex"; }; file "/etc/bind/zones/db.mgmt.den"; };
 	zone "data.den" { type master; file "/etc/bind/zones/db.data.den"; };

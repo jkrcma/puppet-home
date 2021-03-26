@@ -1,0 +1,16 @@
+;
+; Response Policy Zone for overriding certain DNS records :3
+;
+$TTL	300
+@	IN	SOA	localhost. root.localhost. (
+		     2021032601		; Serial
+			 604800		; Refresh
+			  86400		; Retry
+			2419200		; Expire
+			 604800 )	; Negative Cache TTL
+; nameserver NS
+@	IN	NS	ns.den.
+
+; For internal VPN connections
+home.taiku.cz		IN	A	10.7.10.2
+			IN	MX	10 mail.uplink.cz.
