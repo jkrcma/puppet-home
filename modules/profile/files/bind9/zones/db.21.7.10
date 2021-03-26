@@ -1,0 +1,36 @@
+;
+; data.den local TLD reverse zone
+;
+$TTL	300
+@	IN	SOA	ns.den. admin.den. (
+		     2021032601		; Serial
+			 604800		; Refresh
+			  86400		; Retry
+			2419200		; Expire
+			 604800 )	; Negative Cache TTL
+; nameserver NS
+@	IN	NS	ns.den.
+
+; VLAN21 Management data - 10.7.21.0/24
+0	IN	PTR	net-vlan21.den.
+; no gateway
+1	IN	PTR	router.data.den.
+2	IN	PTR	switch.data.den.
+3	IN	PTR	cap1.data.den.
+$GENERATE 4-10 $ IN	PTR	$-21-7-10.data.den.
+11	IN	PTR	dogee.data.den.
+12	IN	PTR	drolf-rpi.data.den.
+13	IN	PTR	monitor.data.den.
+14	IN	PTR	docker.data.den.
+15	IN	PTR	nas.data.den.
+16	IN	PTR	prolink-overlay.data.den.
+17	IN	PTR	smtp.data.den.
+18	IN	PTR	kodi.data.den.
+19	IN	PTR	mediabox.data.den.
+20	IN	PTR	torrent.data.den.
+21	IN	PTR	build.data.den.
+22	IN	PTR	dns.data.den.
+23	IN	PTR	pihole.data.den.
+24	IN	PTR	puppet.data.den.
+$GENERATE 25-254 $	IN	PTR	$-21-7-10.data.den.
+255	IN	PTR	brc-vlan21.den.

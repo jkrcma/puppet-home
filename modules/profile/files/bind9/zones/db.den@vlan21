@@ -1,5 +1,5 @@
 ;
-; .den local TLD (VLAN 21 view)
+; .den local TLD (VLAN21 view)
 ;
 $TTL	300
 @	IN	SOA	ns.den. admin.den. (

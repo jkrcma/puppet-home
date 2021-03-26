@@ -13,7 +13,7 @@ $TTL	300
 
 $ORIGIN data.den.
 
-; VLAN 21 Management data
+; VLAN21 Management data
 ; physical A
 net-vlan21	IN	A	10.7.21.0
 ; no gateway

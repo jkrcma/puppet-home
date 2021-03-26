@@ -15,7 +15,7 @@ $ORIGIN mgmt.den.
 ; Handy shortcuts
 router		IN	A	10.7.20.1
 
-; VLAN 20 Net & server management
+; VLAN20 Net & server management
 ; physical A
 net-vlan20	IN	A	10.7.20.0
 gw-vlan20	IN	A	10.7.20.1

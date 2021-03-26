@@ -1,0 +1,18 @@
+;
+; .den local TLD reverse zone
+;
+$TTL	300
+@	IN	SOA	ns.den. admin.den. (
+		     2021032601		; Serial
+			 604800		; Refresh
+			  86400		; Retry
+			2419200		; Expire
+			 604800 )	; Negative Cache TTL
+; nameserver NS
+@	IN	NS	ns.den.
+
+; VLAN45 DMZ WLAN - 10.7.45.0/24
+0	IN	PTR	net-vlan45.den.
+1	IN	PTR	gw-vlan45.den.
+$GENERATE 2-254 $ IN	PTR	$-45-7-10.den.
+255	IN	PTR	brc-vlan45.den.

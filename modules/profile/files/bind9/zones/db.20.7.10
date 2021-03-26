@@ -1,0 +1,24 @@
+;
+; mgmt.den local TLD reverse zone
+;
+$TTL	300
+@	IN	SOA	ns.den. admin.den. (
+		     2021032601		; Serial
+			 604800		; Refresh
+			  86400		; Retry
+			2419200		; Expire
+			 604800 )	; Negative Cache TTL
+; nameserver NS
+@	IN	NS	ns.den.
+
+; VLAN20 Net & server management - 10.7.20.0/24
+0	IN	PTR	net-vlan20.den.
+; no gateway
+1	IN	PTR	router.mgmt.den.
+2	IN	PTR	switch.mgmt.den.
+3	IN	PTR	cap1.mgmt.den.
+$GENERATE 4-10 $ IN	PTR	$-21-7-10.data.den.
+11	IN	PTR	dogee.mgmt.den.
+12	IN	PTR	drolf-rpi.mgmt.den.
+$GENERATE 13-254 $	IN	PTR	$-20-7-10.mgmt.den.
+255	IN	PTR	brc-vlan20.den.

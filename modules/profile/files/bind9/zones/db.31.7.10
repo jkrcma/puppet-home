@@ -1,0 +1,27 @@
+;
+; .den local TLD reverse zone
+;
+$TTL	300
+@	IN	SOA	ns.den. admin.den. (
+		     2021032602		; Serial
+			 604800		; Refresh
+			  86400		; Retry
+			2419200		; Expire
+			 604800 )	; Negative Cache TTL
+; nameserver NS
+@	IN	NS	ns.den.
+
+; VLAN31 User services - 10.7.31.0/24
+0	IN	PTR	net-vlan31.den.
+1	IN	PTR	gw-vlan31.den.
+$GENERATE 2-12 $ IN	PTR	$-31-7-10.den.
+13	IN	PTR	monitor.den.
+14	IN	PTR	14-31-7-10.den.
+15	IN	PTR	nas.den.
+16	IN	PTR	prolink-overlay.den.
+$GENERATE 17-18 $ IN	PTR	$-31-7-10.den.
+19	IN	PTR	mediabox.den.
+20	IN	PTR	torrent.den.
+21	IN	PTR	build.den.
+$GENERATE 22-254 $ IN	PTR	$-31-7-10.den.
+255	IN	PTR	brc-vlan31.den.

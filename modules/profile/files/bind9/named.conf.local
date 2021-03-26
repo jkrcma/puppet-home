@@ -23,36 +23,40 @@ acl "ns-numinex" {
 
 view "vlan21-view" {
 	match-clients { vlan21; };
-	zone "den" {
-		type master;
-		file "/etc/bind/zones/db.den@vlan21";
-	};
+	zone "den" { type master; file "/etc/bind/zones/db.den@vlan21"; };
+	zone "mgmt.den" { type master; allow-transfer { "ns-numinex"; }; file "/etc/bind/zones/db.mgmt.den"; };
+	zone "data.den" { type master; file "/etc/bind/zones/db.data.den"; };
+	zone "20.7.10.in-addr.arpa" { type master; allow-transfer { "ns-numinex"; }; file "/etc/bind/zones/db.20.7.10";	};
+	zone "21.7.10.in-addr.arpa" { type master; allow-transfer { "ns-numinex"; }; file "/etc/bind/zones/db.21.7.10"; };
+	zone "30.7.10.in-addr.arpa" { type master; allow-transfer { "ns-numinex"; }; file "/etc/bind/zones/db.30.7.10"; };
+	zone "31.7.10.in-addr.arpa" { type master; allow-transfer { "ns-numinex"; }; file "/etc/bind/zones/db.31.7.10";	};
+	zone "32.7.10.in-addr.arpa" { type master; allow-transfer { "ns-numinex"; }; file "/etc/bind/zones/db.32.7.10";	};
+	zone "40.7.10.in-addr.arpa" { type master; allow-transfer { "ns-numinex"; }; file "/etc/bind/zones/db.40.7.10"; };
+	zone "41.7.10.in-addr.arpa" { type master; allow-transfer { "ns-numinex"; }; file "/etc/bind/zones/db.41.7.10";	};
+	zone "42.7.10.in-addr.arpa" { type master; allow-transfer { "ns-numinex"; }; file "/etc/bind/zones/db.42.7.10";	};
+	zone "43.7.10.in-addr.arpa" { type master; allow-transfer { "ns-numinex"; }; file "/etc/bind/zones/db.43.7.10"; };
+	zone "44.7.10.in-addr.arpa" { type master; allow-transfer { "ns-numinex"; }; file "/etc/bind/zones/db.44.7.10";	};
+	zone "45.7.10.in-addr.arpa" { type master; allow-transfer { "ns-numinex"; }; file "/etc/bind/zones/db.45.7.10";	};
+	zone "50.7.10.in-addr.arpa" { type master; allow-transfer { "ns-numinex"; }; file "/etc/bind/zones/db.50.7.10";	};
 };
 
 view "default" {
 	match-clients { any; };
-	zone "den" {
-		type master;
-		allow-transfer { "ns-numinex"; };
-		file "/etc/bind/zones/db.den";
-	};
-
-	zone "mgmt.den" {
-		type master;
-		allow-transfer { "ns-numinex"; };
-		file "/etc/bind/zones/db.mgmt.den";
-	};
-
-	zone "data.den" {
-		type master;
-		file "/etc/bind/zones/db.data.den";
-	};
-
-	zone "1.168.192.in-addr.arpa" {
-		type master;
-		allow-transfer { "ns-numinex"; };
-		file "/etc/bind/zones/db.1.168.192";
-	};
+	zone "den" { type master; allow-transfer { "ns-numinex"; }; file "/etc/bind/zones/db.den"; };
+	zone "mgmt.den" { type master; allow-transfer { "ns-numinex"; }; file "/etc/bind/zones/db.mgmt.den"; };
+	zone "data.den" { type master; file "/etc/bind/zones/db.data.den"; };
+	zone "20.7.10.in-addr.arpa" { type master; allow-transfer { "ns-numinex"; }; file "/etc/bind/zones/db.20.7.10";	};
+	zone "21.7.10.in-addr.arpa" { type master; allow-transfer { "ns-numinex"; }; file "/etc/bind/zones/db.21.7.10"; };
+	zone "30.7.10.in-addr.arpa" { type master; allow-transfer { "ns-numinex"; }; file "/etc/bind/zones/db.30.7.10"; };
+	zone "31.7.10.in-addr.arpa" { type master; allow-transfer { "ns-numinex"; }; file "/etc/bind/zones/db.31.7.10";	};
+	zone "32.7.10.in-addr.arpa" { type master; allow-transfer { "ns-numinex"; }; file "/etc/bind/zones/db.32.7.10";	};
+	zone "40.7.10.in-addr.arpa" { type master; allow-transfer { "ns-numinex"; }; file "/etc/bind/zones/db.40.7.10"; };
+	zone "41.7.10.in-addr.arpa" { type master; allow-transfer { "ns-numinex"; }; file "/etc/bind/zones/db.41.7.10";	};
+	zone "42.7.10.in-addr.arpa" { type master; allow-transfer { "ns-numinex"; }; file "/etc/bind/zones/db.42.7.10";	};
+	zone "43.7.10.in-addr.arpa" { type master; allow-transfer { "ns-numinex"; }; file "/etc/bind/zones/db.43.7.10"; };
+	zone "44.7.10.in-addr.arpa" { type master; allow-transfer { "ns-numinex"; }; file "/etc/bind/zones/db.44.7.10";	};
+	zone "45.7.10.in-addr.arpa" { type master; allow-transfer { "ns-numinex"; }; file "/etc/bind/zones/db.45.7.10";	};
+	zone "50.7.10.in-addr.arpa" { type master; allow-transfer { "ns-numinex"; }; file "/etc/bind/zones/db.50.7.10";	};
 };
 
 // numinex

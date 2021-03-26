@@ -45,27 +45,38 @@ kodi		IN	A	10.7.32.18
 pihole		IN	A	10.7.32.23
 brc-vlan32	IN	A	10.7.32.255
 
-; VLAN45 WLAN DMZ - 10.7.45.0/24
+; VLAN40 User LAN - 10.7.40.0/24
+net-vlan40	IN	A	10.7.40.0
+gw-vlan40	IN	A	10.7.40.1
+brc-vlan40	IN	A	10.7.40.255
+
+; VLAN41 User WLAN - 10.7.41.0/24
+net-vlan41	IN	A	10.7.41.0
+gw-vlan41	IN	A	10.7.41.1
+brc-vlan41	IN	A	10.7.41.255
+
+; VLAN42 Public LAN - 10.7.42.0/24
+net-vlan42	IN	A	10.7.42.0
+gw-vlan42	IN	A	10.7.42.1
+brc-vlan42	IN	A	10.7.42.255
+
+; VLAN43 Public WLAN - 10.7.43.0/24
+net-vlan43	IN	A	10.7.43.0
+gw-vlan43	IN	A	10.7.43.1
+brc-vlan43	IN	A	10.7.43.255
+
+; VLAN44 DMZ LAN - 10.7.44.0/24
+net-vlan44	IN	A	10.7.44.0
+gw-vlan44	IN	A	10.7.44.1
+brc-vlan44	IN	A	10.7.44.255
+
+; VLAN45 DMZ WLAN - 10.7.45.0/24
 net-vlan45	IN	A	10.7.45.0
 gw-vlan45	IN	A	10.7.45.1
 printer		IN	A	10.7.45.11
 brc-vlan45	IN	A	10.7.45.255
 
-;;; TODO below
-; 192.168.1.64/26
-;network-vpn	IN	A	192.168.1.64
-;gateway-vpn	IN	A	192.168.1.65
-;broadcast-vpn	IN	A	192.168.1.127
-
-; 192.168.1.128/25
-;network-public	IN	A	192.168.1.128
-;gateway-public	IN	A	192.168.1.129
-;drolf-rpi4	IN	A	192.168.1.130
-;broadcast-public	IN	A	192.168.1.254
-
-; 192.168.2.1/24 (DMZ)
-;network-dmz	IN	A	192.168.2.0
-;gateway-dmz	IN	A	192.168.2.1
-;tv		IN	A	192.168.2.2
-;printer		IN	A	192.168.2.3
-;broadcast-dmz	IN	A	192.168.2.254
+; VLAN50 Pioneer Rekordbox - 10.7.50.0/24
+net-vlan50	IN	A	10.7.50.0
+; no gateway
+brc-vlan50	IN	A	10.7.50.255
