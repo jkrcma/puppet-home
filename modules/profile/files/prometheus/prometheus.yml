@@ -125,7 +125,10 @@ scrape_configs:
       module: [default]
     static_configs:
       - targets:
-        - 192.168.1.1  # intentionally no DNS
+        # intentionally no DNS
+        - 10.7.21.1 
+        - 10.7.21.2
+        - 10.7.21.3
     relabel_configs:
       - source_labels: [__address__]
         target_label: __param_target
