@@ -1,0 +1,37 @@
+;
+; data.den local TLD subdomain
+;
+$TTL	300
+@	IN	SOA	ns.den. admin.den. (
+		     2021032626		; Serial
+			 604800		; Refresh
+			  86400		; Retry
+			2419200		; Expire
+			 604800 )	; Negative Cache TTL
+; nameserver NS
+@	IN	NS	ns.den.
+
+$ORIGIN data.den.
+
+; VLAN 21 Management data
+; physical A
+net-vlan21	IN	A	10.7.21.0
+; no gateway
+router		IN	A	10.7.21.1
+switch		IN	A	10.7.21.2
+cap1		IN	A	10.7.21.3
+brc-vlan21	IN	A	10.7.21.255
+
+; virtual A
+monitor		IN	A	10.7.21.13
+docker		IN	A	10.7.21.14
+nas		IN	A	10.7.21.15
+prolink-overlay	IN	A	10.7.21.16
+smtp		IN	A	10.7.21.17
+kodi		IN	A	10.7.21.18
+mediabox	IN	A	10.7.21.19
+torrent		IN	A	10.7.21.20
+build		IN	A	10.7.21.21
+dns		IN	A	10.7.21.22
+pihole		IN	A	10.7.21.23
+puppet		IN	A	10.7.21.24

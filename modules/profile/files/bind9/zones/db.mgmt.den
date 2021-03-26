@@ -1,0 +1,26 @@
+;
+; mgmt.den local TLD subdomain
+;
+$TTL	300
+@	IN	SOA	ns.den. admin.den. (
+		     2021032627		; Serial
+			 604800		; Refresh
+			  86400		; Retry
+			2419200		; Expire
+			 604800 )	; Negative Cache TTL
+; nameserver NS
+@	IN	NS	ns.den.
+
+$ORIGIN mgmt.den.
+; Handy shortcuts
+router		IN	A	10.7.20.1
+
+; VLAN 20 Net & server management
+; physical A
+net-vlan20	IN	A	10.7.20.0
+gw-vlan20	IN	A	10.7.20.1
+switch		IN	A	10.7.20.2
+cap1		IN	A	10.7.20.3
+dogee		IN	A	10.7.20.11
+drolf-rpi	IN	A	10.7.20.12
+brc-vlan20	IN	A	10.7.20.255

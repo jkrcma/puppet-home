@@ -3,7 +3,7 @@
 ;
 $TTL	300
 @	IN	SOA	ns.den. admin.den. (
-			      1		; Serial
+		     2021032624		; Serial
 			 604800		; Refresh
 			  86400		; Retry
 			2419200		; Expire
@@ -12,50 +12,53 @@ $TTL	300
 @	IN	NS	ns.den.
 
 $ORIGIN den.
-; handy shortcuts A
-ns	IN	A	192.168.1.10
-router	IN	A	192.168.1.1
 
-; 192.168.1.0/26
-; physical A
-network-trusted	IN	A	192.168.1.0
-gateway-trusted	IN	A	192.168.1.1
-dogee		IN	A	192.168.1.2
-drolf		IN	A	192.168.1.3
-iphone		IN	A	192.168.1.4
-shibe		IN	A	192.168.1.5
-drolf-rpi	IN	A	192.168.1.6
-broadcast-trusted	IN	A	192.168.1.63
-
+; VLAN30 Net & server services - 10.7.30.0/24
 ; virtual A
-dns		IN	A	192.168.1.10
-puppet		IN	A	192.168.1.11
-nas		IN	A	192.168.1.12
-torrent		IN	A	192.168.1.13
-monitor		IN	A	192.168.1.14
-mediabox	IN	A	192.168.1.15
-build		IN	A	192.168.1.16
-kodi		IN	A	192.168.1.19
-smtp		IN	A	192.168.1.20
-prolink-overlay	IN	A	192.168.1.21
-docker		IN	A	192.168.1.22
-pihole		IN	A	192.168.1.23
-ubuntu		IN	A	192.168.1.62
+net-vlan30	IN	A	10.7.30.0
+gw-vlan30	IN	A	10.7.30.1
+ns		IN	A	10.7.30.22
+puppet		IN	A	10.7.30.24
+brc-vlan30	IN	A	10.7.30.255
 
+; VLAN31 User services - 10.7.31.0/24
+; virtual A
+net-vlan31	IN	A	10.7.31.0
+gw-vlan31	IN	A	10.7.31.1
+monitor		IN	A	10.7.31.13
+nas		IN	A	10.7.31.15
+prolink-overlay	IN	A	10.7.31.15
+mediabox	IN	A	10.7.31.19
+torrent		IN	A	10.7.31.20
+build		IN	A	10.7.31.21
+brc-vlan31	IN	A	10.7.31.255
+
+
+; VLAN32 Public services - 10.7.32.0/24
+; virtual A
+net-vlan32	IN	A	10.7.32.0
+gw-vlan32	IN	A	10.7.32.1
+docker		IN	A	10.7.32.14
+smtp		IN	A	10.7.32.17
+kodi		IN	A	10.7.32.18
+pihole		IN	A	10.7.32.23
+brc-vlan32	IN	A	10.7.32.255
+
+;;; TODO below
 ; 192.168.1.64/26
-network-vpn	IN	A	192.168.1.64
-gateway-vpn	IN	A	192.168.1.65
-broadcast-vpn	IN	A	192.168.1.127
+;network-vpn	IN	A	192.168.1.64
+;gateway-vpn	IN	A	192.168.1.65
+;broadcast-vpn	IN	A	192.168.1.127
 
 ; 192.168.1.128/25
-network-public	IN	A	192.168.1.128
-gateway-public	IN	A	192.168.1.129
-drolf-rpi4	IN	A	192.168.1.130
-broadcast-public	IN	A	192.168.1.254
+;network-public	IN	A	192.168.1.128
+;gateway-public	IN	A	192.168.1.129
+;drolf-rpi4	IN	A	192.168.1.130
+;broadcast-public	IN	A	192.168.1.254
 
 ; 192.168.2.1/24 (DMZ)
-network-dmz	IN	A	192.168.2.0
-gateway-dmz	IN	A	192.168.2.1
-tv		IN	A	192.168.2.2
-printer		IN	A	192.168.2.3
-broadcast-dmz	IN	A	192.168.2.254
+;network-dmz	IN	A	192.168.2.0
+;gateway-dmz	IN	A	192.168.2.1
+;tv		IN	A	192.168.2.2
+;printer		IN	A	192.168.2.3
+;broadcast-dmz	IN	A	192.168.2.254

@@ -17,6 +17,17 @@ zone "den" {
 	file "/etc/bind/zones/db.den";
 };
 
+zone "mgmt.den" {
+	type master;
+	allow-transfer { "ns-numinex"; };
+	file "/etc/bind/zones/db.mgmt.den";
+};
+
+zone "data.den" {
+	type master;
+	file "/etc/bind/zones/db.data.den";
+};
+
 zone "1.168.192.in-addr.arpa" {
 	type master;
 	allow-transfer { "ns-numinex"; };
