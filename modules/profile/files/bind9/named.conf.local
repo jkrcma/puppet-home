@@ -7,7 +7,12 @@
 //include "/etc/bind/zones.rfc1918";
 
 // VLAN 21 Management data
+acl "vlan21-exclude" {
+	// pihole is a relay for users, vlan21 resolving is unwanted
+	10.7.21.23;
+};
 acl "vlan21" {
+	!vlan21-exclude;
 	10.7.21.0/24;
 };
 

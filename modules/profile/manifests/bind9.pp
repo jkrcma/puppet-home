@@ -13,6 +13,12 @@ class profile::bind9 {
     file { '/etc/bind':
         ensure => directory,
     }
+    file { '/etc/bind/named.conf.default-zones':
+        ensure => file,
+        source => 'puppet:///modules/profile/bind9/named.conf.default-zones',
+        require => File['/etc/bind'],
+        notify => Service['bind9'],
+    }
     file { '/etc/bind/named.conf.local':
         ensure => file,
         source => 'puppet:///modules/profile/bind9/named.conf.local',

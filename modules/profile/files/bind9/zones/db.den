@@ -3,7 +3,7 @@
 ;
 $TTL	300
 @	IN	SOA	ns.den. admin.den. (
-		     2021032624		; Serial
+		     2021032625		; Serial
 			 604800		; Refresh
 			  86400		; Retry
 			2419200		; Expire
@@ -18,6 +18,7 @@ $ORIGIN den.
 net-vlan30	IN	A	10.7.30.0
 gw-vlan30	IN	A	10.7.30.1
 ns		IN	A	10.7.30.22
+dns		IN	A	10.7.30.22
 puppet		IN	A	10.7.30.24
 brc-vlan30	IN	A	10.7.30.255
 
@@ -43,6 +44,12 @@ smtp		IN	A	10.7.32.17
 kodi		IN	A	10.7.32.18
 pihole		IN	A	10.7.32.23
 brc-vlan32	IN	A	10.7.32.255
+
+; VLAN45 WLAN DMZ - 10.7.45.0/24
+net-vlan45	IN	A	10.7.45.0
+gw-vlan45	IN	A	10.7.45.1
+printer		IN	A	10.7.45.11
+brc-vlan45	IN	A	10.7.45.255
 
 ;;; TODO below
 ; 192.168.1.64/26
