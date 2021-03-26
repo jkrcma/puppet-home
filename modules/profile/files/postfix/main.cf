@@ -25,7 +25,8 @@ alias_maps = hash:/etc/aliases
 alias_database = hash:/etc/aliases
 mydestination = $myhostname, smtp, localhost.localdomain, , localhost
 relayhost =
-mynetworks = 127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]/128 192.168.1.0/26 192.168.2.3/32
+# VLANs 40, 41, printer.den from VLAN 45
+mynetworks = 127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]/128 10.7.21.0/24 10.7.40.0/24 10.7.41.0/24 10.7.45.11/32
 mailbox_size_limit = 0
 recipient_delimiter = +
 inet_interfaces = all
