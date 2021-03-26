@@ -27,7 +27,7 @@ net-vlan31	IN	A	10.7.31.0
 gw-vlan31	IN	A	10.7.31.1
 monitor		IN	A	10.7.31.13
 nas		IN	A	10.7.31.15
-prolink-overlay	IN	A	10.7.31.15
+prolink-overlay	IN	A	10.7.31.16
 mediabox	IN	A	10.7.31.19
 torrent		IN	A	10.7.31.20
 build		IN	A	10.7.31.21

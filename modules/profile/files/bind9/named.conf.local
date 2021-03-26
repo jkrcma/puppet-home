@@ -6,40 +6,56 @@
 // organization
 //include "/etc/bind/zones.rfc1918";
 
+// VLAN 21 Management data
+acl "vlan21" {
+	10.7.21.0/24;
+};
+
 acl "ns-numinex" {
 	10.0.7.5;
 	10.0.20.5;
 };
 
-zone "den" {
-	type master;
-	allow-transfer { "ns-numinex"; };
-	file "/etc/bind/zones/db.den";
+view "vlan21-view" {
+	match-clients { vlan21; };
+	zone "den" {
+		type master;
+		file "/etc/bind/zones/db.den@vlan21";
+	};
 };
 
-zone "mgmt.den" {
-	type master;
-	allow-transfer { "ns-numinex"; };
-	file "/etc/bind/zones/db.mgmt.den";
-};
+view "default" {
+	match-clients { any; };
+	zone "den" {
+		type master;
+		allow-transfer { "ns-numinex"; };
+		file "/etc/bind/zones/db.den";
+	};
 
-zone "data.den" {
-	type master;
-	file "/etc/bind/zones/db.data.den";
-};
+	zone "mgmt.den" {
+		type master;
+		allow-transfer { "ns-numinex"; };
+		file "/etc/bind/zones/db.mgmt.den";
+	};
 
-zone "1.168.192.in-addr.arpa" {
-	type master;
-	allow-transfer { "ns-numinex"; };
-	file "/etc/bind/zones/db.1.168.192";
+	zone "data.den" {
+		type master;
+		file "/etc/bind/zones/db.data.den";
+	};
+
+	zone "1.168.192.in-addr.arpa" {
+		type master;
+		allow-transfer { "ns-numinex"; };
+		file "/etc/bind/zones/db.1.168.192";
+	};
 };
 
 // numinex
 
-zone "ngw"			{ type forward; forward only; forwarders { 10.0.7.5; 10.0.20.5; }; };
-zone "1.0.10.in-addr.arpa"	{ type forward; forward only; forwarders { 10.0.7.5; 10.0.20.5; }; };
-zone "6.0.10.in-addr.arpa"	{ type forward; forward only; forwarders { 10.0.7.5; 10.0.20.5; }; };
-zone "7.0.10.in-addr.arpa"	{ type forward; forward only; forwarders { 10.0.7.5; 10.0.20.5; }; };
-zone "20.0.10.in-addr.arpa"	{ type forward; forward only; forwarders { 10.0.7.5; 10.0.20.5; }; };
-zone "80.0.10.in-addr.arpa"	{ type forward; forward only; forwarders { 10.0.7.5; 10.0.20.5; }; };
-zone "90.0.10.in-addr.arpa"	{ type forward; forward only; forwarders { 10.0.7.5; 10.0.20.5; }; };
+//zone "ngw"			{ type forward; forward only; forwarders { 10.0.7.5; 10.0.20.5; }; };
+//zone "1.0.10.in-addr.arpa"	{ type forward; forward only; forwarders { 10.0.7.5; 10.0.20.5; }; };
+//zone "6.0.10.in-addr.arpa"	{ type forward; forward only; forwarders { 10.0.7.5; 10.0.20.5; }; };
+//zone "7.0.10.in-addr.arpa"	{ type forward; forward only; forwarders { 10.0.7.5; 10.0.20.5; }; };
+//zone "20.0.10.in-addr.arpa"	{ type forward; forward only; forwarders { 10.0.7.5; 10.0.20.5; }; };
+//zone "80.0.10.in-addr.arpa"	{ type forward; forward only; forwarders { 10.0.7.5; 10.0.20.5; }; };
+//zone "90.0.10.in-addr.arpa"	{ type forward; forward only; forwarders { 10.0.7.5; 10.0.20.5; }; };
