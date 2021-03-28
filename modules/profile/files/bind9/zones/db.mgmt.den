@@ -3,7 +3,7 @@
 ;
 $TTL	300
 @	IN	SOA	ns.den. admin.den. (
-		     2021032627		; Serial
+		     2021032801		; Serial
 			 604800		; Refresh
 			  86400		; Retry
 			2419200		; Expire
@@ -21,6 +21,7 @@ net-vlan20	IN	A	10.7.20.0
 gw-vlan20	IN	A	10.7.20.1
 switch		IN	A	10.7.20.2
 cap1		IN	A	10.7.20.3
+mikrotik-test	IN	A	10.7.20.4
 dogee		IN	A	10.7.20.11
 drolf-rpi	IN	A	10.7.20.12
 brc-vlan20	IN	A	10.7.20.255
