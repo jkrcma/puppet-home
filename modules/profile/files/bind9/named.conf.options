@@ -37,3 +37,7 @@ options {
 
 	response-policy { zone "rpz"; };
 };
+
+logging {
+	category rpz { null; };
+};
