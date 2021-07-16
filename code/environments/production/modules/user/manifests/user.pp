@@ -39,7 +39,7 @@ define user::user($id = undef, $sudo = false, $sshkey_type = undef, $sshkey = un
 
         file { "/etc/sudoers.d/10_$name-nopasswd":
             ensure => file,
-            mode => 0440,
+            mode => '0440',
             content => "$name ALL=(ALL) NOPASSWD: ALL"
         }
     }

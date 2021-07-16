@@ -105,9 +105,12 @@ class profile::prometheus::snmp_exporter {
     }
 }
 
-class profile::prometheus::node_exporter ($collectors = 'filesystem,loadavg,meminfo,netdev,textfile,uname') {
+class profile::prometheus::node_exporter ($version = undef, $collectors = 'filesystem,loadavg,meminfo,netdev,textfile,uname') {
     package { 'node-exporter':
-        ensure => latest,
+        ensure => $version ? {
+            undef => latest,
+            default => $version,
+        },
     }
 
     service { 'node-exporter':
@@ -116,9 +119,15 @@ class profile::prometheus::node_exporter ($collectors = 'filesystem,loadavg,memi
         require => Package['node-exporter'],
     }
 
+    $args = $version ? {
+        /^0\./ => '-log.level warn -collectors.enabled $collectors -collector.textfile.directory /etc/node-exporter',
+        /^1\./ => '--log.level warn --collector.textfile.directory /etc/node-exporter',
+        default => '',
+    }
+
     file { '/etc/default/node-exporter':
         ensure => file,
-        content => "OPTIONS=\"-log.level warn -collectors.enabled $collectors -collector.textfile.directory /etc/node-exporter\"\n",
+        content => "OPTIONS=\"${args}\"\n",
         notify => Service['node-exporter'],
     }
 

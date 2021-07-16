@@ -7,21 +7,28 @@ class profile::system::packages ($gpg_key, $enable_exim4 = true) {
         before => Stage['main']
     }
 
+    exec { 'apt-get update forced':
+        command => "/usr/bin/apt-get update",
+        refreshonly => true,
+    }
+
     file { 'den.list':
         path => '/etc/apt/sources.list.d/den.list',
         ensure => file,
-        content => "deb http://build.den xenial/\n",
+        content => "deb http://build.den ${facts['lsbdistcodename']}/\n",
         notify => Exec['apt-key add den.list'],
     }
 
     exec { 'apt-key add den.list':
         command => "/bin/echo \"$gpg_key\" | /usr/bin/apt-key add -",
         refreshonly => true,
+        require => Package['gnupg'],
+        notify => Exec['apt-get update forced'],
     }
 
     class { profile::system::packages::apt: stage => 'apt' }
 
-    package { ['openssh-server', 'httpie']:
+    package { ['openssh-server', 'httpie', 'gnupg', 'cron']:
         ensure => latest,
     }
 

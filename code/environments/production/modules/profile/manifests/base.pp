@@ -2,6 +2,7 @@ class profile::base {
     include profile::system::logcheck
     include profile::system::packages
     include profile::system::syslog
+    include profile::system::cleanup
     include profile::prometheus::node_exporter
 
     include profile::account::taiku
@@ -25,8 +26,7 @@ class profile::base {
 
     file {'/etc/puppet/puppet.conf':
         ensure => file,
-        links => follow,
-        source => 'puppet:///modules/profile/puppet/puppet.conf',
+        source => '/etc/puppet/puppet.conf',
     }
 
     file {'/etc/localtime':
