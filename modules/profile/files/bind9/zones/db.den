@@ -3,7 +3,7 @@
 ;
 $TTL	300
 @	IN	SOA	ns.den. admin.den. (
-		     2021032625		; Serial
+		     2021071601		; Serial
 			 604800		; Refresh
 			  86400		; Retry
 			2419200		; Expire
@@ -20,6 +20,7 @@ gw-vlan30	IN	A	10.7.30.1
 ns		IN	A	10.7.30.22
 dns		IN	A	10.7.30.22
 puppet		IN	A	10.7.30.24
+puppet5		IN	A	10.7.30.25
 brc-vlan30	IN	A	10.7.30.255
 
 ; VLAN31 User services - 10.7.31.0/24
