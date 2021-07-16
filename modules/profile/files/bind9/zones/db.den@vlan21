@@ -3,7 +3,7 @@
 ;
 $TTL	300
 @	IN	SOA	ns.den. admin.den. (
-		     2021032625		; Serial
+		 2021071701		; Serial
 			 604800		; Refresh
 			  86400		; Retry
 			2419200		; Expire
@@ -35,4 +35,5 @@ ns		IN	A	10.7.21.22
 dns		IN	A	10.7.21.22
 pihole		IN	A	10.7.21.23
 puppet		IN	A	10.7.21.24
+puppet5		IN	A	10.7.21.25
 brc-vlan21	IN	A	10.7.21.255
