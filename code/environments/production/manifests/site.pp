@@ -6,6 +6,10 @@ node puppet {
     include role::puppetmaster
 }
 
+node puppet5 {
+    include role::puppetmaster
+}
+
 node dns {
     include role::dns_server
 }
