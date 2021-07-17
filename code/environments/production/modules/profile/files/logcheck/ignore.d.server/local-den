@@ -12,3 +12,5 @@
 ^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ dhclient\[[0-9]+\]: Discarding packet with bogus hlen.$
 ^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ pihole_exporter\[[0-9]+\]: .* New tick of statistics: .*$
 ^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ lighttpd\[[0-9]+\]: .*$
+# Puppet 5.x
+^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ puppet-(agent|master)\[[0-9]+\]: .*$
