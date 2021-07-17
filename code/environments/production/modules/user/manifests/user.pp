@@ -29,6 +29,11 @@ define user::user($id = undef, $sudo = false, $sshkey_type = undef, $sshkey = un
         path => ['/bin'],
         command => "cp /etc/skel/* $homedir_path && chown $name:$name $homedir_path/*",
         creates => "$homedir_path/.bashrc",
+    } ->
+    # enforce custom .profile with $TERM hack
+    file { "${homedir_path}/.profile":
+        ensure => file,
+        source => 'puppet:///modules/user/bash_profile',
     }
 
     # grant passwordless sudo and 'sudo' group - a bit useless but whatever
