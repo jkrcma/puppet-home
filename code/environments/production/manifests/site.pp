@@ -1,12 +1,14 @@
-node default {
-    include role::noop
-}
-
-node puppet {
+# Bare metal
+node puppet5 {
     include role::puppetmaster
 }
 
-node puppet5 {
+node /rpi-k8s-[0-9]+/ {
+    include role::k3s_master
+}
+
+# LXC containers
+node puppet {
     include role::puppetmaster
 }
 
@@ -44,4 +46,9 @@ node smtp {
 
 node pihole {
     include role::pihole
+}
+
+# Defaults
+node default {
+    include role::noop
 }
