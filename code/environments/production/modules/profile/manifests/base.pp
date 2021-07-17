@@ -1,4 +1,5 @@
 class profile::base {
+    include network
     include profile::system::puppet
     include profile::system::logcheck
     include profile::system::packages
