@@ -3,7 +3,7 @@
 failed=0
 for ip in $@; do
     gw=$( echo $ip | awk -F'.' '{print $1"."$2"."$3"."1}' )
-    if ! fping -q -p100 -c5 $gw 2>/dev/null; then
+    if ! ping -q -i0.2 -c5 $gw 2>/dev/null; then
         failed=1
         break
     fi

@@ -21,7 +21,6 @@ class network::netplan (Optional[Array[String]] $interfaces = undef, String $kin
     file { '/etc/netplan/try_config.sh':
         source => 'puppet:///modules/network/netplan/try_config.sh',
         mode => '0755',
-        require => Package['fping'],
     }
 
     $ips = $target_interfaces.map |String $interface| { $::facts["ipaddress_${interface}"] }.join(' ')
