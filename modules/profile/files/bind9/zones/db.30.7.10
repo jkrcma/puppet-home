@@ -3,7 +3,7 @@
 ;
 $TTL	300
 @	IN	SOA	ns.den. admin.den. (
-			 2021071701		; Serial
+			 2021071801		; Serial
 			 604800		; Refresh
 			  86400		; Retry
 			2419200		; Expire
@@ -14,7 +14,9 @@ $TTL	300
 ; VLAN30 Net & server services - 10.7.30.0/24
 0	IN	PTR	net-vlan30.den.
 1	IN	PTR	gw-vlan30.den.
-$GENERATE 2-21 $ IN	PTR	$-30-7-10.den.
+$GENERATE 2-12 $ IN	PTR	$-30-7-10.den.
+13	IN	PTR	rpi-k8s-01.den.
+$GENERATE 14-21 $ IN	PTR	$-30-7-10.den.
 22	IN	PTR	dns.den.
 24	IN	PTR	puppet.den.
 25	IN	PTR	puppet5.den.

@@ -3,7 +3,7 @@
 ;
 $TTL	300
 @	IN	SOA	ns.den. admin.den. (
-		     2021071601		; Serial
+		     2021071801		; Serial
 			 604800		; Refresh
 			  86400		; Retry
 			2419200		; Expire
@@ -17,6 +17,7 @@ $ORIGIN den.
 ; virtual A
 net-vlan30	IN	A	10.7.30.0
 gw-vlan30	IN	A	10.7.30.1
+rpi-k8s-01	IN	A	10.7.30.13
 ns		IN	A	10.7.30.22
 dns		IN	A	10.7.30.22
 puppet		IN	A	10.7.30.24
@@ -28,6 +29,7 @@ brc-vlan30	IN	A	10.7.30.255
 net-vlan31	IN	A	10.7.31.0
 gw-vlan31	IN	A	10.7.31.1
 monitor		IN	A	10.7.31.13
+rpi-k8s-02	IN	A	10.7.30.14
 nas		IN	A	10.7.31.15
 prolink-overlay	IN	A	10.7.31.16
 mediabox	IN	A	10.7.31.19
