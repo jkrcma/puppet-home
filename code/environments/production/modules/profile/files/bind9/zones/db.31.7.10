@@ -3,7 +3,7 @@
 ;
 $TTL	300
 @	IN	SOA	ns.den. admin.den. (
-		     2021032602		; Serial
+		     2021071801		; Serial
 			 604800		; Refresh
 			  86400		; Retry
 			2419200		; Expire
@@ -16,7 +16,7 @@ $TTL	300
 1	IN	PTR	gw-vlan31.den.
 $GENERATE 2-12 $ IN	PTR	$-31-7-10.den.
 13	IN	PTR	monitor.den.
-14	IN	PTR	14-31-7-10.den.
+14	IN	PTR	rpi-k8s-02.den.
 15	IN	PTR	nas.den.
 16	IN	PTR	prolink-overlay.den.
 $GENERATE 17-18 $ IN	PTR	$-31-7-10.den.
