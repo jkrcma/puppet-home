@@ -1,3 +1,5 @@
 ---
 network::ifupdown::interfaces: [eth0]
 network::ifupdown::vlan::interfaces: [eth0.21, eth0.30]
+
+k3s::install::arguments: --cluster-init
