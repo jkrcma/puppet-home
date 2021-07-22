@@ -3,7 +3,7 @@
 ;
 $TTL	300
 @	IN	SOA	ns.den. admin.den. (
-		     2021071801		; Serial
+		     2021072204		; Serial
 			 604800		; Refresh
 			  86400		; Retry
 			2419200		; Expire
@@ -12,6 +12,10 @@ $TTL	300
 @	IN	NS	ns.den.
 
 $ORIGIN den.
+
+; Temporary k3s ingress hack
+k8s		IN	CNAME	rpi-k8s-01.mgmt.den.
+*.k8s		IN	CNAME	rpi-k8s-01.mgmt.den.
 
 ; VLAN30 Net & server services - 10.7.30.0/24
 ; virtual A
