@@ -3,7 +3,7 @@
 ;
 $TTL	300
 @	IN	SOA	ns.den. admin.den. (
-		     2021072204		; Serial
+		     2021072401		; Serial
 			 604800		; Refresh
 			  86400		; Retry
 			2419200		; Expire
@@ -13,15 +13,10 @@ $TTL	300
 
 $ORIGIN den.
 
-; Temporary k3s ingress hack
-k8s		IN	CNAME	rpi-k8s-01.mgmt.den.
-*.k8s		IN	CNAME	rpi-k8s-01.mgmt.den.
-
 ; VLAN30 Net & server services - 10.7.30.0/24
 ; virtual A
 net-vlan30	IN	A	10.7.30.0
 gw-vlan30	IN	A	10.7.30.1
-rpi-k8s-01	IN	A	10.7.30.13
 ns		IN	A	10.7.30.22
 dns		IN	A	10.7.30.22
 puppet		IN	A	10.7.30.24
@@ -33,13 +28,18 @@ brc-vlan30	IN	A	10.7.30.255
 net-vlan31	IN	A	10.7.31.0
 gw-vlan31	IN	A	10.7.31.1
 monitor		IN	A	10.7.31.13
-rpi-k8s-02	IN	A	10.7.30.14
 nas		IN	A	10.7.31.15
 prolink-overlay	IN	A	10.7.31.16
 mediabox	IN	A	10.7.31.19
 torrent		IN	A	10.7.31.20
 build		IN	A	10.7.31.21
+k8s-vlan31	IN	A	10.7.31.26
+		IN	A	10.7.31.27
+		IN	A	10.7.31.28
 brc-vlan31	IN	A	10.7.31.255
+
+; VLAN31 CNAMEs
+home-assistant	IN	CNAME	k8s-vlan31
 
 
 ; VLAN32 Public services - 10.7.32.0/24
@@ -50,6 +50,9 @@ docker		IN	A	10.7.32.14
 smtp		IN	A	10.7.32.17
 kodi		IN	A	10.7.32.18
 pihole		IN	A	10.7.32.23
+k8s-vlan32	IN	A	10.7.32.26
+		IN	A	10.7.32.27
+		IN	A	10.7.32.28
 brc-vlan32	IN	A	10.7.32.255
 
 ; VLAN40 User LAN - 10.7.40.0/24
