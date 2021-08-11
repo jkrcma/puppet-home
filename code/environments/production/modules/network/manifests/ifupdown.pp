@@ -25,9 +25,11 @@ class network::ifupdown (Array[String] $interfaces, String $path = '/etc/network
 
     service { 'dhcpcd':
         ensure => stopped,
+        enable => false,
+        require => Package['dhcpcd5'],
     }
 
-    package { 'dhcpcd':
+    package { 'dhcpcd5':
         ensure => purged,
     }
 }
