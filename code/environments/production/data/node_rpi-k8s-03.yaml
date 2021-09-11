@@ -2,4 +2,4 @@
 network::ifupdown::interfaces: [eth0]
 network::ifupdown::vlan::interfaces: [eth0.21, eth0.31, eth0.32]
 
-k3s::install::arguments: --server https://rpi-k8s-01.data.den:6443
+k3s::install::arguments: --disable traefik --server https://rpi-k8s-01.data.den:6443

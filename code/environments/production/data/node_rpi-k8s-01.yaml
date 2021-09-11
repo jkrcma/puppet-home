@@ -2,4 +2,4 @@
 network::ifupdown::interfaces: [eth0]
 network::ifupdown::vlan::interfaces: [eth0.21, eth0.31, eth0.32]
 
-k3s::install::arguments: --cluster-init
+k3s::install::arguments: --disable traefik --cluster-init
