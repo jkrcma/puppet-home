@@ -50,4 +50,4 @@ inhibit_rules:
 receivers:
 - name: 'taiku'
   email_configs:
-    - to: 'jkrcma@gmail.com'
+    - to: 'home+prometheus@taiku.cz'
