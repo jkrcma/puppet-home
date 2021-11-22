@@ -1,2 +1,4 @@
 auto <%= @interface %>
 iface <%= @interface %> inet dhcp
+<% if @options %><%= @options %>
+<% end -%>

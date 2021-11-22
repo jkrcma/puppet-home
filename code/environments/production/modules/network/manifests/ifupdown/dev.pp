@@ -1,4 +1,4 @@
-define network::ifupdown::dev() {
+define network::ifupdown::dev($options = undef) {
     $path = $network::ifupdown::path
     $interface = $name
 

@@ -1,5 +1,7 @@
 ---
 network::ifupdown::interfaces: [eth0]
 network::ifupdown::vlan::interfaces: [eth0.21, eth0.31, eth0.32]
+network::ifupdown::options:
+  eth0: dns-nameservers 10.7.21.22
 
 k3s::install::arguments: --disable traefik --cluster-init --node-ip %{facts."ipaddress_eth0.21"}
