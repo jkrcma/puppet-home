@@ -10,4 +10,12 @@ class profile::kubernetes {
         onlyif => 'lsusb -d 1cf1:0030',
 
     }
+
+    # hacky way to reduce the verbosity of k3s logs
+    file_line { 'k3s log level':
+        ensure => present,
+        path => '/etc/systemd/system/k3s.service',
+        line => 'LogLevelMax=3',
+        after => '^LimitCORE=',
+    }
 }
