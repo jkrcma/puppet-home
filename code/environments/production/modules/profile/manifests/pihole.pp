@@ -3,17 +3,13 @@ class profile::pihole ($webpassword = undef) {
     exec { 'pihole-automated-install':
         command => 'wget -O /root/pihole-install.sh https://install.pi-hole.net && bash root/pihole-install.sh',
         path => ['/usr/bin'],
-        unless => 'test -x /usr/local/bin/pihole',
+        creates => '/usr/local/bin/pihole',
     }
 
-    package { 'pihole-exporter':
-        ensure => latest,
-    }
-
-    service { 'pihole-exporter':
+    service { 'pihole-FTL':
         enable => true,
         ensure => running,
-        require => Package['pihole-exporter'],
+        require => Exec['pihole-automated-install'],
     }
 
     file { '/etc/pihole/setupVars.conf':
@@ -23,6 +19,26 @@ class profile::pihole ($webpassword = undef) {
         mode => '0644', # FIXME?
         content => template('profile/pihole/setupVars.conf.erb'),
         require => Exec['pihole-automated-install'],
+    }
+
+    file { '/etc/dnsmasq.d/02-no-hosts.conf':
+        ensure => file,
+        content => "no-hosts\n",
+        require => Exec['pihole-automated-install'],
+        notify => Service['pihole-FTL'],
+    }
+
+}
+
+class profile::pihole::exporter {
+    package { 'pihole-exporter':
+        ensure => latest,
+    }
+
+    service { 'pihole-exporter':
+        enable => true,
+        ensure => running,
+        require => Package['pihole-exporter'],
     }
 
     file { '/etc/default/pihole-exporter':
