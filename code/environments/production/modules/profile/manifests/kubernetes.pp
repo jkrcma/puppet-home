@@ -18,4 +18,10 @@ class profile::kubernetes {
         line => 'LogLevelMax=3',
         after => '^LimitCORE=',
     }
+
+    # Debian/Ubuntu iptables bug workaround
+    # https://github.com/k3s-io/k3s/issues/3117
+    package { ['iptables', 'nftables']:
+        ensure => absent,
+    }
 }
