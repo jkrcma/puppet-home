@@ -5,6 +5,7 @@ class profile::dpkg_repo {
 
     file { '/usr/local/bin/refresh-repo.sh':
         ensure => file,
+        mode => '0755',
         source => 'puppet:///modules/profile/dpkg_repo/refresh-repo.sh',
     }
 
