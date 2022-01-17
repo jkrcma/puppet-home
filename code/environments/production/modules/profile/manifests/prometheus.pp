@@ -105,7 +105,7 @@ class profile::prometheus::snmp_exporter {
     }
 }
 
-class profile::prometheus::node_exporter ($version = undef, $collectors = 'filesystem,loadavg,meminfo,netdev,textfile,uname') {
+class profile::prometheus::node_exporter ($version = undef, $collectors = 'filesystem,loadavg,meminfo,netdev,textfile,uname', $extraArgs = '') {
     package { 'node-exporter':
         ensure => $version ? {
             undef => latest,
@@ -127,7 +127,7 @@ class profile::prometheus::node_exporter ($version = undef, $collectors = 'files
 
     file { '/etc/default/node-exporter':
         ensure => file,
-        content => "OPTIONS=\"${args}\"\n",
+        content => "OPTIONS=\"${args} ${extraArgs}\"\n",
         notify => Service['node-exporter'],
     }
 
