@@ -1,3 +1,4 @@
 ---
+# This code exists only for Puppet 5, so it's safe to force the version here
 profile::prometheus::node_exporter::version: 1.2.0
 profile::prometheus::node_exporter::extraArgs: '--no-collector.cpufreq --no-collector.diskstats --no-collector.entropy --no-collector.hwmon --no-collector.nvme --no-collector.rapl --no-collector.schedstat --no-collector.softnet --no-collector.thermal_zone --no-collector.time --no-collector.timex --no-collector.xfs --no-collector.zfs'

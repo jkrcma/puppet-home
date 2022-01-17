@@ -1,0 +1,2 @@
+---
+k3s::install::arguments: --disable traefik --server https://rpi-k8s-01.data.den:6443 --node-ip %{facts."ipaddress_eth0.21"}

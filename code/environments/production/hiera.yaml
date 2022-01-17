@@ -8,11 +8,21 @@ hierarchy:
     options:
       pkcs7_private_key: /var/lib/puppet/keys/private_key.pkcs7.pem
       pkcs7_public_key: /var/lib/puppet/keys/public_key.pkcs7.pem
+  - name: "Per-group secret data"
+    lookup_key: eyaml_lookup_key
+    path: "secrets/group_%{group}.eyaml"
+    options:
+      pkcs7_private_key: /var/lib/puppet/keys/private_key.pkcs7.pem
+      pkcs7_public_key: /var/lib/puppet/keys/public_key.pkcs7.pem
   - name: "Per-node data"
-    path: "node_%{trusted.certname}.yaml"
+    path: "node/%{trusted.certname}.yaml"
+  - name: "Per-group data"
+    path: "group/%{group}.yaml"
+  - name: "Per-type data"
+    path: "type/%{type}.yaml"
   - name: "Per-OS release defaults"
-    path: "distro_%{facts.os.name}_%{facts.lsbdistcodename}.yaml"
+    path: "dist/%{facts.os.name}_%{facts.lsbdistcodename}.yaml"
   - name: "Per-OS defaults"
-    path: "os_%{facts.os.name}.yaml"
+    path: "os/%{facts.os.name}.yaml"
   - name: "Common data"
     path: "common.yaml"
