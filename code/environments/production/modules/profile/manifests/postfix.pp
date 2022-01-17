@@ -17,6 +17,10 @@ class profile::postfix($dkim_domain_key = undef) {
         require => Package['opendkim'],
     }
 
+    file { '/etc/systemd/system/opendkim.service.d':
+        ensure => directory,
+    }
+
     # ensure config files
     file { '/etc/postfix':
         ensure => directory,
@@ -30,7 +34,7 @@ class profile::postfix($dkim_domain_key = undef) {
 
     file { '/etc/opendkim':
         ensure => directory,
-        owner => opendkim,
+        owner => root,
         group => opendkim,
         require => Package['opendkim'],
     }
