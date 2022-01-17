@@ -4,12 +4,54 @@
   parameters:
     group: null
 
+
 build:
   classes:
     - role::build
   parameters:
     type: lxd
-    group: null
+
+dns:
+  classes:
+    - role::dns_server
+  parameters:
+    type: lxd
+
+kodi:
+  classes:
+    - role::kodi
+  parameters:
+    type: lxd
+
+mediabox:
+  classes:
+    - role::media_box
+  parameters:
+    type: lxd
+
+monitor:
+  classes:
+    - role::monitor
+  parameters:
+    type: lxd
+
+nas:
+  classes:
+    - role::nas
+  parameters:
+    type: lxd
+
+pihole:
+  classes:
+    - role::pihole
+  parameters:
+    type: lxd
+
+/^puppet5?$/:
+  classes:
+    - role::puppetmaster
+  parameters:
+    type: lxd
 
 /^rpi-k8s-[0-9]+$/:
   classes:
@@ -18,8 +60,14 @@ build:
     type: hw
     group: rpi-k8s
 
-/^puppet5?$/:
+smtp:
   classes:
-    - role::puppetmaster
+    - role::smtp_relay
+  parameters:
+    type: lxd
+
+torrent:
+  classes:
+    - role::torrent_box
   parameters:
     type: lxd
