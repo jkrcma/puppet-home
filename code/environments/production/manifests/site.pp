@@ -3,14 +3,10 @@ node puppet5 {
     include role::puppetmaster
 }
 
-node /rpi-k8s-[0-9]+/ {
-    include role::k3s_master
-}
+node /rpi-k8s-[0-9]+/ {}
 
 # LXC containers
-node puppet {
-    include role::puppetmaster
-}
+node puppet {}
 
 node dns {
     include role::dns_server
@@ -24,9 +20,7 @@ node torrent {
     include role::torrent_box
 }
 
-node build {
-    include role::build
-}
+node build {}
 
 node monitor {
     include role::monitor

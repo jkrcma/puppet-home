@@ -1,0 +1,25 @@
+---
+::defaults:
+  environment: production
+  parameters:
+    group: null
+
+build:
+  classes:
+    - role::build
+  parameters:
+    type: lxd
+    group: null
+
+/^rpi-k8s-[0-9]+$/:
+  classes:
+    - role::k3s_master
+  parameters:
+    type: hw
+    group: rpi-k8s
+
+/^puppet5?$/:
+  classes:
+    - role::puppetmaster
+  parameters:
+    type: lxd
