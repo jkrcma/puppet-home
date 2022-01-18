@@ -1,0 +1,26 @@
+[Unit]
+Description=X11 session for kodi
+After=graphical.target systemd-user-sessions.service
+
+[Service]
+User=kodi
+Group=kodi
+WorkingDirectory=~
+
+PAMName=login
+Environment=XDG_SESSION_TYPE=x11
+TTYPath=/dev/tty10
+StandardInput=tty
+UnsetEnvironment=TERM
+
+UtmpIdentifier=tty10
+UtmpMode=user
+
+StandardOutput=journal
+#ExecStartPre=/usr/bin/chvt 10
+ExecStart=/usr/bin/startx -- vt10
+#ExecStart=/usr/bin/xinit /usr/bin/kodi-standalone -- :0 -quiet -nolisten tcp vt10
+Restart=always
+
+[Install]
+WantedBy=graphical.target
