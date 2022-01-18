@@ -20,6 +20,8 @@ class profile::transmission($data_directory = undef, $web_directory = undef) {
     service { 'transmission-daemon':
         enable => true,
         ensure => running,
+        hasrestart => true,
+        restart => '/usr/bin/systemctl reload transmission-daemon',
         require => Package['transmission-daemon'],
     }
 
