@@ -53,6 +53,12 @@ pihole:
   parameters:
     type: lxd
 
+prolink-overlay:
+  classes:
+    - role::noop
+  parameters:
+    type: lxd
+
 /^puppet5?$/:
   classes:
     - role::puppetmaster
