@@ -17,6 +17,12 @@ dns:
   parameters:
     type: lxd
 
+docker:
+  classes:
+    - role::docker_runner
+  parameters:
+    type: lxd
+
 kodi:
   classes:
     - role::kodi
