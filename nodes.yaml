@@ -72,6 +72,13 @@ prolink-overlay:
     type: hw
     group: rpi-k8s
 
+/^rpi-lxd-[0-9]+$/:
+  classes:
+    - role::noop
+  parameters:
+    type: hw
+    group: rpi-lxd
+
 smtp:
   classes:
     - role::smtp_relay
