@@ -136,9 +136,10 @@ scrape_configs:
         replacement: 127.0.0.1:9115
 
   - job_name: 'snmp'
+    scrape_interval: 60s
     metrics_path: /snmp
     params:
-      module: [default]
+      module: [mikrotik]
     static_configs:
       - targets:
         # intentionally no DNS
