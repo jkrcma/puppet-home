@@ -1,0 +1,8 @@
+auto <%= @interface %>
+iface <%= @interface %> inet <% if @bridgeport_merged['dhcp'] %>dhcp<% else %>manual<% end %>
+bridge_ports <%= @bridgeport_merged['port'] %>
+bridge_fd 0
+bridge_waitport 0
+bridge_stp off
+<% if @options %><%= @options %>
+<% end -%>

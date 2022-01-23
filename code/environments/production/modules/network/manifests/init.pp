@@ -1,15 +1,12 @@
 class network {
-  stage { 'network':
-      before => Stage['apt'],
-  }
-
   if $::facts['network_config'] == 'netplan' {
-    class { 'network::netplan': stage => 'network' }
+    include network::netplan
   } elsif $::facts['network_config'] == 'ifupdown' {
-    package { 'vlan':
+    package { ['bridge-utils', 'vlan']:
         ensure => latest,
+        before => Class['network::ifupdown::vlan'],
     }
-    class { 'network::ifupdown': stage => 'network' }
+    include network::ifupdown
     include network::ifupdown::vlan
   } else {
     fail("${module_name}: Unknown network provider: ${::facts['network_config']}")

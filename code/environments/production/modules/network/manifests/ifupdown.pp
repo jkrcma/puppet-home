@@ -11,7 +11,7 @@ class network::ifupdown (Array[String] $interfaces, Hash $options = {}, String $
 
     file { "${path}/lo":
         ensure => file,
-        content => "auto lo\n\niface lo inet loopback",
+        content => "auto lo\niface lo inet loopback\n",
     }
 
     $interfaces.each |String $interface| {
@@ -34,7 +34,12 @@ class network::ifupdown (Array[String] $interfaces, Hash $options = {}, String $
     }
 }
 
-class network::ifupdown::vlan (Optional[Array[String]] $interfaces = undef) {
+class network::ifupdown::vlan (Optional[Array[String]] $interfaces = undef, Optional[Hash[String, Hash]] $bridges = undef) {
+    if $bridges {
+        $bridges.keys.each |String $interface| {
+            network::ifupdown::dev { $interface: bridgeport => $bridges[$interface] }
+        }
+    }
     if $interfaces {
         $interfaces.each |String $interface| {
             network::ifupdown::dev { $interface: }

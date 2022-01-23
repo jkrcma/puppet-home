@@ -1,0 +1,12 @@
+---
+network::ifupdown::interfaces: [eth0]
+network::ifupdown::vlan::bridges:
+  br21:
+    port: eth0.21
+    dhcp: true
+  br30:
+    port: eth0.30
+  br31:
+    port: eth0.31
+  br32:
+    port: eth0.32

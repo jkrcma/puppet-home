@@ -1,10 +1,17 @@
-define network::ifupdown::dev($options = undef) {
+define network::ifupdown::dev(Hash[String, Data] $bridgeport = {}, $options = undef) {
     $path = $network::ifupdown::path
     $interface = $name
+    if $bridgeport['port'] {
+        $bridgeport_def = {'dhcp' => false}
+        $bridgeport_merged = $bridgeport_def + $bridgeport
+        $erb_name = 'dev-br'
+    } else {
+        $erb_name = 'dev'
+    }
 
     file { "${path}/${name}":
         ensure => file,
-        content => template('network/ifupdown/dev.erb'),
+        content => template("network/ifupdown/${erb_name}.erb"),
         notify => Exec["ifup ${name}"],
     }
 
