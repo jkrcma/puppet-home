@@ -32,10 +32,26 @@ scrape_configs:
         labels:
           group: 'hardware'
           instance: 'dogee.den'
-      - targets: ['drolf-rpi.den:9100']
+      - targets: ['drolf-rpi.data.den:9100']
         labels:
           group: 'hardware'
           instance: 'drolf-rpi.den'
+      - targets: ['rpi-lxd-01.data.den:9100']
+        labels:
+          group: 'hardware'
+          instance: 'rpi-lxd-01.den'
+      - targets: ['rpi-k8s-01.data.den:9100']
+        labels:
+          group: 'hardware'
+          instance: 'rpi-k8s-01.den'
+      - targets: ['rpi-k8s-02.data.den:9100']
+        labels:
+          group: 'hardware'
+          instance: 'rpi-k8s-02.den'
+      - targets: ['rpi-k8s-03.data.den:9100']
+        labels:
+          group: 'hardware'
+          instance: 'rpi-k8s-03.den'
       - targets: ['tigerfox.isgeek.info:9273']
         labels:
           group: 'virtual'
@@ -126,9 +142,11 @@ scrape_configs:
     static_configs:
       - targets:
         # intentionally no DNS
-        - 10.7.21.1 
+        - 10.7.21.1
         - 10.7.21.2
         - 10.7.21.3
+        - 10.7.21.4
+        - 10.7.21.5
     relabel_configs:
       - source_labels: [__address__]
         target_label: __param_target
