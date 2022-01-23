@@ -36,5 +36,6 @@ $GENERATE 4-10 $ IN	PTR	$-21-7-10.data.den.
 26	IN	PTR	rpi-k8s-01.data.den.
 27	IN	PTR	rpi-k8s-02.data.den.
 28	IN	PTR	rpi-k8s-03.data.den.
-$GENERATE 29-254 $	IN	PTR	$-21-7-10.data.den.
+29	IN	PTR	rpi-lxd-01.data.den.
+$GENERATE 30-254 $	IN	PTR	$-21-7-10.data.den.
 255	IN	PTR	brc-vlan21.den.
