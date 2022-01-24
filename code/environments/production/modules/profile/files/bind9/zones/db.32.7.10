@@ -3,7 +3,7 @@
 ;
 $TTL	300
 @	IN	SOA	ns.den. admin.den. (
-		     2021032601		; Serial
+		     2022012501		; Serial
 			 604800		; Refresh
 			  86400		; Retry
 			2419200		; Expire
@@ -21,5 +21,8 @@ $GENERATE 15-16 $ IN	PTR	$-32-7-10.den.
 18	IN	PTR	kodi.den.
 $GENERATE 19-22 $ IN	PTR	$-32-7-10.den.
 23	IN	PTR	pihole.den.
-$GENERATE 24-254 $ IN	PTR	$-32-7-10.den.
+$GENERATE 24-29 $ IN	PTR	$-32-7-10.den.
+30	IN	PTR	pihole-01.den.
+31	IN	PTR	pihole-02.den.
+$GENERATE 32-254 $ IN	PTR	$-32-7-10.den.
 255	IN	PTR	brc-vlan32.den.

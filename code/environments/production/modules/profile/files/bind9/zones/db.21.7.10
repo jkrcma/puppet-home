@@ -3,7 +3,7 @@
 ;
 $TTL	300
 @	IN	SOA	ns.den. admin.den. (
-			 2021071702		; Serial
+			 2022012501		; Serial
 			 604800		; Refresh
 			  86400		; Retry
 			2419200		; Expire
@@ -37,5 +37,7 @@ $GENERATE 4-10 $ IN	PTR	$-21-7-10.data.den.
 27	IN	PTR	rpi-k8s-02.data.den.
 28	IN	PTR	rpi-k8s-03.data.den.
 29	IN	PTR	rpi-lxd-01.data.den.
-$GENERATE 30-254 $	IN	PTR	$-21-7-10.data.den.
+30	IN	PTR	pihole-01.data.den.
+31	IN	PTR	pihole-02.data.den.
+$GENERATE 32-254 $	IN	PTR	$-21-7-10.data.den.
 255	IN	PTR	brc-vlan21.den.

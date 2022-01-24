@@ -47,7 +47,7 @@ nas:
   parameters:
     type: lxd
 
-pihole:
+/^pihole(-\d{2})?$/:
   classes:
     - role::pihole
   parameters:

@@ -3,7 +3,7 @@
 ;
 $TTL	300
 @	IN	SOA	ns.den. admin.den. (
-			 2021071701		; Serial
+			 2022012501		; Serial
 			 604800		; Refresh
 			  86400		; Retry
 			2419200		; Expire
@@ -42,3 +42,5 @@ rpi-k8s-01	IN	A	10.7.21.26
 rpi-k8s-02	IN	A	10.7.21.27
 rpi-k8s-03	IN	A	10.7.21.28
 rpi-lxd-01	IN	A	10.7.21.29
+pihole-01	IN	A	10.7.21.30
+pihole-02	IN	A	10.7.21.31
