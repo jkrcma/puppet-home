@@ -1,0 +1,49 @@
+---
+config:
+  core.https_address: <%= @facts["ipaddress_br21"] %>
+  core.trust_password: <%= @trust_password %>
+storage_pools:
+- name: default
+  driver: dir
+  config:
+    source: /data/lxd
+networks:
+profiles:
+- name: default
+  description: Default LXD profile
+  config:
+    limits.cpu: 1
+    limits.memory: 1GB
+  devices:
+    eth0:
+      nictype: bridged
+      parent: br21
+      type: nic
+    root:
+      path: /
+      pool: default
+      type: disk
+- name: vlan30
+  description: VLAN 30 Net & server services
+  devices:
+    eth30:
+      name: eth30
+      nictype: bridged
+      parent: br30
+      type: nic
+- name: vlan31
+  description: VLAN 31 User services
+  devices:
+    eth31:
+      name: eth31
+      nictype: bridged
+      parent: br31
+      type: nic
+- name: vlan32
+  description: VLAN 32 Public services
+  devices:
+    eth32:
+      name: eth32
+      nictype: bridged
+      parent: br32
+      type: nic
