@@ -10,3 +10,4 @@ network::ifupdown::vlan::bridges:
     port: eth0.31
   br32:
     port: eth0.32
+profile::lxd::package_provider: snap

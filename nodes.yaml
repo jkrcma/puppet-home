@@ -74,7 +74,7 @@ prolink-overlay:
 
 /^rpi-lxd-[0-9]+$/:
   classes:
-    - role::noop
+    - role::lxd_host
   parameters:
     type: hw
     group: rpi-lxd
