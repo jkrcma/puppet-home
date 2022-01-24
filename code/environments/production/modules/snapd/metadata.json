@@ -1,0 +1,53 @@
+{
+  "name": "ethanhs-snapd",
+  "version": "1.4.0",
+  "author": "Ethan Smith",
+  "summary": "Install and manage the snapd service for installing and managing snap packages.",
+  "license": "BSD-2-Clause",
+  "source": "https://github.com/ethanhs/puppet-snapd",
+  "project_page": "https://github.com/ethanhs/puppet-snapd",
+  "issues_url": "https://github.com/ethanhs/puppet-snapd/issues",
+  "dependencies": [
+
+  ],
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "Ubuntu",
+      "operatingsystemrelease": [
+        "16.04",
+        "18.04",
+        "20.04"
+      ]
+    },
+    {
+      "operatingsystem": "Debian",
+      "operatingsystemrelease": [
+        "9",
+        "10"
+      ]
+    },
+    {
+      "operatingsystem": "Fedora",
+      "operatingsystemrelease": [
+        "34",
+        "33"
+      ]
+    }
+  ],
+  "requirements": [
+    {
+      "name": "puppet",
+      "version_requirement": ">= 4.0.0 < 6.0.0"
+    }
+  ],
+  "tags": [
+    "package",
+    "packages",
+    "snap",
+    "snaps",
+    "install"
+  ],
+  "pdk-version": "1.14.0",
+  "template-url": "pdk-default#1.14.0",
+  "template-ref": "1.14.0-0-g1bf3a4e"
+}
