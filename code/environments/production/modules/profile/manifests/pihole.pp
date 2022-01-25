@@ -1,9 +1,13 @@
 class profile::pihole ($webpassword = undef) {
+    package { 'wget':
+        ensure => latest,
+    }
     # blackbox exec, whatever :)
     exec { 'pihole-automated-install':
-        command => 'wget -O /root/pihole-install.sh https://install.pi-hole.net && bash root/pihole-install.sh',
+        command => 'wget -O /root/pihole-install.sh https://install.pi-hole.net && bash /root/pihole-install.sh --unattended',
         path => ['/usr/bin'],
         creates => '/usr/local/bin/pihole',
+        require => Package['wget'],
     }
 
     service { 'pihole-FTL':
@@ -12,13 +16,17 @@ class profile::pihole ($webpassword = undef) {
         require => Exec['pihole-automated-install'],
     }
 
+    file { '/etc/pihole':
+        ensure => directory,
+    }
+
     file { '/etc/pihole/setupVars.conf':
         ensure => file,
         owner => root,
         group => root,
         mode => '0644', # FIXME?
         content => template('profile/pihole/setupVars.conf.erb'),
-        require => Exec['pihole-automated-install'],
+        before => Exec['pihole-automated-install'],
     }
 
     file { '/etc/dnsmasq.d/02-no-hosts.conf':
