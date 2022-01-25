@@ -3,7 +3,7 @@
 ;
 $TTL	300
 @	IN	SOA	ns.den. admin.den. (
-		     2022012301		; Serial
+		     2022012501		; Serial
 			 604800		; Refresh
 			  86400		; Retry
 			2419200		; Expire
@@ -22,6 +22,7 @@ gw-vlan20	IN	A	10.7.20.1
 switch		IN	A	10.7.20.2
 cap1		IN	A	10.7.20.3
 mikrotik-test	IN	A	10.7.20.4
+switch-poe	IN	A	10.7.20.5
 dogee		IN	A	10.7.20.11
 drolf-rpi	IN	A	10.7.20.12
 rpi-k8s-01	IN	A	10.7.20.13
