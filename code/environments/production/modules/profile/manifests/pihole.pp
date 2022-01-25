@@ -108,6 +108,9 @@ class profile::pihole::dns_override {
 }
 
 class profile::pihole::exporter {
+    include profile::pihole::config
+    $webpassword = $profile::pihole::config::webpassword
+
     package { 'pihole-exporter':
         ensure => latest,
     }
