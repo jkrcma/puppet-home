@@ -52,6 +52,7 @@ nas:
     - role::pihole
   parameters:
     type: lxd
+    group: pihole
 
 prolink-overlay:
   classes:
