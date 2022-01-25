@@ -26,3 +26,5 @@
 ^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ systemd-timesyncd\[[0-9]+\]: (Timed out waiting for reply from|Synchronized to time server) [.:0-9a-f]+:123 \([._[:alnum:]-]+\)\.$
 # Ubuntu 20.04
 ^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ systemd-networkd\[[0-9]+\]: [._[:alnum:]-]+: DHCP: No gateway received from DHCP server\.$
+# Ignore all systemd until we move to ELK/fluent/whatever - I am tired
+^\w{3} [ :[:digit:]]{11} [._[:alnum:]-]+ systemd\[[0-9]+\]: .*$
