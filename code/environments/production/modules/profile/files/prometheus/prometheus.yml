@@ -8,7 +8,8 @@ global:
 alerting:
   alertmanagers:
   - static_configs:
-    - targets: ['monitor.den:9093']
+    - targets:
+      - monitor.den:9093
 
 # Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
 rule_files:
@@ -19,99 +20,62 @@ rule_files:
 scrape_configs:
   # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
   - job_name: 'prometheus'
-
-    # metrics_path defaults to '/metrics'
-    # scheme defaults to 'http'.
-
     static_configs:
-      - targets: ['localhost:9090']
+      - targets:
+        - localhost:9090
 
   - job_name: 'node'
     static_configs:
-      - targets: ['dogee.den:9100']
+      # Bare metal
+      - targets:
+        - dogee.data.den:9100
+        - drolf-rpi.data.den:9100
+        - rpi-k8s-01.data.den:9100
+        - rpi-k8s-02.data.den:9100
+        - rpi-k8s-03.data.den:9100
+        - rpi-lxd-01.data.den:9100
+        - rpi-lxd-02.data.den:9100
         labels:
-          group: 'hardware'
-          instance: 'dogee.den'
-      - targets: ['drolf-rpi.data.den:9100']
+          group: hw
+      # Remote VMs
+      - targets:
+        - 'tigerfox.isgeek.info:9273'
         labels:
-          group: 'hardware'
-          instance: 'drolf-rpi.den'
-      - targets: ['rpi-lxd-01.data.den:9100']
+          group: vm
+      # LXC containers
+      - targets:
+        - dns.data.den:9100
+        - puppet.data.den:9100
+        - puppet5.data.den:9100
+        - nas.data.den:9100
+        - torrent.data.den:9100
+        - monitor.data.den:9100
+        - mediabox.data.den:9100
+        - kodi.data.den:9100
+        - smtp.data.den:9100
+        - pihole.data.den:9100
+        - pihole-01.data.den:9100
+        - pihole-02.data.den:9100
+        - build.data.den:9100
         labels:
-          group: 'hardware'
-          instance: 'rpi-lxd-01.den'
-      - targets: ['rpi-k8s-01.data.den:9100']
-        labels:
-          group: 'hardware'
-          instance: 'rpi-k8s-01.den'
-      - targets: ['rpi-k8s-02.data.den:9100']
-        labels:
-          group: 'hardware'
-          instance: 'rpi-k8s-02.den'
-      - targets: ['rpi-k8s-03.data.den:9100']
-        labels:
-          group: 'hardware'
-          instance: 'rpi-k8s-03.den'
-      - targets: ['tigerfox.isgeek.info:9273']
-        labels:
-          group: 'virtual'
-          instance: 'tigerfox.isgeek.info'
-    # LXC containers
-      - targets: ['dns.den:9100']
-        labels:
-          group: 'virtual'
-          instance: 'dns.den'
-      - targets: ['puppet.den:9100']
-        labels:
-          group: 'virtual'
-          instance: 'puppet.den'
-      - targets: ['nas.den:9100']
-        labels:
-          group: 'virtual'
-          instance: 'nas.den'
-      - targets: ['torrent.den:9100']
-        labels:
-          group: 'virtual'
-          instance: 'torrent.den'
-      - targets: ['monitor.den:9100']
-        labels:
-          group: 'virtual'
-          instance: 'monitor.den'
-      - targets: ['mediabox.den:9100']
-        labels:
-          group: 'virtual'
-          instance: 'mediabox.den'
-      - targets: ['kodi.den:9100']
-        labels:
-          group: 'virtual'
-          instance: 'kodi.den'
-      - targets: ['smtp.den:9100']
-        labels:
-          group: 'virtual'
-          instance: 'smtp.den'
-      - targets: ['pihole.den:9100']
-        labels:
-          group: 'virtual'
-          instance: 'pihole.den'
-      - targets: ['build.den:9100']
-        labels:
-          group: 'virtual'
-          instance: 'build.den'
-
-  - job_name: 'iot'
-    static_configs:
-      - targets: ['drolf-rpi4.den:9190']
-        labels:
-          group: 'hardware'
-          instance: 'drolf-rpi4.den'
+          group: lxd
+    metric_relabel_configs:
+      - source_labels: [instance]
+        regex: '(.+)\.data\.(.+):\d+'
+        replacement: '$1.$2'
+        target_label: fqdn
 
   - job_name: 'pihole'
     static_configs:
-      - targets: ['pihole.den:9617']
-        labels:
-          group: 'virtual'
-          instance: 'pihole.den'
+      - targets:
+        - pihole.data.den:9617
+        - pihole-01.data.den:9617
+        - pihole-02.data.den:9617
     metric_relabel_configs:
+      - source_labels: [instance]
+        regex: '(.+)\.data\.(.+):\d+'
+        replacement: '$1.$2'
+        target_label: fqdn
       - regex: 'hostname'
         action: labeldrop
 
@@ -125,7 +89,7 @@ scrape_configs:
       - targets:
         - google.cz
         - google.com
-        - heureka.cz
+        - protonmail.com
         - seznam.cz
     relabel_configs:
       - source_labels: [__address__]
@@ -157,11 +121,10 @@ scrape_configs:
 
   - job_name: 'apcupsd'
     static_configs:
-      - targets: ['drolf-rpi.den:9162']
-        labels:
-          group: 'hardware'
-          instance: 'drolf-rpi.den'
+      - targets:
+        - drolf-rpi.data.den:9162
     metric_relabel_configs:
-      - regex: '(hostname|model)'
-        action: labeldrop
-
+      - source_labels: [instance]
+        regex: '(.+)\.data\.(.+):\d+'
+        replacement: '$1.$2'
+        target_label: fqdn
