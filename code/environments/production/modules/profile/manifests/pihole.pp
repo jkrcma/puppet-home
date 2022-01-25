@@ -101,6 +101,10 @@ class profile::pihole::dns_override {
         ip => '10.7.21.17',
         comment => "These services wouldn't work for this container at all."
     }
+    host { 'build.den':
+        ip => '10.7.21.21',
+        comment => "Needed for the apt repository.",
+    }
 }
 
 class profile::pihole::exporter {
