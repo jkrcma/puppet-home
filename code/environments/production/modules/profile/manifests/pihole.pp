@@ -50,11 +50,19 @@ class profile::pihole::config (String $webpassword = undef, String $exclude_doma
         ensure => directory,
     }
 
+    # Pi-Hole being broken is the reason why this file must exist
+    file { '/etc/pihole/pihole-FTL.conf':
+        ensure => file,
+        content => "PIHOLE_PTR=false\nPRIVACYLEVEL=0\n",
+        before => Exec['pihole-automated-install'],
+        notify => Exec['pihole-reconfigure'],
+    }
+
     file { '/etc/pihole/setupVars.conf':
         ensure => file,
         owner => root,
         group => root,
-        mode => '0644', # FIXME?
+        mode => '0644',
         content => template('profile/pihole/setupVars.conf.erb'),
         before => Exec['pihole-automated-install'],
         notify => Exec['pihole-reconfigure'],
