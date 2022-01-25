@@ -29,6 +29,6 @@ class profile::lxd::preseed ($trust_password = undef) {
         path => '/snap/bin:/usr/bin',
         command => "cat ${preseed_file} | lxd init --preseed",
         require => File[$preseed_file],
-        unless => 'test -f /var/snap/lxd/common/state',
+        creates => '/var/snap/lxd/common/state',
     }
 }
