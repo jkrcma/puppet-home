@@ -1,5 +1,6 @@
 class profile::pihole {
     include profile::pihole::config
+    include profile::pihole::dns_override
 
     package { 'wget':
         ensure => latest,
@@ -88,6 +89,17 @@ class profile::pihole::config (String $webpassword = undef, String $exclude_doma
         ensure => file,
         source => 'puppet:///modules/profile/pihole/whitelist.list',
         notify => Exec['pihole-whitelist'],
+    }
+}
+
+class profile::pihole::dns_override {
+    host { 'puppet5.den':
+        ip => '10.7.21.25',
+        comment => "DNS master treats Pi-Hole as a user VLAN client, resolving into a different IP."
+    }
+    host { 'smtp.den':
+        ip => '10.7.21.17',
+        comment => "These services wouldn't work for this container at all."
     }
 }
 
