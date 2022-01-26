@@ -11,7 +11,7 @@ build:
   parameters:
     type: lxd
 
-dns:
+/^dns(-\d{2})?$/:
   classes:
     - role::dns_server
   parameters:
@@ -66,14 +66,14 @@ prolink-overlay:
   parameters:
     type: lxd
 
-/^rpi-k8s-[0-9]+$/:
+/^rpi-k8s-\d{2}$/:
   classes:
     - role::k3s_master
   parameters:
     type: hw
     group: rpi-k8s
 
-/^rpi-lxd-[0-9]+$/:
+/^rpi-lxd-\d{2}$/:
   classes:
     - role::lxd_host
   parameters:

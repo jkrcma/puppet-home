@@ -3,7 +3,7 @@
 ;
 $TTL	300
 @	IN	SOA	ns.den. admin.den. (
-			 2021071801		; Serial
+			 2022012601		; Serial
 			 604800		; Refresh
 			  86400		; Retry
 			2419200		; Expire
@@ -20,5 +20,8 @@ $GENERATE 14-21 $ IN	PTR	$-30-7-10.den.
 22	IN	PTR	dns.den.
 24	IN	PTR	puppet.den.
 25	IN	PTR	puppet5.den.
-$GENERATE 26-254 $ IN	PTR	$-30-7-10.den.
+$GENERATE 26-32 $ IN	PTR	$-30-7-10.den.
+33	IN	PTR	dns-01.den.
+34	IN	PTR	dns-01.den.
+$GENERATE 35-254 $ IN	PTR	$-30-7-10.den.
 255	IN	PTR	brc-vlan30.den.
