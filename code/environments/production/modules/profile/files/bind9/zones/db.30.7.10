@@ -22,6 +22,6 @@ $GENERATE 14-21 $ IN	PTR	$-30-7-10.den.
 25	IN	PTR	puppet5.den.
 $GENERATE 26-32 $ IN	PTR	$-30-7-10.den.
 33	IN	PTR	dns-01.den.
-34	IN	PTR	dns-01.den.
+34	IN	PTR	dns-02.den.
 $GENERATE 35-254 $ IN	PTR	$-30-7-10.den.
 255	IN	PTR	brc-vlan30.den.
