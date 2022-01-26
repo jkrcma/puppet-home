@@ -2,14 +2,15 @@
 ; data.den local TLD reverse zone
 ;
 $TTL	300
-@	IN	SOA	ns.den. admin.den. (
-			 2022012602		; Serial
+@	IN	SOA	ns1.den. admin.den. (
+			 2022012603		; Serial
 			 604800		; Refresh
 			  86400		; Retry
 			2419200		; Expire
 			 604800 )	; Negative Cache TTL
 ; nameserver NS
-@	IN	NS	ns.den.
+@	IN	NS	ns1.den.
+	IN	NS	ns2.den.
 
 ; VLAN21 Management data - 10.7.21.0/24
 0	IN	PTR	net-vlan21.den.

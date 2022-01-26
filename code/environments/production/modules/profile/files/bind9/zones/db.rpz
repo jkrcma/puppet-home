@@ -3,13 +3,14 @@
 ;
 $TTL	300
 @	IN	SOA	localhost. root.localhost. (
-		     2021032601		; Serial
+		     2022012601		; Serial
 			 604800		; Refresh
 			  86400		; Retry
 			2419200		; Expire
 			 604800 )	; Negative Cache TTL
 ; nameserver NS
-@	IN	NS	ns.den.
+@	IN	NS	ns1.den.
+	IN	NS	ns2.den.
 
 ; For internal VPN connections
 home.taiku.cz		IN	A	10.7.10.2

@@ -2,14 +2,17 @@
 ; .den local TLD (VLAN21 view)
 ;
 $TTL	300
-@	IN	SOA	ns.den. admin.den. (
-			 2022012601		; Serial
+@	IN	SOA	ns1.den. admin.den. (
+			 2022012602		; Serial
 			 604800		; Refresh
 			  86400		; Retry
 			2419200		; Expire
 			 604800 )	; Negative Cache TTL
 ; nameserver NS
-@	IN	NS	ns.den.
+@	IN	NS	ns1.den.
+	IN	NS	ns2.den.
+ns1		IN	A	10.7.21.33
+ns2		IN	A	10.7.21.34
 
 $ORIGIN den.
 
