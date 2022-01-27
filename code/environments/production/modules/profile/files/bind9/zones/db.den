@@ -3,7 +3,7 @@
 ;
 $TTL	300
 @	IN	SOA	ns1.den. admin.den. (
-		     2022012602		; Serial
+		     2022012603		; Serial
 			 604800		; Refresh
 			  86400		; Retry
 			2419200		; Expire
@@ -43,8 +43,13 @@ prolink-overlay	IN	A	10.7.31.16
 mediabox	IN	A	10.7.31.19
 torrent		IN	A	10.7.31.20
 build		IN	A	10.7.31.21
+k8s-vlan31	IN	A	10.7.31.26
+		IN	A	10.7.31.27
+		IN	A	10.7.31.28
 brc-vlan31	IN	A	10.7.31.255
 
+; VLAN31 CNAMEs
+home-assistant	IN	CNAME	k8s-vlan31
 
 ; VLAN32 Public services - 10.7.32.0/24
 ; virtual A
