@@ -1,0 +1,2 @@
+---
+network::netplan::interfaces: ['eth0', 'eth32']
