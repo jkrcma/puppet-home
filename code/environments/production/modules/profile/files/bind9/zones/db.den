@@ -3,7 +3,7 @@
 ;
 $TTL	300
 @	IN	SOA	ns1.den. admin.den. (
-		     2022012603		; Serial
+		     2022091001		; Serial
 			 604800		; Refresh
 			  86400		; Retry
 			2419200		; Expire
@@ -12,7 +12,7 @@ $TTL	300
 @	IN	NS	ns1.den.
 	IN	NS	ns2.den.
 ns1		IN	A	10.7.30.33
-ns2		IN	A	10.7.33.34
+ns2		IN	A	10.7.30.34
 
 $ORIGIN den.
 
@@ -25,8 +25,9 @@ k8s		IN	CNAME	rpi-k8s-01.mgmt.den.
 net-vlan30	IN	A	10.7.30.0
 gw-vlan30	IN	A	10.7.30.1
 rpi-k8s-01	IN	A	10.7.30.13
-dns		IN	A	10.7.30.22
-puppet		IN	A	10.7.30.24
+;dns		IN	A	10.7.30.22
+puppet-01	IN	A	10.7.30.23
+puppet-02	IN	A	10.7.30.24
 puppet5		IN	A	10.7.30.25
 dns-01		IN	A	10.7.30.33
 dns-02		IN	A	10.7.30.34

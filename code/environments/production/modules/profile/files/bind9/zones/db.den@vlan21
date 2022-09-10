@@ -3,7 +3,7 @@
 ;
 $TTL	300
 @	IN	SOA	ns1.den. admin.den. (
-			 2022012602		; Serial
+			 2022091001		; Serial
 			 604800		; Refresh
 			  86400		; Retry
 			2419200		; Expire
@@ -34,10 +34,9 @@ kodi		IN	A	10.7.21.18
 mediabox	IN	A	10.7.21.19
 torrent		IN	A	10.7.21.20
 build		IN	A	10.7.21.21
-ns		IN	A	10.7.21.22
-dns		IN	A	10.7.21.22
-pihole		IN	A	10.7.21.23
-puppet		IN	A	10.7.21.24
+;dns		IN	A	10.7.21.22
+puppet-01	IN	A	10.7.21.23
+puppet-02	IN	A	10.7.21.24
 puppet5		IN	A	10.7.21.25
 rpi-k8s-01	IN	A	10.7.21.26
 rpi-k8s-02	IN	A	10.7.21.27
@@ -46,6 +45,6 @@ rpi-lxd-01	IN	A	10.7.21.29
 pihole-01	IN	A	10.7.21.30
 pihole-02	IN	A	10.7.21.31
 rpi-lxd-02	IN	A	10.7.21.32
-dns-01	IN	A	10.7.21.33
-dns-02	IN	A	10.7.21.34
+dns-01		IN	A	10.7.21.33
+dns-02		IN	A	10.7.21.34
 brc-vlan21	IN	A	10.7.21.255

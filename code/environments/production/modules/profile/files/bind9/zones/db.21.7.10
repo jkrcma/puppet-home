@@ -3,7 +3,7 @@
 ;
 $TTL	300
 @	IN	SOA	ns1.den. admin.den. (
-			 2022012603		; Serial
+			 2022091001		; Serial
 			 604800		; Refresh
 			  86400		; Retry
 			2419200		; Expire
@@ -32,9 +32,9 @@ $GENERATE 6-10 $ IN	PTR	$-21-7-10.data.den.
 19	IN	PTR	mediabox.data.den.
 20	IN	PTR	torrent.data.den.
 21	IN	PTR	build.data.den.
-22	IN	PTR	dns.data.den.
-23	IN	PTR	pihole.data.den.
-24	IN	PTR	puppet.data.den.
+22	IN	PTR	22-21-7-10.data.den.
+23	IN	PTR	puppet-01.data.den.
+24	IN	PTR	puppet-02.data.den.
 25	IN	PTR	puppet5.data.den.
 26	IN	PTR	rpi-k8s-01.data.den.
 27	IN	PTR	rpi-k8s-02.data.den.
