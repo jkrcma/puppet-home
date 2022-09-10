@@ -24,4 +24,10 @@ class profile::kubernetes {
     package { ['iptables', 'nftables']:
         ensure => absent,
     }
+
+    # Blacklist VLAN 30 nameservers, we get them from VLAN 21
+    file { '/etc/resolvconf.conf':
+        ensure => file,
+        source => 'modules:///profile/kubernetes/resolvconf.conf',
+    }
 }
