@@ -1,5 +1,5 @@
 class profile::puppetmaster {
-    package { ['puppetmaster', 'hiera-eyaml']:
+    package { ['puppetmaster', 'hiera-eyaml', 'git']:
         ensure => latest,
     }
 
