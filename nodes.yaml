@@ -60,9 +60,21 @@ prolink-overlay:
   parameters:
     type: lxd
 
-/^puppet(5|-\d{2})?$/:
+puppet5:
   classes:
     - role::puppetmaster
+  parameters:
+    type: lxd
+
+puppet-01:
+  classes:
+    - role::puppetmaster::primary
+  parameters:
+    type: lxd
+
+puppet-02:
+  classes:
+    - role::puppetmaster::secondary
   parameters:
     type: lxd
 
