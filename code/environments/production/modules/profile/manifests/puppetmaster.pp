@@ -3,7 +3,7 @@ class profile::puppetmaster {
 
     $homedir = $profile::puppetmaster::config::homedir
 
-    package { ['puppet-master', 'hiera-eyaml', 'git']:
+    package { ['puppet-master', 'hiera-eyaml', 'git', 'rsync']:
         ensure => latest,
     }
 
@@ -55,10 +55,6 @@ class profile::puppetmaster::primary {
         creates => $known_hosts_file,
         user => puppet,
         require => Package['puppet-master'],
-    }
-
-    package { 'rsync':
-        ensure => latest,
     }
 
     $cadir = "${homedir}/ssl/ca"
