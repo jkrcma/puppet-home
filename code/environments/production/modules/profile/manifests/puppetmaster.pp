@@ -71,16 +71,17 @@ class profile::puppetmaster::secondary {
     include profile::puppetmaster::config
 
     $homedir = $profile::puppetmaster::config::homedir
+    $sshkey_type = $profile::puppetmaster::config::sync_sshkey_type
     $sshkey = $profile::puppetmaster::config::sync_sshkey
 
     ssh_authorized_key { "primary@puppetmaster":
         ensure => present,
         user => puppet,
-        type => 'ssh-ed25519',
+        type => $sshkey_type,
         key => $sshkey,
     }
 }
 
-class profile::puppetmaster::config ($homedir = '/var/lib/puppet', $sync_sshkey = undef, $sync_dest_host = undef) {
+class profile::puppetmaster::config ($homedir = '/var/lib/puppet', $sync_sshkey_type = undef, $sync_sshkey = undef, $sync_dest_host = undef) {
     # Dummy config class, might be used later for `puppet.conf`
 }

@@ -71,12 +71,14 @@ puppet-01:
     - role::puppetmaster::primary
   parameters:
     type: lxd
+    group: puppet
 
 puppet-02:
   classes:
     - role::puppetmaster::secondary
   parameters:
     type: lxd
+    group: puppet
 
 /^rpi-k8s-\d{2}$/:
   classes:
