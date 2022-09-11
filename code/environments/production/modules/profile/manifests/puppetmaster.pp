@@ -57,6 +57,10 @@ class profile::puppetmaster::primary {
         require => Package['puppet-master'],
     }
 
+    package { 'rsync':
+        ensure => latest,
+    }
+
     $cadir = "${homedir}/ssl/ca"
     cron { 'puppet CA sync':
         command => "/usr/bin/rsync -aq ${cadir}/ puppet@${sync_dest_host}:${cadir}",
