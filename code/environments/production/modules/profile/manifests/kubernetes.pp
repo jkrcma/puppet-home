@@ -28,6 +28,6 @@ class profile::kubernetes {
     # Blacklist VLAN 30 nameservers, we get them from VLAN 21
     file { '/etc/resolvconf.conf':
         ensure => file,
-        source => 'modules:///profile/kubernetes/resolvconf.conf',
+        source => 'puppet:///modules/profile/kubernetes/resolvconf.conf',
     }
 }
