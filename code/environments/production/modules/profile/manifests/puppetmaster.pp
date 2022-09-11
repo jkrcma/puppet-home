@@ -61,7 +61,7 @@ class profile::puppetmaster::primary {
     cron { 'puppet CA sync':
         command => "/usr/bin/rsync -aq ${cadir}/ puppet@${sync_dest_host}:${cadir}",
         user => puppet,
-        minut => '*/5',
+        minute => '*/5',
         require => Package['puppet-master'],
     }
 }
