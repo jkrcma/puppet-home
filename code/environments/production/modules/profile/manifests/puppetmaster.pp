@@ -12,6 +12,13 @@ class profile::puppetmaster {
         enable => true,
     }
 
+    # Enable shell so the CA rsync can work
+    user { 'puppet':
+        ensure => present,
+        shell => '/bin/sh',
+        require => Package['puppet-master'],
+    }
+
     # eyaml keys are in Ansible because of circular dependency
     ['private_key.pkcs7.pem', 'public_key.pkcs7.pem'].each |$item| {
         file { "${homedir}/keys/${item}":
