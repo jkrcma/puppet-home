@@ -101,8 +101,8 @@ class profile::pihole::config (String $webpassword = undef, String $exclude_doma
 }
 
 class profile::pihole::dns_override {
-    host { 'puppet5.den':
-        ip => '10.7.21.25',
+    host { 'puppet.den':
+        ip => '10.7.21.22',
         comment => "DNS master treats Pi-Hole as a user VLAN client, resolving into a different IP."
     }
     host { 'smtp.den':
