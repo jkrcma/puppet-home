@@ -9,7 +9,6 @@
 // VLAN 21 Management data
 acl "vlan21" {
 	// pihole is a relay for users, vlan21 resolving is unwanted
-	!10.7.21.23;
 	!10.7.21.30;
 	!10.7.21.31;
 	10.7.21.0/24;
