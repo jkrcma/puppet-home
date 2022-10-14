@@ -1,3 +1,0 @@
----
-profile::keepalived::state: MASTER
-profile::keepalived::priority: 255

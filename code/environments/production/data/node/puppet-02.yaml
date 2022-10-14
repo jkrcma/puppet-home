@@ -1,3 +1,0 @@
----
-profile::keepalived::state: BACKUP
-profile::keepalived::priority: 254

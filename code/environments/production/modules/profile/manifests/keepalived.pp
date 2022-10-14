@@ -1,4 +1,4 @@
-class profile::keepalived (String $state, Integer $priority, String $password, String $smtp_host) {
+class profile::keepalived (String $password, String $smtp_host) {
     package { 'keepalived':
         ensure => latest,
     }

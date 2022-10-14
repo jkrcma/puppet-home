@@ -2,8 +2,6 @@
 ## Keepalived configuration for puppet hosts
 ##
 ## Template params:
-## - state:    <%= @state %>
-## - priority: <%= @priority %>
 ## - password: <%= @password %>
 ##
 
@@ -13,6 +11,8 @@ global_defs {
 
 vrrp_track_process track_puppet_master {
     process /usr/bin/ruby /usr/bin/puppet master
+    @puppet-01 weight 254
+    @puppet-02 weight 253
     quorum 1
     quorum_max 1
     delay 2
@@ -20,10 +20,10 @@ vrrp_track_process track_puppet_master {
 }
 
 vrrp_instance PUP_HTTP {
-    state <%= @state %>
+    @puppet-01 state MASTER
+    @puppet-02 state BACKUP
     interface eth0
     virtual_router_id 23
-    priority <%= @priority %>
     advert_int 1
 
     authentication {
