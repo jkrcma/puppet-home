@@ -11,8 +11,7 @@ global_defs {
 
 vrrp_track_process track_puppet_master {
     process /usr/bin/ruby /usr/bin/puppet master
-    @puppet-01 weight 254
-    @puppet-02 weight 253
+    weight 2
     quorum 1
     quorum_max 1
     delay 2
@@ -25,6 +24,8 @@ vrrp_instance PUP_HTTP {
     interface eth0
     virtual_router_id 23
     advert_int 1
+    @puppet-01 priority 100
+    @puppet-02 priority 99
 
     authentication {
         auth_type PASS
