@@ -9,13 +9,12 @@ global_defs {
     include conf.d/global_defs.conf
 }
 
-vrrp_track_process track_puppet_master {
-    process /usr/bin/ruby /usr/bin/puppet master
+vrrp_script chk_puppet_master {
+    script "/usr/local/bin/chk_puppet_master.sh"
+    interval 5
     weight 2
-    quorum 1
-    quorum_max 1
-    delay 2
-    full_command
+    fall 2
+    rise 2
 }
 
 vrrp_instance PUP_HTTP {
@@ -41,8 +40,8 @@ vrrp_instance PUP_HTTP {
         eth30
     }
 
-    track_process {
-        track_puppet_master
+    track_script {
+        chk_puppet_master
     }
 
     smtp_alert

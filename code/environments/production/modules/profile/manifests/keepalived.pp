@@ -32,3 +32,11 @@ class profile::keepalived (String $password, String $smtp_host) {
         }
     }
 }
+
+class profile::keepalived::puppetmaster {
+    # Health check
+    file { '/usr/local/bin/chk_puppet_master.sh':
+        source => 'puppet:///modules/profile/keepalived/chk_puppet_master.sh',
+        mode => '0755',
+    }
+}
