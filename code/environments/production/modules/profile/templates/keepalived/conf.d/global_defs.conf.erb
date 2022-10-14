@@ -1,0 +1,14 @@
+##
+## Global keepalived configuration snippet, please include to global_defs.
+##
+## Template params:
+## - smtp_host:        <%= @smtp_host %>
+## - trusted.certname: <%= @trusted['certname'] %>
+##
+
+notification_email {
+    me+vrrp@taiku.cz
+}
+notification_email_from vrrp+<%= @trusted['certname'] %>@home.taiku.cz
+smtp_server <%= @smtp_host %>
+router_id <%= @trusted['certname'] %>

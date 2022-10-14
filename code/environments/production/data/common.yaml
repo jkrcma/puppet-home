@@ -1,4 +1,5 @@
 ---
+common::smtp_host: smtp.den
 network::ifupdown::interfaces: [eth0]
 
 account::taiku::sshkey_type: 'ssh-ed25519'

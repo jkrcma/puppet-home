@@ -2,3 +2,5 @@
 profile::puppetmaster::config::sync_dest_host: puppet-02.den
 profile::puppetmaster::config::sync_sshkey_type: 'ssh-ed25519'
 profile::puppetmaster::config::sync_sshkey: 'AAAAC3NzaC1lZDI1NTE5AAAAIMfs23SK2Mnw725tEXPVm//M0SNxoxIQY/0sFys6LWIU'
+
+profile::keepalived::smtp_host: "%{lookup('common::smtp_host')}"

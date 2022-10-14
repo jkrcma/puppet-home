@@ -1,0 +1,47 @@
+##
+## Keepalived configuration for puppet hosts
+##
+## Template params:
+## - state:    <%= @state %>
+## - priority: <%= @priority %>
+## - password: <%= @password %>
+##
+
+global_defs {
+    include conf.d/global_defs.conf
+}
+
+vrrp_track_process track_puppet_master {
+    process /usr/bin/ruby /usr/bin/puppet master
+    quorum 1
+    quorum_max 1
+    delay 2
+    full_command
+}
+
+vrrp_instance PUP_HTTP {
+    state <%= @state %>
+    interface eth0
+    virtual_router_id 23
+    priority <%= @priority %>
+    advert_int 1
+
+    authentication {
+        auth_type PASS
+        auth_pass <%= @password %>
+    }
+
+    virtual_ipaddress {
+        10.7.30.22/24 dev eth30
+    }
+
+    track_interface {
+        eth30
+    }
+
+    track_process {
+        track_puppet_master
+    }
+
+    smtp_alert
+}
