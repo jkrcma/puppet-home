@@ -3,7 +3,7 @@
 ;
 $TTL	300
 @	IN	SOA	ns1.den. admin.den. (
-			 2022091001		; Serial
+			 2022101401		; Serial
 			 604800		; Refresh
 			  86400		; Retry
 			2419200		; Expire
@@ -34,7 +34,7 @@ kodi		IN	A	10.7.21.18
 mediabox	IN	A	10.7.21.19
 torrent		IN	A	10.7.21.20
 build		IN	A	10.7.21.21
-;dns		IN	A	10.7.21.22
+puppet		IN	A	10.7.21.22
 puppet-01	IN	A	10.7.21.23
 puppet-02	IN	A	10.7.21.24
 puppet5		IN	A	10.7.21.25
