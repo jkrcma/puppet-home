@@ -1,1 +1,28 @@
-code/environments/production/hiera.yaml
+---
+version: 5
+
+hierarchy:
+  - name: "Per-node secret data"
+    lookup_key: eyaml_lookup_key
+    path: "secrets/node_%{trusted.certname}.eyaml"
+    options:
+      pkcs7_private_key: /var/lib/puppet/keys/private_key.pkcs7.pem
+      pkcs7_public_key: /var/lib/puppet/keys/public_key.pkcs7.pem
+  - name: "Per-group secret data"
+    lookup_key: eyaml_lookup_key
+    path: "secrets/group_%{group}.eyaml"
+    options:
+      pkcs7_private_key: /var/lib/puppet/keys/private_key.pkcs7.pem
+      pkcs7_public_key: /var/lib/puppet/keys/public_key.pkcs7.pem
+  - name: "Per-node data"
+    path: "node/%{trusted.certname}.yaml"
+  - name: "Per-group data"
+    path: "group/%{group}.yaml"
+  - name: "Per-type data"
+    path: "type/%{type}.yaml"
+  - name: "Per-OS release defaults"
+    path: "dist/%{facts.os.name}_%{facts.lsbdistcodename}.yaml"
+  - name: "Per-OS defaults"
+    path: "os/%{facts.os.name}.yaml"
+  - name: "Common data"
+    path: "common.yaml"
