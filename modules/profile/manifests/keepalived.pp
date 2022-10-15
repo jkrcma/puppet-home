@@ -18,6 +18,7 @@ class profile::keepalived (String $password, String $smtp_host) {
     file { '/etc/keepalived/keepalived.conf':
         ensure => file,
         content => template("profile/keepalived/${group}.conf.erb"),
+        validate_cmd => '/usr/sbin/keepalived -t',
         require => Package['keepalived'],
         notify => Service['keepalived'],
     }
@@ -28,7 +29,9 @@ class profile::keepalived (String $password, String $smtp_host) {
         file { "/etc/keepalived/conf.d/${snippet}.conf":
             ensure => file,
             content => template("profile/keepalived/conf.d/${snippet}.conf.erb"),
+            validate_cmd => '/usr/sbin/keepalived -t',
             require => Package['keepalived'],
+            notify => Service['keepalived'],
         }
     }
 }

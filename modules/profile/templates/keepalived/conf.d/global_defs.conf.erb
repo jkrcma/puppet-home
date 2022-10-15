@@ -12,3 +12,5 @@ notification_email {
 notification_email_from vrrp+<%= @trusted['certname'] %>@home.taiku.cz
 smtp_server <%= @smtp_host %>
 router_id <%= @trusted['certname'] %>
+
+enable_script_security
