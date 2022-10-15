@@ -13,4 +13,6 @@ notification_email_from vrrp+<%= @trusted['certname'] %>@home.taiku.cz
 smtp_server <%= @smtp_host %>
 router_id <%= @trusted['certname'] %>
 
+# Needed because of `kill -0`
+script_user root
 enable_script_security
