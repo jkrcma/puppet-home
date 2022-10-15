@@ -20,9 +20,12 @@ class profile::system::puppet {
         source => "puppet:///modules/profile/puppet/${::architecture}/puppet-apply",
     }
 
-    file {'/etc/puppet/puppet.conf':
-        ensure => file,
-        source => '/etc/puppet/puppet.conf',
-        notify => Service['puppet'],
+    # Don't deploy on masters, these are managed by Ansible
+    if $group != 'puppet' {
+        file {'/etc/puppet/puppet.conf':
+            ensure => file,
+            source => 'puppet:///modules/profile/puppet/puppet.conf',
+            notify => Service['puppet'],
+        }
     }
 }
