@@ -2,37 +2,37 @@ class profile::system::logcheck {
     include profile::system::logcheck::conf
 
     package { 'logcheck':
-        ensure => latest,
+        ensure => purged,
     } ->
     Class['profile::system::logcheck::conf']
 }
 
 class profile::system::logcheck::conf {
     file { '/etc/logcheck/logcheck.conf':
-        ensure => file,
-        owner => root,
-        group => logcheck,
-        mode => '640',
-        source => 'puppet:///modules/profile/logcheck/logcheck.conf',
+        ensure => absent,
     }
 
     file { '/etc/logcheck/logcheck.logfiles':
-        ensure => file,
-        owner => root,
-        group => logcheck,
-        mode => '640',
-        source => 'puppet:///modules/profile/logcheck/logcheck.logfiles',
+        ensure => absent,
     }
 
     file { '/etc/logcheck/ignore.d.server':
-        ensure => directory,
-        owner => root,
-        group => logcheck,
+        ensure => absent,
         recurse => true,
-        source => 'puppet:///modules/profile/logcheck/ignore.d.server',
+        force => true,
+    }
+
+    file { '/etc/logcheck':
+        ensure => absent,
+        recurse => true,
+        force => true,
     }
 
     file { '/etc/logcheck/header.txt':
+        ensure => absent,
+    }
+
+    file { ['/tmp/journal', '/tmp/syslog']:
         ensure => absent,
     }
 }
