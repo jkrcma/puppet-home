@@ -11,14 +11,15 @@ clients:
 
 scrape_configs:
   # https://medium.com/grafana-tutorials/setup-grafana-logs-panel-with-loki-and-promtail-3bd89cf40c31
-  - job_name: journal
-    journal:
-      max_age: 12h
-      labels:
-        job: systemd-journal
-    relabel_configs:
-      - source_labels: ['__journal__systemd_unit']
-        target_label: 'unit'
+  # Missing compiled-in support :(
+  #- job_name: journal
+  #  journal:
+  #    max_age: 12h
+  #    labels:
+  #      job: systemd-journal
+  #  relabel_configs:
+  #    - source_labels: ['__journal__systemd_unit']
+  #      target_label: 'unit'
 
   # https://vikaspogu.dev/posts/loki-rsyslog-k3s/
   - job_name: syslog
