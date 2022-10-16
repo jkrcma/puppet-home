@@ -41,5 +41,6 @@ class profile::system::syslog::rsyslog (Boolean $promtail_relay = false) {
     file { '/etc/rsyslog.d/00-promtail.conf':
         ensure => file,
         source => 'puppet:///modules/profile/rsyslog/00-promtail.conf',
+        notify => Service['rsyslog'],
     }
 }
