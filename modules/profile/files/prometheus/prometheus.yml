@@ -44,21 +44,22 @@ scrape_configs:
           group: vm
       # LXC containers
       - targets:
-#        - dns.data.den:9100
+        - build.data.den:9100
         - dns-01.data.den:9100
         - dns-02.data.den:9100
-#        - puppet.data.den:9100
-        - puppet5.data.den:9100
-        - nas.data.den:9100
-        - torrent.data.den:9100
-        - monitor.data.den:9100
-        - mediabox.data.den:9100
+        - docker.data.den:9100
 #        - kodi.data.den:9100
-        - smtp.data.den:9100
-#        - pihole.data.den:9100
+        - mediabox.data.den:9100
+        - monitor.data.den:9100
+        - nas.data.den:9100
         - pihole-01.data.den:9100
         - pihole-02.data.den:9100
-        - build.data.den:9100
+        - prolink-overlay.data.den:9100
+        - puppet5.data.den:9100
+        - puppet-01.data.den:9100
+        - puppet-02.data.den:9100
+        - smtp.data.den:9100
+        - torrent.data.den:9100
         labels:
           group: lxd
     metric_relabel_configs:
@@ -70,7 +71,6 @@ scrape_configs:
   - job_name: 'pihole'
     static_configs:
       - targets:
-#        - pihole.data.den:9617
         - pihole-01.data.den:9617
         - pihole-02.data.den:9617
     metric_relabel_configs:
