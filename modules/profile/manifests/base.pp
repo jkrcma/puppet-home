@@ -10,7 +10,6 @@ class profile::base {
 
     # Centreal logging
     include profile::system::systemd::journal
-    include profile::promtail
 
     include profile::account::taiku
 
