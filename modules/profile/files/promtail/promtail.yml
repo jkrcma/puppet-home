@@ -25,6 +25,7 @@ scrape_configs:
   - job_name: syslog
     syslog:
       listen_address: localhost:1514
+      listen_protocol: udp
       label_structured_data: true
     relabel_configs:
       - source_labels: ["__syslog_connection_ip_address"]

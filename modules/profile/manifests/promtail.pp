@@ -22,7 +22,6 @@ class profile::promtail (Boolean $journald = true) {
     file { '/etc/promtail/promtail.yml':
         ensure => file,
         group => promtail,
-        mode => '640',
         source => 'puppet:///modules/profile/promtail/promtail.yml',
         require => Package['promtail'],
         notify => Service['promtail'],
