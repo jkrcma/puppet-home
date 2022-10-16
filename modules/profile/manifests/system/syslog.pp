@@ -24,5 +24,7 @@ class profile::system::syslog {
         path => '/etc/default/busybox-syslogd',
         ensure => file,
         source => 'puppet:///modules/profile/syslog/default.syslogd',
+        require => Package['rsyslog'],
+        notify => Service['busybox-syslogd'],
     }
 }
