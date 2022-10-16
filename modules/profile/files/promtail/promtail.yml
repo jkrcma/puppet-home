@@ -33,6 +33,9 @@ scrape_configs:
       - source_labels: ["__syslog_message_facility"]
         target_label: "facility"
       - source_labels: ["__syslog_message_hostname"]
+        # Unify host label to short hostname
+        regex: '([^.]+)(?:\.data\.den)?'
+        replacement: '${1}'
         target_label: "host"
       - source_labels: ["__syslog_message_app_name"]
         target_label: "app"
