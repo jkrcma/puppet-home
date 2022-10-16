@@ -2,14 +2,14 @@ class profile::system::logcheck {
     include profile::system::logcheck::conf
 
     package { 'logcheck':
-        ensure => latest,
+        ensure => purged,
     } ->
     Class['profile::system::logcheck::conf']
 }
 
 class profile::system::logcheck::conf {
     file { '/etc/logcheck/logcheck.conf':
-        ensure => file,
+        ensure => absent,
         owner => root,
         group => logcheck,
         mode => '640',
@@ -17,7 +17,7 @@ class profile::system::logcheck::conf {
     }
 
     file { '/etc/logcheck/logcheck.logfiles':
-        ensure => file,
+        ensure => absent,
         owner => root,
         group => logcheck,
         mode => '640',
@@ -25,7 +25,7 @@ class profile::system::logcheck::conf {
     }
 
     file { '/etc/logcheck/ignore.d.server':
-        ensure => directory,
+        ensure => absent,
         owner => root,
         group => logcheck,
         recurse => true,
