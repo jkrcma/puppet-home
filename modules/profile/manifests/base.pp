@@ -7,6 +7,7 @@ class profile::base {
     include profile::system::systemd
     include profile::system::cleanup
     include profile::prometheus::node_exporter
+    include profile::promtail
 
     include profile::account::taiku
 
