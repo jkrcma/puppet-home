@@ -1,3 +1,6 @@
 ---
+profile::base::syslog_provider: rsyslog
+profile::system::rsyslog::promtail_relay: true
+
 profile::prometheus::server::external_url: http://monitor.den:9090/
 profile::prometheus::alertmanager::external_url: http://monitor.den:9093/
