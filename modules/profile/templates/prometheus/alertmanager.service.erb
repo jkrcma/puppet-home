@@ -6,7 +6,7 @@ After=network-online.target
 User=prometheus
 Group=prometheus
 Restart=on-failure
-ExecStart=/usr/sbin/alertmanager -config.file=/etc/prometheus/alertmanager.yml -storage.path=/var/lib/prometheus/alertmanager -web.external-url=<%= @external_url %> -log.level=warn
+ExecStart=/usr/sbin/alertmanager --config.file=/etc/prometheus/alertmanager.yml --storage.path=/var/lib/prometheus/alertmanager --web.external-url=<%= @external_url %> --log.level=warn
 ExecReload=/bin/kill -s HUP $MAINPID
 
 [Install]
