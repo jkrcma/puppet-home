@@ -3,7 +3,7 @@
 ;
 $TTL	300
 @	IN	SOA	ns1.den. admin.den. (
-		     2022101401		; Serial
+		     2022101901		; Serial
 			 604800		; Refresh
 			  86400		; Retry
 			2419200		; Expire
@@ -59,7 +59,6 @@ gw-vlan32	IN	A	10.7.32.1
 docker		IN	A	10.7.32.14
 smtp		IN	A	10.7.32.17
 kodi		IN	A	10.7.32.18
-pihole		IN	A	10.7.32.23
 pihole-01	IN	A	10.7.32.30
 pihole-02	IN	A	10.7.32.31
 brc-vlan32	IN	A	10.7.32.255
