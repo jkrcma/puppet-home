@@ -200,3 +200,23 @@ scrape_configs:
         regex: '(.+)\.data\.(.+):\d+'
         replacement: '$1.$2'
         target_label: fqdn
+
+  - job_name: 'loki'
+    static_configs:
+      - targets:
+        - localhost:3100
+    metric_relabel_configs:
+      - source_labels: [instance]
+        regex: '(.+)\.data\.(.+):\d+'
+        replacement: '$1.$2'
+        target_label: fqdn
+
+  - job_name: 'promtail'
+    static_configs:
+      - targets:
+        - localhost:9080
+    metric_relabel_configs:
+      - source_labels: [instance]
+        regex: '(.+)\.data\.(.+):\d+'
+        replacement: '$1.$2'
+        target_label: fqdn
