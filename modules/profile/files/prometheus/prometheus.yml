@@ -90,48 +90,48 @@ scrape_configs:
     static_configs:
       - targets:
         # VLAN 20
-        - 10.7.20.1  # router.mgmt.den
-        - 10.7.20.2  # switch.mgmt.den
-        - 10.7.20.3  # cap1.mgmt.den
-        - 10.7.20.4  # mikrotik-test.mgmt.den
-        - 10.7.20.5  # switch-poe.mgmt.den
+        - router.mgmt.den
+        - switch.mgmt.den
+        - cap1.mgmt.den
+        - mikrotik-test.mgmt.den
+        - switch-poe.mgmt.den
         # VLAN gateways
-        - 10.7.21.1
-        - 10.7.30.1
-        - 10.7.31.1
-        - 10.7.32.1
-        - 10.7.40.1
-        - 10.7.41.1
-        - 10.7.42.1
-        - 10.7.43.1
-        - 10.7.44.1
-        - 10.7.45.1
+        - router.data.den  # VLAN 21
+        - gw-vlan30.den
+        - gw-vlan31.den
+        - gw-vlan32.den
+        - gw-vlan40.den
+        - gw-vlan41.den
+        - gw-vlan42.den
+        - gw-vlan43.den
+        - gw-vlan44.den
+        - gw-vlan45.den
         # Bare metal
-        - 10.7.20.11  # dogee.mgmt.den
-        - 10.7.20.12  # drolf-rpi.mgmt.den
-        - 10.7.20.13  # rpi-k8s-01.mgmt.den
-        - 10.7.20.14  # rpi-k8s-02.mgmt.den
-        - 10.7.20.15  # rpi-k8s-03.mgmt.den
-        - 10.7.20.16  # rpi-lxd-01.mgmt.den
-        - 10.7.20.17  # rpi-lxd-02.mgmt.den
+        - dogee.mgmt.den
+        - drolf-rpi.mgmt.den
+        - rpi-k8s-01.mgmt.den
+        - rpi-k8s-02.mgmt.den
+        - rpi-k8s-03.mgmt.den
+        - rpi-lxd-01.mgmt.den
+        - rpi-lxd-02.mgmt.den
         # LXCs
-        - 10.7.31.21  # build.den
-        - 10.7.30.33  # dns-01.den
-        - 10.7.30.34  # dns-02.den
-        - 10.7.32.14  # docker.den
-#        - 10.7.32.18  # kodi.den
-        - 10.7.31.19  # mediabox.den
-        - 10.7.31.13  # monitor.den
-        - 10.7.31.15  # nas.den
-        - 10.7.32.30  # pihole-01.den
-        - 10.7.32.31  # pihole-02.den
-        - 10.7.31.16  # prolink-overlay.den
-        - 10.7.30.23  # puppet-01.den
-        - 10.7.30.24  # puppet-02.den
-        - 10.7.32.17  # smtp.den
-        - 10.7.31.20  # torrent.den
+        - build.den
+        - dns-01.den
+        - dns-02.den
+        - docker.den
+#        - kodi.den
+        - mediabox.den
+        - monitor.den
+        - nas.den
+        - pihole-01.den
+        - pihole-02.den
+        - prolink-overlay.den
+        - puppet-01.den
+        - puppet-02.den
+        - smtp.den
+        - torrent.den
         # VIPs
-        - 10.7.30.22  # puppet.den
+        - puppet.den
         # Connect Plus
         - 10.230.7.161  # router in the building
         # Public
