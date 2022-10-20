@@ -59,6 +59,8 @@ receivers:
       - api_url: 'https://api.telegram.org'
         bot_token: '347973833:AAF8zPNn0lZFLmM1n5lXNi6q3vP5-BQDWbI'
         chat_id: 95594062
+        send_resolved: true
+        parse_mode: 'HTML'
   - name: 'DMS'
     webhook_configs:
       - url: https://nosnch.in/ea3ff83290
