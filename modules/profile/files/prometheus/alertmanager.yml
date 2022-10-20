@@ -32,6 +32,10 @@ route:
 
   # The child route trees.
   routes:
+    - repeat_interval: 30m
+      receiver: DMS
+      matchers:
+        - alertname = PrometheusAlertmanagerE2eDeadManSwitch
 
 
 # Inhibition rules allow to mute a set of alerts given that another alert is
@@ -39,19 +43,23 @@ route:
 # We use this to mute any warning-level notifications if the same alert is
 # already critical.
 inhibit_rules:
-- source_match:
-    severity: 'critical'
-  target_match:
-    severity: 'warning'
-  # Apply inhibition if the alertname is the same.
-  equal: ['alertname', 'cluster', 'service']
+  - source_match:
+      severity: 'critical'
+    target_match:
+      severity: 'warning'
+    # Apply inhibition if the alertname is the same.
+    equal: ['alertname', 'cluster', 'service']
 
 
 receivers:
-- name: 'taiku'
-  email_configs:
-    - to: 'home+prometheus@taiku.cz'
-  telegram_configs:
-    - api_url: 'https://api.telegram.org'
-      bot_token: '347973833:AAF8zPNn0lZFLmM1n5lXNi6q3vP5-BQDWbI'
-      chat_id: 95594062
+  - name: 'taiku'
+    email_configs:
+      - to: 'home+prometheus@taiku.cz'
+    telegram_configs:
+      - api_url: 'https://api.telegram.org'
+        bot_token: '347973833:AAF8zPNn0lZFLmM1n5lXNi6q3vP5-BQDWbI'
+        chat_id: 95594062
+  - name: 'DMS'
+    webhook_configs:
+      - url: https://nosnch.in/ea3ff83290
+
