@@ -55,7 +55,7 @@ class profile::prometheus::alertmanager ($external_url = undef) {
     file { '/etc/prometheus/alertmanager.yml':
         ensure => file,
         source => 'puppet:///modules/profile/prometheus/alertmanager.yml',
-        validate_cmd => '/usr/bin/amtool check-config',
+        validate_cmd => '/usr/bin/amtool check-config %',
         notify => Service['alertmanager'],
     }
 
