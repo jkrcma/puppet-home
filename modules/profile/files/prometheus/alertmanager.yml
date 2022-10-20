@@ -51,3 +51,7 @@ receivers:
 - name: 'taiku'
   email_configs:
     - to: 'home+prometheus@taiku.cz'
+  telegram_configs:
+    - api_url: 'https://api.telegram.org'
+      bot_token: '347973833:AAF8zPNn0lZFLmM1n5lXNi6q3vP5-BQDWbI'
+      chat_id: 95594062
