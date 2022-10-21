@@ -20,12 +20,21 @@ class profile::puppetmaster {
     }
 
     # eyaml keys are in Ansible because of circular dependency
-    ['private_key.pkcs7.pem', 'public_key.pkcs7.pem'].each |$item| {
-        file { "${homedir}/keys/${item}":
-            ensure => file,
-            noop => true,
-            require => Package['puppet-master'],
-        }
+    file { "${homedir}/keys/private_key.pkcs7.pem":
+        ensure => file,
+        owner => puppet,
+        group => puppet,
+        mode => '0600',
+        noop => true,
+        require => Package['puppet-master'],
+    }
+    file { "${homedir}/keys/public_key.pkcs7.pem":
+        ensure => file,
+        owner => puppet,
+        group => puppet,
+        mode => '0600',
+        noop => true,
+        require => Package['puppet-master'],
     }
 }
 

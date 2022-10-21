@@ -20,6 +20,8 @@ class profile::prometheus::server ($external_url = undef) {
 
     file { '/etc/prometheus/prometheus.yml':
         ensure => file,
+        group => prometheus,
+        mode => '0640',
         source => 'puppet:///modules/profile/prometheus/prometheus.yml',
         notify => Service['prometheus'],
     }
@@ -54,6 +56,8 @@ class profile::prometheus::alertmanager ($external_url = undef) {
 
     file { '/etc/prometheus/alertmanager.yml':
         ensure => file,
+        group => prometheus,
+        mode => '0640',
         source => 'puppet:///modules/profile/prometheus/alertmanager.yml',
         validate_cmd => '/usr/bin/amtool check-config %',
         notify => Service['alertmanager'],
@@ -81,6 +85,8 @@ class profile::prometheus::blackbox_exporter {
 
     file { '/etc/prometheus/blackbox.yml':
         ensure => file,
+        group => prometheus,
+        mode => '0640',
         source => 'puppet:///modules/profile/prometheus/blackbox.yml',
         notify => Service['blackbox-exporter'],
     }
@@ -101,6 +107,8 @@ class profile::prometheus::snmp_exporter {
 
     file { '/etc/prometheus/snmp.yml':
         ensure => file,
+        group => prometheus,
+        mode => '0640',
         source => 'puppet:///modules/profile/prometheus/snmp.yml',
         notify => Service['snmp-exporter'],
     }

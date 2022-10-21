@@ -33,6 +33,8 @@ define user::user($id = undef, $sudo = false, $sshkey_type = undef, $sshkey = un
     # enforce custom .profile with $TERM hack
     file { "${homedir_path}/.profile":
         ensure => file,
+        owner => $name,
+        group => $name,
         source => 'puppet:///modules/user/bash_profile',
     }
 
