@@ -1,0 +1,22 @@
+## Managed by Puppet
+##
+
+# Let sudo manage the granual permissions.
++:ALL:LOCAL
+
+# User "root" should be allowed to get access via cron .. tty5 tty6.
++:root:cron crond :0 tty1 tty2 tty3 tty4 tty5 tty6
+
+# User "root" should be denied to get access from all other sources.
+-:root:ALL
+
+# Hardcoded because we don't really expect to have more human users any time soon.
+# Secure management networks for access:
+# - VLAN13 10.7.13.0/24
++:taiku:10.7.13.0/24
+
+# Specific rules imported from hiera
+<%= @rules.join("\n") %>
+
+# All other users should be denied to get access from all sources.
+-:ALL:ALL

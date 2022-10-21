@@ -3,6 +3,7 @@ class profile::base (String $syslog_provider = 'busybox') {
     include profile::system::puppet
     include profile::system::logcheck
     include profile::system::packages
+    include profile::system::security
     include profile::system::systemd
     include profile::system::cleanup
     include profile::prometheus::node_exporter
