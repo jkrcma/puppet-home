@@ -9,13 +9,17 @@ class profile::loki {
         require => Package['loki'],
     }
 
+    # Loki does multi-tenancy by default, by using "fake" we disable it
+    # https://github.com/grafana/loki/issues/5459
     file { '/etc/loki/alerts':
+        ensure => directory,
+    }
+    file { '/etc/loki/alerts/fake':
         ensure  => directory,
-        #recurse => true,
-        #purge   => true,
-        #source  => 'puppet:///modules/profile/prometheus/alerts',
-        #notify => Service['prometheus'],
-        require => Package['loki'],
+        recurse => true,
+        purge   => true,
+        source  => 'puppet:///modules/profile/loki/alerts',
+        notify => Service['loki'],
     }
 
     file { '/var/lib/loki/tmp-alerts':
@@ -23,7 +27,6 @@ class profile::loki {
         owner => loki,
         group => loki,
         mode => '0770',
-        require => Package['loki'],
         before => Service['loki']
     }
 
@@ -32,7 +35,6 @@ class profile::loki {
         group => loki,
         mode => '644',
         source => 'puppet:///modules/profile/loki/loki.yml',
-        require => Package['loki'],
         notify => Service['loki'],
     }
 }

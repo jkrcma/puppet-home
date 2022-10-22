@@ -1,0 +1,20 @@
+groups:
+  - name: system
+    rules:
+      - alert: SyslogKernelErrors
+        expr: sum(count_over_time({job="syslog",facility="kern",severity=~"alert|critical|error|warning"}[1m])) > 0
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: Errors in kernel log (instance {{ $labels.instance }})
+          description: "High severity log messages found in the kernel log\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+
+      - alert: SyslogSMARTErrors
+        expr: sum(count_over_time({job="syslog",app="smartd",severity=~"alert|critical|error|warning"}[1m])) > 0
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: S.M.A.R.T errors in log (instance {{ $labels.instance }})
+          description: "High severity smartd messages found in logs\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
