@@ -1,6 +1,6 @@
 ---
 profile::system::security::rules:
-- '+:puppet:puppet-01.den'
+- '+:puppet:10.7.21.23'
 
 profile::puppetmaster::config::sync_dest_host: puppet-02.den
 profile::puppetmaster::config::sync_sshkey_type: 'ssh-ed25519'
