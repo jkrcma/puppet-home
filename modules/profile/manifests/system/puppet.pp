@@ -27,5 +27,9 @@ class profile::system::puppet {
             source => 'puppet:///modules/profile/puppet/puppet.conf',
             notify => Service['puppet'],
         }
+
+        file { '/etc/puppet/prometheus.yaml':
+            ensure => absent,
+        }
     }
 }
