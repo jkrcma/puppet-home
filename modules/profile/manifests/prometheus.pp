@@ -114,7 +114,7 @@ class profile::prometheus::snmp_exporter {
     }
 }
 
-class profile::prometheus::node_exporter ($version = undef, $collectors = 'filesystem,loadavg,meminfo,netdev,textfile,uname', $extraArgs = '') {
+class profile::prometheus::node_exporter ($version = undef, $extraArgs = '') {
     # New Ubuntu has their own node-exporter in the way,
     # make sure we don't use it.
     package { 'prometheus-node-exporter':
@@ -141,10 +141,13 @@ class profile::prometheus::node_exporter ($version = undef, $collectors = 'files
     }
 
     $args = $version ? {
-        /^0\./ => '-log.level warn -collectors.enabled $collectors -collector.textfile.directory /etc/node-exporter',
         /^1\.2/ => '--log.level warn --collector.textfile.directory /etc/node-exporter',
         /^1\.4/ => '--log.level warn --collector.textfile.directory /etc/node-exporter/**',
-        default => '',
+        default => undef,
+    }
+
+    if ! $version {
+        fail("No node_exporter version provided")
     }
 
     file { '/etc/default/node-exporter':

@@ -36,3 +36,5 @@ profile::system::packages::gpg_key: |
   5w+r3ZjJ8OYWnA81tn0bMzdtzGW7UUJx
   =iyd9
   -----END PGP PUBLIC KEY BLOCK-----
+
+profile::prometheus::node_exporter::version: 1.4.0
