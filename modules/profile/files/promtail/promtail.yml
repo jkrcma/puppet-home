@@ -24,6 +24,7 @@ scrape_configs:
   - job_name: syslog
     syslog:
       listen_address: localhost:1514
+      idle_timeout: 5m
       label_structured_data: true
       labels:
         job: syslog
