@@ -99,5 +99,20 @@ class profile::puppetmaster::secondary {
 }
 
 class profile::puppetmaster::config ($homedir = '/var/lib/puppet', $sync_sshkey_type = undef, $sync_sshkey = undef, $sync_dest_host = undef) {
-    # Dummy config class, might be used later for `puppet.conf`
+    include profile::prometheus::node_exporter
+
+    # Puppet prometheus_reporter plugin config
+    file { '/etc/puppet/prometheus.yaml':
+        ensure => file,
+        source => 'puppet:///modules/profile/puppet/prometheus.yaml',
+        notify => Service['puppet'],
+    }
+
+    # Depends on node-exporter profile
+    file { '/etc/node-exporter/puppet-reports':
+        ensure => directory,
+        group => puppet,
+        mode => '0775',
+        require => Package['puppet-master'],
+    }
 }
