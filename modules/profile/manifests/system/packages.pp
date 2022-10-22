@@ -88,7 +88,7 @@ class profile::system::packages::exim4 {
         default => absent,
     }
 
-    file { '/etc/node-exporter/exim4.prom':
+    file { '/etc/node-exporter/crons/exim4.prom':
         ensure => $textfile_ensure,
         owner => 'Debian-exim',
     }
@@ -96,7 +96,7 @@ class profile::system::packages::exim4 {
     cron { 'local maildir size':
         ensure => $textfile_ensure,
         environment => 'SHELL=/bin/sh',
-        command => '/usr/bin/printf "# TYPE exim4_local_maildir_size gauge\nexim4_local_maildir_size \%d\n" $( /usr/bin/stat --printf="\%s" /var/mail/mail ) > /etc/node-exporter/exim4.prom',
+        command => '/usr/bin/printf "# TYPE exim4_local_maildir_size gauge\nexim4_local_maildir_size \%d\n" $( /usr/bin/stat --printf="\%s" /var/mail/mail ) > /etc/node-exporter/crons/exim4.prom',
         user => 'Debian-exim',
         minute => '*/5',
     }

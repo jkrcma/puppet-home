@@ -142,7 +142,8 @@ class profile::prometheus::node_exporter ($version = undef, $collectors = 'files
 
     $args = $version ? {
         /^0\./ => '-log.level warn -collectors.enabled $collectors -collector.textfile.directory /etc/node-exporter',
-        /^1\./ => '--log.level warn --collector.textfile.directory /etc/node-exporter',
+        /^1\.2/ => '--log.level warn --collector.textfile.directory /etc/node-exporter',
+        /^1\.4/ => '--log.level warn --collector.textfile.directory /etc/node-exporter/**',
         default => '',
     }
 
@@ -152,18 +153,17 @@ class profile::prometheus::node_exporter ($version = undef, $collectors = 'files
         notify => Service['node-exporter'],
     }
 
-    file { '/etc/node-exporter':
+    file { ['/etc/node-exporter', '/etc/node-exporter/crons']:
         ensure => directory,
     }
 
-    file { '/etc/node-exporter/puppet.prom':
+    file { '/etc/node-exporter/crons/puppet.prom':
         ensure => file,
         group => puppet,
-        mode => '644',
     }
 
     exec { 'puppet run metric':
-        command => '/usr/bin/printf "# TYPE puppet_last_run gauge\npuppet_last_run %.9e\n" $( date +%s ) > /etc/node-exporter/puppet.prom',
+        command => '/usr/bin/printf "# TYPE puppet_last_run gauge\npuppet_last_run %.9e\n" $( date +%s ) > /etc/node-exporter/crons/puppet.prom',
         loglevel => debug,
     }
 }
