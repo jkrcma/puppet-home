@@ -21,7 +21,15 @@ class profile::base (String $syslog_provider = 'busybox') {
         }
     }
     include profile::system::systemd::journal
-    include profile::system::log2ram
+
+    # disks.sda.model - RPi 4 with USB sticks
+    # blockdevices - RPi 4 with SD cards
+    if (has_key($facts['disks'], 'sda')
+        and has_key($facts['disks']['sda'], 'model')
+        and $facts['disks']['sda']['model'] =~ /^Flash/)
+        or $facts['blockdevices'] =~ /mmcblk\d+/ {
+        include profile::system::log2ram
+    }
 
     include profile::account::taiku
 
