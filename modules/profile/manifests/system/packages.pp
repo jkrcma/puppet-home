@@ -28,7 +28,13 @@ class profile::system::packages ($gpg_key, $enable_exim4 = true) {
 
     class { profile::system::packages::apt: stage => 'apt' }
 
-    package { ['openssh-server', 'httpie', 'gnupg', 'cron', 'fping']:
+    # Dependencies
+    package { ['openssh-server', 'wget', 'gnupg', 'cron', 'fping']:
+        ensure => latest,
+    }
+
+    # Packages for the comfort
+    package { ['httpie', 'vim']:
         ensure => latest,
     }
 
