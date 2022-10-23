@@ -25,6 +25,9 @@ class profile::system::log2ram {
         require => Package['log2ram'],
     }
 
+    # Make sure that the journal storage is clean before starting the service
+    File['/var/log/journal'] -> Service['log2ram']
+
     # No need to store logs on disk, we have Loki
     service { 'log2ram-daily.timer':
         enable => false,
