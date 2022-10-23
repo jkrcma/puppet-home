@@ -21,6 +21,7 @@ class profile::base (String $syslog_provider = 'busybox') {
         }
     }
     include profile::system::systemd::journal
+    include profile::system::log2ram
 
     include profile::account::taiku
 
