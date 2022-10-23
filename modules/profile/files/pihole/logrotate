@@ -1,0 +1,22 @@
+/var/log/pihole.log {
+	su root syslog
+	daily
+	copytruncate
+	rotate 5
+	compress
+	# Save some ramdisk space
+#	delaycompress
+	notifempty
+	nomail
+}
+
+/var/log/pihole-FTL.log {
+	su root syslog
+	weekly
+	copytruncate
+	rotate 3
+	compress
+	delaycompress
+	notifempty
+	nomail
+}

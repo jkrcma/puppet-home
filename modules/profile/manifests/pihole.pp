@@ -62,6 +62,12 @@ class profile::pihole::config (String $webpassword = undef, String $exclude_doma
         mode => '0775',
     }
 
+    # More aggressive log rotation
+    file { '/etc/pihole/logrotate':
+        ensure => file,
+        source => 'puppet:///modules/profile/pihole/logrotate',
+    }
+
     # Pi-Hole being broken is the reason why this file must exist
     file { '/etc/pihole/pihole-FTL.conf':
         ensure => file,
