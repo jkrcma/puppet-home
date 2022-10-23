@@ -21,6 +21,17 @@ class profile::pihole {
         ensure => running,
         require => Exec['pihole-automated-install'],
     }
+
+    # Managed by pihole installation script
+    @package { 'lighttpd':
+        ensure => present,
+    }
+
+    service { 'lighttpd':
+        enable => true,
+        ensure => running,
+        require => Exec['pihole-automated-install'],
+    }
 }
 
 class profile::pihole::config (String $webpassword = undef, String $exclude_domains = undef) {
@@ -63,6 +74,16 @@ class profile::pihole::config (String $webpassword = undef, String $exclude_doma
         content => template('profile/pihole/setupVars.conf.erb'),
         before => Exec['pihole-automated-install'],
         notify => Exec['pihole-reconfigure'],
+    }
+
+    # Disable access logs in lighttpd
+    file_line { 'disable lighttpd access.log':
+        ensure => absent,
+        path => '/etc/lighttpd/lighttpd.conf',
+        match => '^accesslog\.',
+        match_for_absence => true,
+        multiple => true,
+        notify => Service['lighttpd'],
     }
 
     file { '/etc/dnsmasq.d/02-no-hosts.conf':
