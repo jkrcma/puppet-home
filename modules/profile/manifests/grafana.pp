@@ -9,6 +9,7 @@ class profile::grafana::apt {
     exec { 'apt-key add grafana.list':
         command => "/usr/bin/wget https://packages.grafana.com/gpg.key -O - | /usr/bin/apt-key add -",
         refreshonly => true,
+        notify => Exec['apt-get update forced'],
     }
 }
 

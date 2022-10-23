@@ -9,6 +9,7 @@ class profile::system::log2ram::apt {
     exec { 'apt-key add azlux.list':
         command => "/usr/bin/wget https://azlux.fr/repo.gpg -O - | /usr/bin/apt-key add -",
         refreshonly => true,
+        notify => Exec['apt-get update forced'],
     }
 }
 
