@@ -41,7 +41,7 @@ class profile::prometheus::server ($external_url = undef) {
     }
 }
 
-class profile::prometheus::alertmanager ($external_url = undef) {
+class profile::prometheus::alertmanager ($external_url = undef, $telegram_bot_token = undef) {
     include profile::prometheus::common
 
     package { 'alertmanager':
@@ -58,7 +58,7 @@ class profile::prometheus::alertmanager ($external_url = undef) {
         ensure => file,
         group => prometheus,
         mode => '0640',
-        source => 'puppet:///modules/profile/prometheus/alertmanager.yml',
+        content => template('profile/prometheus/alertmanager.yml.erb'),
         validate_cmd => '/usr/bin/amtool check-config %',
         notify => Service['alertmanager'],
     }
