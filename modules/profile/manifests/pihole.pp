@@ -54,8 +54,12 @@ class profile::pihole::config (String $webpassword = undef, String $exclude_doma
         refreshonly => true,
     }
 
+    # Do not touch pihole's generated directory, no hard dependency because of a cycle
     file { '/etc/pihole':
         ensure => directory,
+        owner => undef,
+        group => undef,
+        mode => '0775',
     }
 
     # Pi-Hole being broken is the reason why this file must exist
