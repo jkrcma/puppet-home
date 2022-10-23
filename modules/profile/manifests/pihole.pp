@@ -2,9 +2,6 @@ class profile::pihole {
     include profile::pihole::config
     include profile::pihole::dns_override
 
-    package { 'wget':
-        ensure => latest,
-    }
     # blackbox exec, whatever :)
     exec { 'pihole-automated-install':
         command => 'wget -O /root/pihole-install.sh https://install.pi-hole.net && bash /root/pihole-install.sh --unattended',
