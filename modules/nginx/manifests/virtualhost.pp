@@ -4,6 +4,7 @@ define nginx::virtualhost($source = undef, $content = undef) {
     file { $vh_filename:
         source => $source,
         content => $content,
+        validate_cmd => '/usr/sbin/nginx -t',
         notify => Exec['enable-nginx-site'],
     }
 
