@@ -7,7 +7,7 @@ route:
   # The labels by which incoming alerts are grouped together. For example,
   # multiple alerts coming in for cluster=A and alertname=LatencyHigh would
   # be batched into a single group.
-  group_by: ['alertname', 'cluster', 'service']
+  group_by: ['alertname', 'job']
 
   # When a new group of alerts is created by an incoming alert, wait at
   # least 'group_wait' to send the initial notification.
@@ -43,12 +43,20 @@ route:
 # We use this to mute any warning-level notifications if the same alert is
 # already critical.
 inhibit_rules:
-  - source_match:
-      severity: 'critical'
-    target_match:
-      severity: 'warning'
+  - source_matchers:
+      - severity = critical
+    target_matchers:
+      - severity = warning
     # Apply inhibition if the alertname is the same.
-    equal: ['alertname', 'cluster', 'service']
+    equal: ['alertname', 'job']
+  # When blackbox probe to the ISP router is firing, inhibit all ICMP and HTTP probes to internet targets
+  - source_matchers:
+      - alertname =~ "BlackboxProbeFailed|BlackboxProbeSlowPing"
+      - instance = "10.230.7.161"
+    target_matchers:
+      - job =~ "blackbox-(ping|http)"
+      - instance =~ "1.1.1.1|9.9.9.9|https://(bw\.taiku\.cz|taiku\.cz|google\.cz|google\.com|proton\.me|seznam\.cz)"
+    equal: []
 
 
 receivers:
