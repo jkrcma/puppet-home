@@ -19,6 +19,11 @@ class profile::puppetmaster {
         require => Package['puppet-master'],
     }
 
+    file { '/etc/logrotate.d/puppet-master':
+        source => 'puppet:///modules/profile/puppetmaster/logrotate',
+        require => Package['puppet-master'],
+    }
+
     # eyaml keys are in Ansible because of circular dependency
     file { "${homedir}/keys/private_key.pkcs7.pem":
         ensure => file,
