@@ -1,0 +1,2 @@
+# Rewrite all mail without domain
+/^(.+?)@([^.@]+)$/i    ${1}+${2}@home.taiku.cz

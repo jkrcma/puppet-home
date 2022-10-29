@@ -31,6 +31,12 @@ class profile::postfix($dkim_domain_key = undef) {
         require => Package['postfix'],
         notify => Service['postfix'],
     }
+    file { '/etc/postfix/sender_canonical_maps.cf':
+        ensure => file,
+        source => 'puppet:///modules/profile/postfix/sender_canonical_maps.cf',
+        require => Package['postfix'],
+        notify => Service['postfix'],
+    }
 
     file { '/etc/opendkim':
         ensure => directory,

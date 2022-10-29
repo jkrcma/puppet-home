@@ -32,6 +32,11 @@ recipient_delimiter = +
 inet_interfaces = all
 inet_protocols = all
 
+# Rewrite sender address to FQDNs
+sender_canonical_classes = envelope_sender
+sender_canonical_maps = regexp:/etc/postfix/sender_canonical_maps.cf
+smtp_generic_maps = regexp:/etc/postfix/sender_canonical_maps.cf
+
 milter_default_action = accept
 milter_protocol = 6
 smtpd_milters = inet:localhost:12301
