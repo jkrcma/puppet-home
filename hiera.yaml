@@ -14,6 +14,12 @@ hierarchy:
     options:
       pkcs7_private_key: /var/lib/puppet/keys/private_key.pkcs7.pem
       pkcs7_public_key: /var/lib/puppet/keys/public_key.pkcs7.pem
+  - name: "Per-type secret data"
+    lookup_key: eyaml_lookup_key
+    path: "secrets/type_%{type}.eyaml"
+    options:
+      pkcs7_private_key: /var/lib/puppet/keys/private_key.pkcs7.pem
+      pkcs7_public_key: /var/lib/puppet/keys/public_key.pkcs7.pem
   - name: "Per-node data"
     path: "node/%{trusted.certname}.yaml"
   - name: "Per-group data"
