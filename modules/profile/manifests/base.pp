@@ -1,6 +1,7 @@
 class profile::base (String $syslog_provider = 'busybox') {
     include network
     include profile::system::puppet
+    include profile::system::aliases
     include profile::system::logcheck
     include profile::system::packages
     include profile::system::security
