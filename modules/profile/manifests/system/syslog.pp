@@ -27,6 +27,22 @@ class profile::system::syslog::busybox {
         require => Package['rsyslog'],
         notify => Service['busybox-syslogd'],
     }
+
+    if $type == 'hw' {
+        # Enable old skool klogd, because systemd-journal can't forward kernel logs to syslog
+        file_line { 'enable busybox-klogd':
+            path => '/etc/init.d/busybox-klogd',
+            line => '#test -d /run/systemd/system && exit 0',
+            match => '^test -d /run/systemd/system.+',
+            append_on_no_match => false,
+            require => Package['busybox-syslogd'],
+            notify => Service['busybox-klogd'],
+        }
+        service { 'busybox-klogd':
+            enable => true,
+            ensure => running,
+        }
+    }
 }
 
 class profile::system::syslog::rsyslog (Boolean $promtail_relay = false) {
