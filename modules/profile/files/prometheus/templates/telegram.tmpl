@@ -1,0 +1,9 @@
+{{ define "telegram.html.message" }}
+{{ range .Alerts }}
+{{ if eq .Status "firing"}}🔥 <b>{{ .Labels.alertname }}</b> 🔥{{ else }}✅ <b>{{ .Labels.alertname }}</b> ✅{{ end }}
+<b>Labels:</b>{{ range $key, $value := .Labels }}{{ if ne $key "alertname" }}
+    <b>{{ $key }}</b>: <i>{{ $value }}</i>{{ end }}{{ end }}
+<b>Annotations:</b>{{ range $key, $value := .Annotations }}
+    <b>{{ $key }}</b>: <i>{{ $value }}</i>{{ end }}
+{{ end }}
+{{ end }}

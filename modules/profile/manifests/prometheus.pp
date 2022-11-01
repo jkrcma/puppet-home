@@ -27,10 +27,10 @@ class profile::prometheus::server ($external_url = undef) {
     }
 
     file { '/etc/prometheus/alerts':
-        ensure  => directory,
+        ensure => directory,
         recurse => true,
-        purge   => true,
-        source  => 'puppet:///modules/profile/prometheus/alerts',
+        purge => true,
+        source => 'puppet:///modules/profile/prometheus/alerts',
         notify => Service['prometheus'],
     }
 
@@ -60,6 +60,14 @@ class profile::prometheus::alertmanager ($external_url = undef, $telegram_bot_to
         mode => '0640',
         content => template('profile/prometheus/alertmanager.yml.erb'),
         validate_cmd => '/usr/bin/amtool check-config %',
+        notify => Service['alertmanager'],
+    }
+
+    file { '/etc/prometheus/templates':
+        ensure => directory,
+        recurse => true,
+        purge => true,
+        source => 'puppet:///modules/profile/prometheus/templates',
         notify => Service['alertmanager'],
     }
 

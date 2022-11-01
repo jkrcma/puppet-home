@@ -37,7 +37,6 @@ route:
       matchers:
         - alertname = PrometheusAlertmanagerE2eDeadManSwitch
 
-
 # Inhibition rules allow to mute a set of alerts given that another alert is
 # firing.
 # We use this to mute any warning-level notifications if the same alert is
@@ -58,11 +57,11 @@ inhibit_rules:
       - instance =~ "1.1.1.1|9.9.9.9|https://(bw\.taiku\.cz|taiku\.cz|google\.cz|google\.com|proton\.me|seznam\.cz)"
     equal: []
 
+templates:
+  - '/etc/prometheus/templates/*.tmpl'
 
 receivers:
   - name: 'taiku'
-    email_configs:
-      - to: 'home+prometheus@taiku.cz'
     telegram_configs:
       - api_url: 'https://api.telegram.org'
         bot_token: '<%= @telegram_bot_token %>'
