@@ -1,4 +1,4 @@
-class profile::lxd ($package_provider = undef) {
+class profile::lxd (String $package_provider = undef) {
     include profile::lxd::preseed
 
     if $package_provider == 'snap' {
@@ -17,7 +17,7 @@ class profile::lxd ($package_provider = undef) {
     }
 }
 
-class profile::lxd::preseed ($trust_password = undef) {
+class profile::lxd::preseed (String $trust_password = undef, String $metrics_cert = undef) {
     $preseed_file = '/data/lxd-preseed.yml'
     file { $preseed_file:
         ensure => file,
@@ -30,5 +30,11 @@ class profile::lxd::preseed ($trust_password = undef) {
         command => "cat ${preseed_file} | lxd init --preseed",
         require => File[$preseed_file],
         creates => '/var/snap/lxd/common/state',
+    }
+
+    exec { 'add metrics certificate':
+        path => '/snap/bin:/usr/bin',
+        command => "echo '${metrics_cert}' | lxc config trust add - --type=metrics",
+        unless => 'lxc config trust list -f csv | grep -q "662769fcb37b"',
     }
 }

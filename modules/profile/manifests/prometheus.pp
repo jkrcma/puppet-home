@@ -7,6 +7,7 @@ class profile::prometheus::common {
 
 class profile::prometheus::server ($external_url = undef) {
     include profile::prometheus::common
+    include profile::prometheus::tls
 
     package { 'prometheus':
         ensure => latest,
@@ -41,7 +42,24 @@ class profile::prometheus::server ($external_url = undef) {
     }
 }
 
-class profile::prometheus::alertmanager ($external_url = undef, $telegram_bot_token = undef) {
+class profile::prometheus::tls (String $lxd_key = undef, String $lxd_cert = undef) {
+    file { '/etc/prometheus/tls':
+        ensure => directory,
+    }
+
+    file { '/etc/prometheus/tls/lxd.key':
+        content => $lxd_key,
+        group => prometheus,
+        mode => '0640',
+        require => Package['prometheus'],
+    }
+
+    file { '/etc/prometheus/tls/lxd.crt':
+        content => $lxd_cert,
+    }
+}
+
+class profile::prometheus::alertmanager (String $external_url = undef, String $telegram_bot_token = undef) {
     include profile::prometheus::common
 
     package { 'alertmanager':
