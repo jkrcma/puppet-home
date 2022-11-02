@@ -1,9 +1,16 @@
 {{ define "telegram.html.message" }}
 {{ range .Alerts }}
-{{ if eq .Status "firing"}}🔥 <b>{{ .Labels.alertname }}</b> 🔥{{ else }}✅ <b>{{ .Labels.alertname }}</b> ✅{{ end }}
+{{ if eq .Status "firing" }}🔥 <code>{{ .Labels.alertname }}</code> 🔥{{ else }}✅ <code>{{ .Labels.alertname }}</code> ✅{{ end }}
+{{ range $key, $value := .Annotations }}{{ if eq $key "summary" }}{{ $value }}
+{{ end }}{{ end }}
 <b>Labels:</b>{{ range $key, $value := .Labels }}{{ if ne $key "alertname" }}
-    <b>{{ $key }}</b>: <i>{{ $value }}</i>{{ end }}{{ end }}
+    🔹 {{ $key | title }}: {{ $value }}{{ end }}{{ end }}
 <b>Annotations:</b>{{ range $key, $value := .Annotations }}
-    <b>{{ $key }}</b>: <i>{{ $value }}</i>{{ end }}
+    🔸 {{ $key | title }}: {{ $value }}{{ end }}
+
+⏱️ Started at: {{ .StartsAt }}{{ if eq .Status "resolved" }}
+🏁 Resolved at: {{ .EndsAt }}{{ end }}
+🚩 Fingerprint: <code>{{ .Fingerprint }}</code>
 {{ end }}
+🔗 Receiver: <a href="{{ template "__alertmanagerURL" . }}">{{ template "__alertmanagerURL" . }}</a>
 {{ end }}
