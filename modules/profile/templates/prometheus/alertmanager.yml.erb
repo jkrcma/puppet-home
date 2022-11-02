@@ -68,6 +68,7 @@ receivers:
         chat_id: 95594062
         send_resolved: true
         parse_mode: 'HTML'
+        message: '{{ template "telegram.html.message" . }}'
   - name: 'DMS'
     webhook_configs:
       - url: https://nosnch.in/ea3ff83290
