@@ -227,3 +227,17 @@ scrape_configs:
         regex: '(.+)\.data\.(.+):\d+'
         replacement: '$1.$2'
         target_label: fqdn
+
+  - job_name: 'lxd'
+    metrics_path: /1.0/metrics
+    scheme: 'https'
+    static_configs:
+      - targets:
+        - rpi-lxd-01.data.den:8443
+        - rpi-lxd-02.data.den:8443
+    tls_config:
+      cert_file: 'tls/lxd.crt'
+      key_file: 'tls/lxd.key'
+      # LXD has its own CA, and I'd have to copy-paste both CA certificates here and verify.
+      # Plus I'd have to separate the jobs for each machine, let's try this way first.
+      insecure_skip_verify: true
