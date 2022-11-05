@@ -29,6 +29,8 @@ class profile::base (String $syslog_provider = 'busybox') {
         and has_key($facts['disks']['sda'], 'model')
         and $facts['disks']['sda']['model'] =~ /^Flash/)
         or $facts['blockdevices'] =~ /mmcblk\d+/ {
+
+        include profile::system::swap::off
         include profile::system::log2ram
     }
 
