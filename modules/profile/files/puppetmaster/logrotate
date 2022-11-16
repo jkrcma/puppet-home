@@ -1,12 +1,9 @@
 /var/log/puppet/masterhttp.log {
-  daily
-  rotate 7
-  missingok
-  notifempty
-  create 0644 puppet puppet
-  compress
-
-  postrotate
-    pkill -USR2 -u puppet -f "puppet master" || true
-  endscript
+    su puppet puppet
+    daily
+    copytruncate
+    rotate 7
+    compress
+    missingok
+    notifempty
 }
