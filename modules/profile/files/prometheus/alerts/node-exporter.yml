@@ -119,7 +119,7 @@ groups:
 
       - alert: HostHighCpuLoad
         expr: 100 - (avg by(instance) (rate(node_cpu_seconds_total{mode="idle"}[2m])) * 100) > 80
-        for: 0m
+        for: 5m
         labels:
           severity: warning
         annotations:
@@ -128,7 +128,7 @@ groups:
 
       - alert: HostCpuStealNoisyNeighbor
         expr: avg by(instance) (rate(node_cpu_seconds_total{mode="steal"}[5m])) * 100 > 10
-        for: 0m
+        for: 5m
         labels:
           severity: warning
         annotations:
@@ -137,7 +137,7 @@ groups:
 
       - alert: HostCpuHighIowait
         expr: avg by (instance) (rate(node_cpu_seconds_total{mode="iowait"}[5m])) * 100 > 5
-        for: 0m
+        for: 5m
         labels:
           severity: warning
         annotations:
@@ -149,7 +149,7 @@ groups:
       # Please read: https://github.com/samber/awesome-prometheus-alerts/issues/58
       - alert: HostContextSwitching
         expr: (rate(node_context_switches_total[5m])) / (count without(cpu, mode) (node_cpu_seconds_total{mode="idle"})) > 3000
-        for: 0m
+        for: 5m
         labels:
           severity: warning
         annotations:
@@ -158,7 +158,7 @@ groups:
 
       - alert: HostSwapIsFillingUp
         expr: (1 - (node_memory_SwapFree_bytes / node_memory_SwapTotal_bytes)) * 100 > 80
-        for: 2m
+        for: 5m
         labels:
           severity: warning
         annotations:
