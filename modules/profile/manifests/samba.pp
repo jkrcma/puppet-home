@@ -33,4 +33,9 @@ class profile::samba {
     file { '/etc/dhcp/dhclient-enter-hooks.d/samba':
         ensure => absent,
     }
+
+    # literally for TV :)
+    user::user { 'tv':
+        id => 30000,
+    }
 }
