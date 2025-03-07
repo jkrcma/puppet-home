@@ -23,6 +23,19 @@ class profile::kubernetes {
         path => '/etc/systemd/system/k3s.service',
         line => 'LogLevelMax=3',
         after => '^LimitCORE=',
+        require => Class['k3s::install'],
+    }
+
+    -> service { 'k3s':
+        ensure => running,
+        enable => true,
+    }
+
+    file { '/etc/rancher/k3s/config.yaml':
+        ensure => file,
+        source => 'puppet:///modules/profile/kubernetes/config.yaml',
+        require => Class['k3s::install'],
+        notify => Service['k3s'],
     }
 
     # Debian/Ubuntu iptables bug workaround
