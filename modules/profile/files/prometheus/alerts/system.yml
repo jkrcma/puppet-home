@@ -37,6 +37,18 @@ groups:
         expr: exim4_local_maildir_size > 0
         annotations:
           summary: "Local Exim4 maildir on node {{ $labels.instance }} is not empty"
+
+      - alert: DailyBackupTooOld
+        expr: time() - backup_last_updated_timestamp_seconds{frequency="daily"} > 3600 * 36
+        annotations:
+          summary: "Daily backup older than 36 hours (instance {{ $labels.instance }})"
+          description: "Last successful run of daily backup happened more than 36 hours ago\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+
+      - alert: OffsiteBackupTooOld
+        expr: time() - backup_last_updated_timestamp_seconds{frequency="daily"} > 3600 * 24 * 40
+        annotations:
+          summary: "Offsite backup older than 40 days (instance {{ $labels.instance }})"
+          description: "Last successful run of offsite backup happened more than 40 days ago\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
   # Imported from https://awesome-prometheus-alerts.grep.to/rules#zfs
   # FIXME: Too old kernel I guess
 #  - name: zfs
