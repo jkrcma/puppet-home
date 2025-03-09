@@ -49,6 +49,22 @@ groups:
         annotations:
           summary: "Offsite backup older than 40 days (instance {{ $labels.instance }})"
           description: "Last successful run of offsite backup happened more than 40 days ago\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+
+      - alert: LTEFailoverAnomaly
+        expr: >
+          3 < abs(
+            avg_over_time(ifHCInOctets{job="snmp",instance="10.7.21.1",ifName='lte1'}[1m])
+            - avg_over_time(ifHCInOctets{job="snmp",instance="10.7.21.1",ifName='lte1'}[30m])
+          ) / stddev_over_time(ifHCInOctets{job="snmp",instance="10.7.21.1",ifName='lte1'}[30m])
+          OR
+          3 < abs(
+            avg_over_time(ifHCOutOctets{job="snmp",instance="10.7.21.1",ifName='lte1'}[1m])
+            - avg_over_time(ifHCOutOctets{job="snmp",instance="10.7.21.1",ifName='lte1'}[30m])
+          ) / stddev_over_time(ifHCOutOctets{job="snmp",instance="10.7.21.1",ifName='lte1'}[30m])
+        for: 2m
+        annotations:
+          summary: "LTE failover anomalous traffic"
+          description: "LTE interface traffic increased significantly in the past minute\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
   # Imported from https://awesome-prometheus-alerts.grep.to/rules#zfs
   # FIXME: Too old kernel I guess
 #  - name: zfs
