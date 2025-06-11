@@ -42,6 +42,7 @@ groups:
       - alert: BlackboxSslCertificateWillExpireSoon
         expr: probe_ssl_earliest_cert_expiry{job="blackbox-cert"} - time() < 86400 * 30
         for: 0m
+        keep_firing_for: 24h
         labels:
           severity: warning
         annotations:
@@ -51,6 +52,7 @@ groups:
       - alert: BlackboxSslCertificateWillExpireSoon
         expr: probe_ssl_earliest_cert_expiry{job="blackbox-cert"} - time() < 86400 * 3
         for: 0m
+        keep_firing_for: 24h
         labels:
           severity: critical
         annotations:
@@ -60,6 +62,7 @@ groups:
       - alert: BlackboxSslCertificateExpired
         expr: probe_ssl_earliest_cert_expiry{job="blackbox-cert"} - time() <= 0
         for: 0m
+        keep_firing_for: 24h
         labels:
           severity: critical
         annotations:
