@@ -164,12 +164,12 @@ scrape_configs:
         - http://pihole-01.den
         - http://pihole-02.den
         # Public
-        - https://google.cz
-        - https://google.com
+        - https://www.google.com
         - https://proton.me
-        - https://seznam.cz
+        - https://www.seznam.cz
         - https://taiku.cz
         - https://bw.taiku.cz
+        - https://lw.taiku.cz
     relabel_configs:
       - source_labels: [__address__]
         target_label: __param_target
