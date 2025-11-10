@@ -40,22 +40,22 @@ groups:
           description: "Host network interfaces are probably sending too much data (100+ MB/s)\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
 
       - alert: HostUnusualDiskReadRate
-        expr: sum by (instance) (rate(node_disk_read_bytes_total[2m])) / 1024 / 1024 > 50
+        expr: sum by (instance) (rate(node_disk_read_bytes_total[2m])) / 1024 / 1024 > 100
         for: 5m
         labels:
           severity: warning
         annotations:
           summary: Host unusual disk read rate (instance {{ $labels.instance }})
-          description: "Disk is probably reading too much data (50+ MB/s)\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+          description: "Disk is probably reading too much data (100+ MB/s)\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
 
       - alert: HostUnusualDiskWriteRate
-        expr: sum by (instance) (rate(node_disk_written_bytes_total[2m])) / 1024 / 1024 > 50
+        expr: sum by (instance) (rate(node_disk_written_bytes_total[2m])) / 1024 / 1024 > 100
         for: 2m
         labels:
           severity: warning
         annotations:
           summary: Host unusual disk write rate (instance {{ $labels.instance }})
-          description: "Disk is probably writing too much data (50+ MB/s)\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+          description: "Disk is probably writing too much data (100+ MB/s)\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
 
       # Please add ignored mountpoints in node_exporter parameters like
       # "--collector.filesystem.ignored-mount-points=^/(sys|proc|dev|run)($|/)".
@@ -124,7 +124,7 @@ groups:
           severity: warning
         annotations:
           summary: Host high CPU load (instance {{ $labels.instance }})
-          description: "CPU load is > 80%\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+          description: "CPU load is &gt; 80%\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
 
       - alert: HostCpuStealNoisyNeighbor
         expr: avg by(instance) (rate(node_cpu_seconds_total{mode="steal"}[5m])) * 100 > 10
@@ -136,25 +136,25 @@ groups:
           description: "CPU steal is &gt; 10%. A noisy neighbor is killing VM performances or a spot instance may be out of credit.\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
 
       - alert: HostCpuHighIowait
-        expr: avg by (instance) (rate(node_cpu_seconds_total{mode="iowait"}[5m])) * 100 > 10
+        expr: avg by (instance) (rate(node_cpu_seconds_total{mode="iowait"}[5m])) * 100 > 15
         for: 5m
         labels:
           severity: warning
         annotations:
           summary: Host CPU high iowait (instance {{ $labels.instance }})
-          description: "CPU iowait &gt; 10%. A high iowait means that you are disk or network bound.\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+          description: "CPU iowait &gt; 15%. A high iowait means that you are disk or network bound.\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
 
       # 1000 context switches is an arbitrary number.
       # Alert threshold depends on nature of application.
       # Please read: https://github.com/samber/awesome-prometheus-alerts/issues/58
       - alert: HostContextSwitching
-        expr: (rate(node_context_switches_total[5m])) / (count without(cpu, mode) (node_cpu_seconds_total{mode="idle"})) > 3000
+        expr: (rate(node_context_switches_total[5m])) / (count without(cpu, mode) (node_cpu_seconds_total{mode="idle"})) > 4000
         for: 5m
         labels:
           severity: warning
         annotations:
           summary: Host context switching (instance {{ $labels.instance }})
-          description: "Context switching is growing on node (1000+ / s)\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+          description: "Context switching is growing on node (4000+ / s)\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
 
       - alert: HostSwapIsFillingUp
         expr: (1 - (node_memory_SwapFree_bytes / node_memory_SwapTotal_bytes)) * 100 > 80
@@ -175,7 +175,7 @@ groups:
           description: "systemd service crashed\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
 
       - alert: HostPhysicalComponentTooHot
-        expr: node_hwmon_temp_celsius > 75
+        expr: node_hwmon_temp_celsius > 80
         for: 5m
         labels:
           severity: warning
