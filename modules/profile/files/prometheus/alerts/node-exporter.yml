@@ -101,21 +101,21 @@ groups:
 
       - alert: HostUnusualDiskReadLatency
         expr: rate(node_disk_read_time_seconds_total[1m]) / rate(node_disk_reads_completed_total[1m]) > 0.2 and rate(node_disk_reads_completed_total[1m]) > 0
-        for: 2m
+        for: 5m
         labels:
           severity: warning
         annotations:
           summary: Host unusual disk read latency (instance {{ $labels.instance }})
-          description: "Disk latency is growing (read operations > 100ms)\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+          description: "Disk latency is growing (read operations &gt; 100ms)\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
 
       - alert: HostUnusualDiskWriteLatency
         expr: rate(node_disk_write_time_seconds_total[1m]) / rate(node_disk_writes_completed_total[1m]) > 0.2 and rate(node_disk_writes_completed_total[1m]) > 0
-        for: 2m
+        for: 5m
         labels:
           severity: warning
         annotations:
           summary: Host unusual disk write latency (instance {{ $labels.instance }})
-          description: "Disk latency is growing (write operations > 100ms)\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+          description: "Disk latency is growing (write operations &gt; 100ms)\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
 
       - alert: HostHighCpuLoad
         expr: 100 - (avg by(instance) (rate(node_cpu_seconds_total{mode="idle"}[2m])) * 100) > 80
@@ -133,7 +133,7 @@ groups:
           severity: warning
         annotations:
           summary: Host CPU steal noisy neighbor (instance {{ $labels.instance }})
-          description: "CPU steal is > 10%. A noisy neighbor is killing VM performances or a spot instance may be out of credit.\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+          description: "CPU steal is &gt; 10%. A noisy neighbor is killing VM performances or a spot instance may be out of credit.\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
 
       - alert: HostCpuHighIowait
         expr: avg by (instance) (rate(node_cpu_seconds_total{mode="iowait"}[5m])) * 100 > 10
@@ -142,7 +142,7 @@ groups:
           severity: warning
         annotations:
           summary: Host CPU high iowait (instance {{ $labels.instance }})
-          description: "CPU iowait > 10%. A high iowait means that you are disk or network bound.\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
+          description: "CPU iowait &gt; 10%. A high iowait means that you are disk or network bound.\n  VALUE = {{ $value }}\n  LABELS = {{ $labels }}"
 
       # 1000 context switches is an arbitrary number.
       # Alert threshold depends on nature of application.
