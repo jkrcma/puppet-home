@@ -20,10 +20,17 @@ class profile::system::log2ram {
         ensure => latest,
     }
 
+    file { 'log2ram.conf':
+        ensure => file,
+        path => '/etc/log2ram.conf',
+        content => file('profile/log2ram/log2ram.conf'),
+        notify => Service['log2ram'],
+    }
+
     service { 'log2ram':
         enable => true,
         ensure => running,
-        require => Package['log2ram'],
+        require => [File['log2ram.conf'], Package['log2ram']],
     }
 
     # Make sure that the journal storage is clean before starting the service
