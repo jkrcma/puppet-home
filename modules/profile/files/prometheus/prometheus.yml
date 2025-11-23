@@ -209,6 +209,7 @@ scrape_configs:
         - 10.7.21.3
         - 10.7.21.4
         - 10.7.21.5
+        - 10.7.21.6
     relabel_configs:
       - source_labels: [__address__]
         target_label: __param_target
