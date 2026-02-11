@@ -1,0 +1,271 @@
+{
+  "repo_notes": [
+    {
+      "content": "Put some furry joke and use some furry language on every page, not too much, just a bit."
+    }
+  ],
+  "pages": [
+    {
+      "title": "Overview",
+      "purpose": "Introduce the puppet-home repository, explaining its purpose as a home infrastructure automation system using Puppet for configuration management, and providing a high-level map of the major subsystems",
+      "page_notes": [
+        {
+          "content": "Mention that this code has been developed by Taiku Drolf. Mention the website taiku.cz, you can cross-link the social links too. Watch out for the Network topology diagram. On the Network Topology and VLAN Design page, it is correct, but wasn't here in the Overview."
+        }
+      ]
+    },
+    {
+      "title": "Infrastructure Architecture",
+      "purpose": "Describe the overall infrastructure design, including network segmentation, the .den TLD namespace, VLAN topology, and how major subsystems (monitoring, DNS, configuration management) interact",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Network Topology and VLAN Design",
+      "purpose": "Document the VLAN segmentation strategy (VLANs 20-50), explain the purpose of each network segment (management, data, services, user, public, DMZ), and describe the dual-interface pattern used by infrastructure hosts",
+      "parent": "Infrastructure Architecture",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Monitoring and Observability Stack",
+      "purpose": "Provide an overview of the complete monitoring architecture, including Prometheus for metrics, Loki for logs, Alertmanager for notifications, and Grafana for visualization",
+      "parent": "Infrastructure Architecture",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Configuration Management Architecture",
+      "purpose": "Explain the Puppet-based configuration management system, including the primary/secondary master topology, Keepalived HA setup, Hiera data hierarchy, and the role/profile pattern",
+      "parent": "Infrastructure Architecture",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "DNS Infrastructure",
+      "purpose": "Document the BIND9-based DNS system providing the .den TLD, including zone structure, name server configuration, and the relationship between DNS domains and network VLANs",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "BIND9 Configuration and Zone Files",
+      "purpose": "Detail the BIND9 configuration including named.conf structure, zone definitions, SOA records, and the organization of forward and reverse lookup zones",
+      "parent": "DNS Infrastructure",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Zone Structure and Record Types",
+      "purpose": "Explain the DNS zone hierarchy (.den, mgmt.den, data.den), document the record types used (A, CNAME, PTR, NS), and describe the mapping between zones and VLANs",
+      "parent": "DNS Infrastructure",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "View-Based Resolution and RPZ",
+      "purpose": "Document the view-based DNS configuration (vlan21-view vs default), explain how different clients receive different zone data, and describe the Response Policy Zone (RPZ) for DNS overrides",
+      "parent": "DNS Infrastructure",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Monitoring and Observability",
+      "purpose": "Comprehensive documentation of the monitoring stack, covering metric collection, alert rules, log aggregation, and visualization, with emphasis on the 95+ alert rules and diverse exporter ecosystem",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Prometheus Server Configuration",
+      "purpose": "Document the Prometheus server setup, including scrape configurations for all exporters, global settings, remote write configuration, and integration with Alertmanager",
+      "parent": "Monitoring and Observability",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Exporters and Metric Collection",
+      "purpose": "Detail all metric exporters deployed (node_exporter, blackbox_exporter, snmp_exporter, pihole_exporter, etc.), their configuration, scrape jobs, and the metrics they expose",
+      "parent": "Monitoring and Observability",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Alert Rules and Notification",
+      "purpose": "Comprehensive documentation of the 95+ alert rules across system health, application monitoring, and predictive alerting, including the Alertmanager routing/inhibition configuration and Telegram integration",
+      "parent": "Monitoring and Observability",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Log Aggregation with Loki and Promtail",
+      "purpose": "Document the log collection pipeline, including Promtail's syslog listener, label extraction, Loki storage configuration, and log-based alerting rules",
+      "parent": "Monitoring and Observability",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Grafana Visualization",
+      "purpose": "Document Grafana deployment, configuration (grafana.ini), Nginx reverse proxy setup, and integration with Prometheus and Loki data sources",
+      "parent": "Monitoring and Observability",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Configuration Management with Puppet",
+      "purpose": "Detailed documentation of the Puppet infrastructure, including master/agent architecture, code organization (roles/profiles), Hiera data hierarchy, and catalog compilation process",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Puppet Master Setup and HA",
+      "purpose": "Document the primary/secondary Puppet master configuration, CA synchronization via rsync, Keepalived VIP setup, and the prometheus_reporter integration for monitoring",
+      "parent": "Configuration Management with Puppet",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Base System Configuration",
+      "purpose": "Document the profile::base class and its included profiles, covering network setup, timezone configuration, syslog provider selection, swap management, and the hardware-specific log2ram optimization",
+      "parent": "Configuration Management with Puppet",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Package Management",
+      "purpose": "Document the package management system including custom APT repository setup (build.den), GPG key management, essential package installation, and the Exim4 mail relay configuration",
+      "parent": "Configuration Management with Puppet",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "System Services and Logging",
+      "purpose": "Document system service configuration including syslog (busybox vs rsyslog with Promtail relay), systemd-journald volatile storage, log2ram for reducing disk writes, and logcheck removal",
+      "parent": "Configuration Management with Puppet",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Security and Access Control",
+      "purpose": "Document the security configuration including PAM access control (access.conf), SSH hardening, file permissions, and the taiku user management network restrictions",
+      "parent": "Configuration Management with Puppet",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Service Deployments",
+      "purpose": "Overview of all deployed services, categorized by function (infrastructure, network, media, storage), and the deployment patterns used (bare metal, LXC, Kubernetes)",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Kubernetes and Container Infrastructure",
+      "purpose": "Document the k3s Kubernetes cluster (3x Raspberry Pi), LXD container hosts, the temporary ingress configuration, multi-interface networking pattern, and container-specific monitoring configurations",
+      "parent": "Service Deployments",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Network Services",
+      "purpose": "Document network infrastructure services including Pi-hole ad-blocking DNS (HA pair), Postfix SMTP relay with OpenDKIM signing, and their integration with monitoring",
+      "parent": "Service Deployments",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Media and Storage Services",
+      "purpose": "Document media-related services including Transmission BitTorrent daemon with cache warmer, Samba NAS file sharing, and the Couchpotato media management application",
+      "parent": "Service Deployments",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Role and Profile Catalog",
+      "purpose": "Comprehensive catalog of all Puppet roles and profiles, documenting their purpose, included profiles, and usage patterns across the infrastructure",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Deployment and Maintenance Procedures",
+      "purpose": "Document operational procedures including initial node deployment, Puppet agent bootstrap, certificate signing, code deployment workflow, and common maintenance tasks",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    }
+  ]
+}
