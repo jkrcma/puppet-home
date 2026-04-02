@@ -53,14 +53,14 @@ groups:
       - alert: LTEFailoverAnomaly
         expr: >
           3 < abs(
-            avg_over_time(ifHCInOctets{job="snmp",instance="10.7.21.1",ifName='lte1'}[1m])
-            - avg_over_time(ifHCInOctets{job="snmp",instance="10.7.21.1",ifName='lte1'}[30m])
-          ) / stddev_over_time(ifHCInOctets{job="snmp",instance="10.7.21.1",ifName='lte1'}[30m])
+            avg_over_time(ifHCInOctets{job="snmp",ifName='lte1'}[1m])
+            - avg_over_time(ifHCInOctets{job="snmp",ifName='lte1'}[30m])
+          ) / stddev_over_time(ifHCInOctets{job="snmp",ifName='lte1'}[30m])
           OR
           3 < abs(
-            avg_over_time(ifHCOutOctets{job="snmp",instance="10.7.21.1",ifName='lte1'}[1m])
-            - avg_over_time(ifHCOutOctets{job="snmp",instance="10.7.21.1",ifName='lte1'}[30m])
-          ) / stddev_over_time(ifHCOutOctets{job="snmp",instance="10.7.21.1",ifName='lte1'}[30m])
+            avg_over_time(ifHCOutOctets{job="snmp",ifName='lte1'}[1m])
+            - avg_over_time(ifHCOutOctets{job="snmp",ifName='lte1'}[30m])
+          ) / stddev_over_time(ifHCOutOctets{job="snmp",ifName='lte1'}[30m])
         for: 2m
         annotations:
           summary: "LTE failover anomalous traffic"
