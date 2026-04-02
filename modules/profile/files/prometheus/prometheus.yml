@@ -100,6 +100,8 @@ scrape_configs:
         - cap1.mgmt.den
         - mikrotik-test.mgmt.den
         - switch-poe.mgmt.den
+        - switch-drolf.mgmt.den
+        - router-backup.mgmt.den
         # VLAN gateways
         - router.data.den  # VLAN 21
         - gw-vlan30.den
@@ -210,6 +212,7 @@ scrape_configs:
         - 10.7.21.4
         - 10.7.21.5
         - 10.7.21.6
+        - 10.7.21.7
     relabel_configs:
       - source_labels: [__address__]
         target_label: __param_target
