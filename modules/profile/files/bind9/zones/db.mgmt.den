@@ -3,7 +3,7 @@
 ;
 $TTL	300
 @	IN	SOA	ns1.den. admin.den. (
-		     2025112301		; Serial
+		     2026040201		; Serial
 			 604800		; Refresh
 			  86400		; Retry
 			2419200		; Expire
@@ -25,6 +25,9 @@ cap1		IN	A	10.7.20.3
 mikrotik-test	IN	A	10.7.20.4
 switch-poe	IN	A	10.7.20.5
 switch-drolf	IN	A	10.7.20.6
+router-backup	IN	A	10.7.20.7
+router-oobm	IN	A	10.7.20.101
+router-backup-oobm	IN	A	10.7.20.102
 dogee		IN	A	10.7.20.11
 drolf-rpi	IN	A	10.7.20.12
 rpi-k8s-01	IN	A	10.7.20.13

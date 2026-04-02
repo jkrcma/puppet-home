@@ -3,7 +3,7 @@
 ;
 $TTL	300
 @	IN	SOA	ns1.den. admin.den. (
-			 2025112301		; Serial
+			 2026040201		; Serial
 			 604800		; Refresh
 			  86400		; Retry
 			2419200		; Expire
@@ -21,7 +21,8 @@ $TTL	300
 4	IN	PTR	mikrotik-test.data.den.
 5	IN	PTR	switch-poe.data.den.
 6	IN	PTR	switch-drolf.data.den.
-$GENERATE 7-10 $ IN	PTR	$-21-7-10.data.den.
+7	IN	PTR	router-backup.data.den.
+$GENERATE 8-10 $ IN	PTR	$-21-7-10.data.den.
 11	IN	PTR	dogee.data.den.
 12	IN	PTR	drolf-rpi.data.den.
 13	IN	PTR	monitor.data.den.
