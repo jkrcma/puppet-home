@@ -222,6 +222,7 @@ scrape_configs:
     static_configs:
       - targets:
         - drolf-rpi.data.den:9162
+        - dogee.data.den:9162
     metric_relabel_configs:
       - source_labels: [instance]
         regex: '(.+)\.data\.(.+):\d+'
