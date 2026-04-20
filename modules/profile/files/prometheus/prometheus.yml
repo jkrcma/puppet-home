@@ -34,7 +34,7 @@ scrape_configs:
       # Bare metal
       - targets:
         - dogee.data.den:9100
-        - drolf-rpi.data.den:9100
+        #- rpi-mon-01.data.den:9100
         - rpi-k8s-01.data.den:9100
         - rpi-k8s-02.data.den:9100
         - rpi-k8s-03.data.den:9100
@@ -115,7 +115,7 @@ scrape_configs:
         - gw-vlan45.den
         # Bare metal
         - dogee.mgmt.den
-        - drolf-rpi.mgmt.den
+        #- rpi-mon-01.mgmt.den
         - rpi-k8s-01.mgmt.den
         - rpi-k8s-02.mgmt.den
         - rpi-k8s-03.mgmt.den

@@ -3,7 +3,7 @@
 ;
 $TTL	300
 @	IN	SOA	ns1.den. admin.den. (
-			 2026040201		; Serial
+			 2026042001		; Serial
 			 604800		; Refresh
 			  86400		; Retry
 			2419200		; Expire
@@ -24,7 +24,7 @@ $TTL	300
 7	IN	PTR	router-backup.mgmt.den.
 $GENERATE 8-10 $ IN	PTR	$-21-7-10.data.den.
 11	IN	PTR	dogee.mgmt.den.
-12	IN	PTR	drolf-rpi.mgmt.den.
+12	IN	PTR	rpi-mon-01.mgmt.den.
 13	IN	PTR	rpi-k8s-01.mgmt.den.
 14	IN	PTR	rpi-k8s-02.mgmt.den.
 15	IN	PTR	rpi-k8s-03.mgmt.den.

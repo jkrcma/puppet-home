@@ -3,7 +3,7 @@
 ;
 $TTL	300
 @	IN	SOA	ns1.den. admin.den. (
-			 2026040201		; Serial
+			 2026042001		; Serial
 			 604800		; Refresh
 			  86400		; Retry
 			2419200		; Expire
@@ -32,7 +32,7 @@ switch-poe	IN	A	10.7.21.5
 switch-drolf	IN	A	10.7.21.6
 router-backup	IN	A	10.7.21.7
 dogee		IN	A	10.7.21.11
-drolf-rpi	IN	A	10.7.21.12
+rpi-mon-01	IN	A	10.7.21.12
 monitor		IN	A	10.7.21.13
 docker		IN	A	10.7.21.14
 nas		IN	A	10.7.21.15
