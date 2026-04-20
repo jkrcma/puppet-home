@@ -60,7 +60,6 @@ scrape_configs:
         - pihole-01.data.den:9100
         - pihole-02.data.den:9100
         - prolink-overlay.data.den:9100
-        - puppet5.data.den:9100
         - puppet-01.data.den:9100
         - puppet-02.data.den:9100
         - smtp.data.den:9100

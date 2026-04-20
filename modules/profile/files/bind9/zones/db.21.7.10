@@ -37,7 +37,6 @@ $GENERATE 8-10 $ IN	PTR	$-21-7-10.data.den.
 22	IN	PTR	22-21-7-10.data.den.
 23	IN	PTR	puppet-01.data.den.
 24	IN	PTR	puppet-02.data.den.
-25	IN	PTR	puppet5.data.den.
 26	IN	PTR	rpi-k8s-01.data.den.
 27	IN	PTR	rpi-k8s-02.data.den.
 28	IN	PTR	rpi-k8s-03.data.den.

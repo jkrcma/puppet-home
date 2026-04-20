@@ -3,7 +3,7 @@
 ;
 $TTL	300
 @	IN	SOA	ns1.den. admin.den. (
-			 2022101401		; Serial
+			 2026042001		; Serial
 			 604800		; Refresh
 			  86400		; Retry
 			2419200		; Expire
@@ -21,7 +21,6 @@ $GENERATE 14-21 $ IN	PTR	$-30-7-10.den.
 22	IN	PTR	puppet-vip.den.
 23	IN	PTR	puppet-01.den.
 24	IN	PTR	puppet-02.den.
-25	IN	PTR	puppet5.den.
 $GENERATE 26-32 $ IN	PTR	$-30-7-10.den.
 33	IN	PTR	dns-01.den.
 34	IN	PTR	dns-02.den.
