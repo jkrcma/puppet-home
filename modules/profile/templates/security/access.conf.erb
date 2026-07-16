@@ -12,8 +12,9 @@
 
 # Hardcoded because we don't really expect to have more human users any time soon.
 # Secure management networks for access:
+# - VLAN11 10.7.11.0/24
 # - VLAN13 10.7.13.0/24
-+:taiku:10.7.13.0/24
++:taiku:10.7.11.0/24 10.7.13.0/24
 
 # Specific rules imported from hiera
 <%= @rules.join("\n") %>
