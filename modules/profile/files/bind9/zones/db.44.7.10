@@ -3,7 +3,7 @@
 ;
 $TTL	300
 @	IN	SOA	ns1.den. admin.den. (
-		     2022012601		; Serial
+		     2026081101		; Serial
 			 604800		; Refresh
 			  86400		; Retry
 			2419200		; Expire
@@ -15,5 +15,7 @@ $TTL	300
 ; VLAN44 DMZ LAN - 10.7.44.0/24
 0	IN	PTR	net-vlan44.den.
 1	IN	PTR	gw-vlan44.den.
-$GENERATE 2-254 $ IN	PTR	$-44-7-10.den.
+$GENERATE 2-10 $ IN	PTR	$-44-7-10.den.
+11	IN	PTR	cam1.den.
+$GENERATE 12-254 $ IN	PTR	$-44-7-10.den.
 255	IN	PTR	brc-vlan44.den.
