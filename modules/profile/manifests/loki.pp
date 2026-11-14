@@ -22,7 +22,9 @@ class profile::loki {
         notify => Service['loki'],
     }
 
-    file { '/var/lib/loki/tmp-alerts':
+    $var_dir = '/var/lib/loki'
+    $dirs = ['index', 'cache', 'chunks', 'compactor', 'tmp-alerts', 'tsdb-index', 'tsdb-cache']
+    file { $dirs.map |$dir| { "${var_dir}/${dir}" }:
         ensure => directory,
         owner => loki,
         group => loki,
