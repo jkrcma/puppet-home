@@ -54,8 +54,21 @@ limits_config:
         - action: index_label
           attributes:
             - service.name
-            - service.namespace
-            - cloud.region
+            - faas.version
+        - action: drop
+          attributes:
+            - cloud.platform
+            - cloud.provider
+            - telemetry.sdk.language
+            - telemetry.sdk.name
+            - faas.name
+            - cloudflare.script_name
+            - cloudflare.script_version_id
+    log_attributes:
+      - action: drop
+        attributes:
+          - flags
+          - observed_timestamp
   reject_old_samples: true
   reject_old_samples_max_age: 168h
 
